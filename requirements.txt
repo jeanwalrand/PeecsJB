@@ -3,6 +3,7 @@ jupyter-book
 matplotlib
 numpy
 pandas
+random
 ipywidgets
 sklearn
 openpyxl
