@@ -3,10 +3,8 @@ jupyter-book
 matplotlib
 numpy
 pandas
-random
 ipywidgets
 sklearn
 openpyxl
 ipyleaflet
 widgetsnbextension
-opencv-python-headless
