@@ -3,7 +3,7 @@ jupyter-book
 matplotlib
 numpy
 pandas
-ipywidgets>=7.4.2
+ipywidgets=7.0
 sklearn
 openpyxl
 ipyleaflet
