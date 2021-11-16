@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speech Recognition B &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Route Planning A" href="Chapter13.html" />
+    <link rel="prev" title="Speech Recognition A" href="Chapter11.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter12.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter12.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent">
+   Stochastic Gradient Descent
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-find-the-median">
+     Example 1: Find the median
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-quadratic-least-squares">
+     Example 2: Quadratic Least Squares
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#martingale-convergence">
+   Martingale Convergence
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2">
+   Example 2
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="speech-recognition-b">
+<h1>Speech Recognition B<a class="headerlink" href="#speech-recognition-b" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">notebook.nbextensions</span> <span class="kn">import</span> <span class="n">enable_nbextension</span> 
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>This chapter is a short introduction to techniques used in machine learning: stochastic gradient, expectation maximization, matching pursuit.</p>
+<div class="section" id="stochastic-gradient-descent">
+<h2>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<p>Consider the minimization of <span class="math notranslate nohighlight">\(g(\theta) = E[f(\theta, X)]\)</span> when one is given i.i.d. samples <span class="math notranslate nohighlight">\(X_n\)</span> of <span class="math notranslate nohighlight">\(X\)</span>.  Here, <span class="math notranslate nohighlight">\(\theta\)</span> are the parameters of some policy and <span class="math notranslate nohighlight">\(f(\theta, X)\)</span> is the cost of using the policy with parameters <span class="math notranslate nohighlight">\(\theta\)</span> when the realization of the random variables happens to be <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>For instance, <span class="math notranslate nohighlight">\(\theta\)</span> defines a scheduling policy in a hospital and <span class="math notranslate nohighlight">\(X\)</span> is the realization of the procedure durations, <span class="math notranslate nohighlight">\(f(\theta, X)\)</span> is then a cost that reflects the waiting time of patients, the down time of surgeons, the idle time of operating rooms, and the overtime of the staff.</p>
+<p>The key idea is to use an approximation of the following gradient projection algorithm:</p>
+<div class="math notranslate nohighlight">
+\[\theta_{n+1} = [\theta_n - \alpha \nabla g(\theta_n)]_{\cal C}.\]</div>
+<p>In this expression, <span class="math notranslate nohighlight">\(\alpha\)</span> controls the step size of the updates and <span class="math notranslate nohighlight">\(\nabla g\)</span> is th gradient of <span class="math notranslate nohighlight">\(g\)</span> with respect to <span class="math notranslate nohighlight">\(\theta\)</span>.  Also, <span class="math notranslate nohighlight">\([\cdot]_{\cal C}\)</span> indicate the projection on the set <span class="math notranslate nohighlight">\({\cal C}\)</span> of feasible values of <span class="math notranslate nohighlight">\(\theta\)</span>.  Thus, <span class="math notranslate nohighlight">\(\theta\)</span> is updated in the direction of steepest descent of <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\(g(\theta) = E[f(\theta, X)]\)</span> and one has access only to samples <span class="math notranslate nohighlight">\(X_n\)</span> of <span class="math notranslate nohighlight">\(X\)</span>, one does not know the function <span class="math notranslate nohighlight">\(g(\theta)\)</span> explictly.  So, how can one evaluate the gradient?</p>
+<p>One key idea is that, under mild conditions,</p>
+<div class="math notranslate nohighlight">
+\[\nabla g(\theta) = E[ \nabla f(\theta, X) ] \]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla f(\theta, X)\)</span> is the gradient of <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(\theta\)</span>.  Essentially, the gradient is a difference and expectation is linear.</p>
+<p>Also, by the law of large numbers, one has</p>
+<div class="math notranslate nohighlight">
+\[ E[ \nabla f(\theta, X) ] \approx \frac{1}{N} [ \nabla f(\theta, X_1) + \cdots + \nabla f(\theta, X_N)]. \]</div>
+<p>This suggests that the following algorithm should be a good approximation to the gradient projection algorithm:</p>
+<div class="math notranslate nohighlight">
+\[ \theta_{n+1} = [\theta_n - \alpha \nabla f(\theta_n, X_n)]_{\cal C}.\]</div>
+<p>Indeed, if the step size <span class="math notranslate nohighlight">\(\alpha\)</span> is small enough, the updates of <span class="math notranslate nohighlight">\(\theta\)</span> tend to follow the gradient direction.  The algorithm above is called the <strong>Stochastic Gradient Descent (SGD)</strong> algorithm.</p>
+<div class="section" id="example-1-find-the-median">
+<h3>Example 1: Find the median<a class="headerlink" href="#example-1-find-the-median" title="Permalink to this headline">¶</a></h3>
+<p>In this example, the goal is to minimize <span class="math notranslate nohighlight">\(g(\theta) = E[|X - \theta|]\)</span>.  The minimizing <span class="math notranslate nohighlight">\(\theta\)</span> is the <strong>median</strong> of the distribution of <span class="math notranslate nohighlight">\(X\)</span>, i.e., a value <span class="math notranslate nohighlight">\(\theta\)</span> such that <span class="math notranslate nohighlight">\(P(X &lt; \theta) = 1/2\)</span>.  The SGD
+algorithm is</p>
+<div class="math notranslate nohighlight">
+\[\theta_{n+1} = \theta_n + \alpha_n [ 1\{X_n &gt; \theta_n\} - 1\{X_n &lt; \theta_n\} ].\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\theta_n\)</span> increases when one sees a sample larger than <span class="math notranslate nohighlight">\(\theta_n\)</span> and it decreases otherwise.  When <span class="math notranslate nohighlight">\(\theta_n\)</span> is smaller than the median, it increases with a probability larger than <span class="math notranslate nohighlight">\(1/2\)</span> and decreases otherwise.  Thus, one expects <span class="math notranslate nohighlight">\(\theta_n\)</span> to converge to the median.</p>
+<p>For a concrete example, say that <span class="math notranslate nohighlight">\(X = U[0, 1]\)</span>.  We use this simple example to illustrate the key argument for the convergence of SGD.
+Note that <span class="math notranslate nohighlight">\(P(X_n &lt; \theta_n) = \theta_n\)</span>, so that <span class="math notranslate nohighlight">\(\theta_{n+1} = \theta_n - \alpha_n\)</span> with probability <span class="math notranslate nohighlight">\(\theta_n\)</span> and <span class="math notranslate nohighlight">\(\theta_{n+1} = \theta_n + \alpha_n\)</span> with probability <span class="math notranslate nohighlight">\(1 -\theta_n\)</span>.  Thus, <span class="math notranslate nohighlight">\(\theta_{n+1} = \theta_n + \alpha_n (1 - 2 \theta_n) + v_n\)</span> where <span class="math notranslate nohighlight">\(v_n\)</span> is a random variable that always takes values in <span class="math notranslate nohighlight">\([- 2 \alpha_n, 2 \alpha_n]\)</span> and is zero mean given <span class="math notranslate nohighlight">\(\theta_0, \ldots, \theta_n\)</span>.  If we ignore the noise <span class="math notranslate nohighlight">\(v_n\)</span>, we have <span class="math notranslate nohighlight">\(\theta_{n+1} = \theta_n + \alpha_n (1 - 2 \theta_n)\)</span>.
+A simple argument shows that if <span class="math notranslate nohighlight">\(\alpha_n \to 0\)</span> and <span class="math notranslate nohighlight">\(\sum_n \alpha_n = \infty\)</span>, then <span class="math notranslate nohighlight">\(\theta_n \to 0.5\)</span>.
+The main idea is then to show that the noise does not change this convergence if <span class="math notranslate nohighlight">\(\sum_n \alpha_n^2 &lt; \infty\)</span>.
+The technical step is to observe that <span class="math notranslate nohighlight">\(w_n := \sum_{m=1}^n \alpha_m v_m\)</span> is a martingale with the property that
+<span class="math notranslate nohighlight">\(E(w_n^2) \leq K &lt; \infty\)</span> for all <span class="math notranslate nohighlight">\(n\)</span>.  Thus, <span class="math notranslate nohighlight">\(w_m\)</span> is a ‘square integrable martingale’ so that it converges to a finite random variables.  This implies that <span class="math notranslate nohighlight">\(\sum_{m=n}^\infty \alpha_m v_m \to 0\)</span> as <span class="math notranslate nohighlight">\(n \to \infty\)</span>.  Hence, the noise has a negligible ‘tail’ and does not modify the convergence of <span class="math notranslate nohighlight">\(\theta_n\)</span>.</p>
+<p>Let’s try the algorithm in the following cases with <span class="math notranslate nohighlight">\(\alpha_n = a/(n+40)\)</span>:</p>
+<ul class="simple">
+<li><p>Case (a): <span class="math notranslate nohighlight">\(U[0,1]\)</span></p></li>
+<li><p>Case (b): <span class="math notranslate nohighlight">\(U\{1, 2, \ldots, 6\}\)</span></p></li>
+<li><p>Case (c): <span class="math notranslate nohighlight">\(0.5 {\cal N}(0, 1) + 0.5 {\cal N}(2,1)\)</span>.</p></li>
+</ul>
+<p>You will note that the speed of convergence depends on <span class="math notranslate nohighlight">\(a\)</span>.  Also, the median of <span class="math notranslate nohighlight">\(U\{1, 2, \ldots, 6\}\)</span>
+is any number in <span class="math notranslate nohighlight">\((3, 4)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">ad</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">ad</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">ad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="s1">&#39;350&#39;</span><span class="p">,</span><span class="s1">&#39;400&#39;</span><span class="p">,</span><span class="s1">&#39;450&#39;</span><span class="p">,</span><span class="s1">&#39;500&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span><span class="s1">&#39;(c)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span> <span class="n">ad</span> <span class="o">=</span> <span class="n">ad</span><span class="p">,</span> <span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "7ac10ab8af644e44a186d24eed46234a"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="s1">&#39;0 0.5 0 0.5 0; 0 0 1.0 0 0; 1.0 0 0 0 0;  0.33 0.33 0 0 0.34; 0 0.5 0.5 0 0&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">SGD1</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>  <span class="c1"># SGD with case w, step size a</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>  
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(b)&#39;</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">theta</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">-</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">theta</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">40</span><span class="p">)</span> 
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plX</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">/</span><span class="n">N</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">pltheta</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;theta(n)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Samples and Estimates of Median in Case &#39;</span> <span class="o">+</span> <span class="n">case</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+        
+<span class="n">SGD1</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter12_6_0.png" src="_images/Chapter12_6_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="example-2-quadratic-least-squares">
+<h3>Example 2: Quadratic Least Squares<a class="headerlink" href="#example-2-quadratic-least-squares" title="Permalink to this headline">¶</a></h3>
+<p>In this example, we use SGD to find the values of <span class="math notranslate nohighlight">\((a, b, d)\)</span> that minimize <span class="math notranslate nohighlight">\(E((Y - a - bX - cX^2)^2)\)</span> by using samples <span class="math notranslate nohighlight">\((X_n, Y_n)\)</span> of <span class="math notranslate nohighlight">\((X, Y)\)</span>.  We replace the gradient <span class="math notranslate nohighlight">\(\nabla E((Y - a - bX - cX^2)^2) = E(\nabla(Y - a - bX - cX^2)^2)\)</span> by the realization of <span class="math notranslate nohighlight">\(\nabla(Y - a - bX - cX^2)^2 = 2 (Y - a - bX - cX^2) \nabla \nabla(Y - a - bX - cX^2)\)</span>.  For instance, we replace</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial b}  E((Y - a - bX - cX^2)^2) \mbox{ by } 2 (Y - a - bX - cX^2)( - X).\]</div>
+<p>Accordingly, the SGD algorithm is as follows:</p>
+<p>\begin{eqnarray*}
+a_{n+1} &amp;=&amp; a_n + \alpha_n [Y_n - a_n - b_nX_n - cX_n^2] \
+b_{n+1} &amp;=&amp; b_n + \alpha_n [Y_n - a_n - b_nX_n - cX_n^2]X_n \
+c_{n+1} &amp;=&amp; c_n + \alpha_n [Y_n - a_n - b_nX_n - cX_n^2]X_n^2.
+\end{eqnarray*}</p>
+<p>We do this for <span class="math notranslate nohighlight">\(Y_n = 0.2 - X_n + 2X_n^2 + 1.3Z_n\)</span> in case (a) and <span class="math notranslate nohighlight">\(Y_n = 0.4 + X_n - 2 X_n^2 + 1.3Z_n\)</span> in case (b) where <span class="math notranslate nohighlight">\(X_n\)</span> and <span class="math notranslate nohighlight">\(Z_n\)</span> are i.i.d. <span class="math notranslate nohighlight">\({\cal N}(0, 1)\)</span>. (See section 7.3.)  First, we run the code of section 7.3 to find the optimal values of <span class="math notranslate nohighlight">\((a, b, c)\)</span>.  Then, we run SGD and track the values of <span class="math notranslate nohighlight">\((a_n, b_n, c_n)\)</span> that the algorithm produces.  Here again we use <span class="math notranslate nohighlight">\(\alpha_n = a/(n+40)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">ad</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">ad</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">ad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$a$&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="s1">&#39;350&#39;</span><span class="p">,</span><span class="s1">&#39;400&#39;</span><span class="p">,</span><span class="s1">&#39;450&#39;</span><span class="p">,</span><span class="s1">&#39;500&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span><span class="s1">&#39;(c)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span> <span class="n">ad</span> <span class="o">=</span> <span class="n">ad</span><span class="p">,</span> <span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "19d6a27566bd49dcbdda6c79437c838c"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SGD2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>  <span class="c1"># Simulation of QR and SGD QR </span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">aqr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">bqr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">cqr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">asgd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">bsgd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">csgd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>  
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span>  <span class="mf">0.2</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span>  <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span>  <span class="mf">0.4</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span>  <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">1.3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+    <span class="n">Sx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sx2</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sx3</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sx4</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sy</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sxy</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Sx2y</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">Sx</span> <span class="o">=</span> <span class="n">Sx</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">Sx2</span> <span class="o">=</span> <span class="n">Sx2</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">Sx3</span> <span class="o">=</span> <span class="n">Sx3</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span>
+        <span class="n">Sx4</span> <span class="o">=</span> <span class="n">Sx4</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">4</span>
+        <span class="n">Sy</span> <span class="o">=</span> <span class="n">Sy</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">Sxy</span> <span class="o">=</span> <span class="n">Sxy</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="n">Sx2y</span> <span class="o">=</span> <span class="n">Sx2y</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="n">N</span><span class="p">,</span><span class="n">Sx</span><span class="p">,</span><span class="n">Sx2</span><span class="p">],[</span><span class="n">Sx</span><span class="p">,</span><span class="n">Sx2</span><span class="p">,</span><span class="n">Sx3</span><span class="p">],[</span><span class="n">Sx2</span><span class="p">,</span><span class="n">Sx3</span><span class="p">,</span><span class="n">Sx4</span><span class="p">]]</span>
+    <span class="n">Ainv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sy</span><span class="p">,</span> <span class="n">Sxy</span><span class="p">,</span> <span class="n">Sx2y</span><span class="p">]</span>
+    <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ainv</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+    <span class="n">AL</span> <span class="o">=</span> <span class="p">[[</span><span class="n">N</span><span class="p">,</span> <span class="n">Sx</span><span class="p">],[</span><span class="n">Sx</span><span class="p">,</span> <span class="n">Sx2</span><span class="p">]]</span>
+    <span class="n">ALinv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">AL</span><span class="p">)</span>
+    <span class="n">VL</span> <span class="o">=</span> <span class="p">[</span><span class="n">Sy</span><span class="p">,</span> <span class="n">Sxy</span><span class="p">]</span>
+    <span class="n">WL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ALinv</span><span class="p">,</span><span class="n">VL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">aqr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">bqr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">cqr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">W</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+    <span class="n">asgd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">bsgd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">csgd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">asgd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">asgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">asgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bsgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">csgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>  
+        <span class="n">bsgd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">bsgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">asgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bsgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">csgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
+        <span class="n">csgd</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">csgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">asgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bsgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">csgd</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
+    
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">aqr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bqr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">cqr</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">asgd</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;a-sgd&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bsgd</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;b-sgd&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">csgd</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;c-sgd&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quadratic Regression and SGD&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+               
+<span class="n">SGD2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter12_9_0.png" src="_images/Chapter12_9_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="martingale-convergence">
+<h2>Martingale Convergence<a class="headerlink" href="#martingale-convergence" title="Permalink to this headline">¶</a></h2>
+<p>As we explained in Example 1 above, the key tool to prove the convergence of SGD is the <strong>martingale convergence theorem</strong>.  This result says that if <span class="math notranslate nohighlight">\(w_n\)</span> is a martingale and <span class="math notranslate nohighlight">\(E(w_n^2) \leq K &lt; \infty\)</span>, then
+<span class="math notranslate nohighlight">\(w_n \to w\)</span> where <span class="math notranslate nohighlight">\(w\)</span> is a finite random variable. Recall that <span class="math notranslate nohighlight">\(w_n\)</span> is a martingale if <span class="math notranslate nohighlight">\(E[w_{n+1} | w_0, \ldots, w_n] = w_n\)</span>.</p>
+<div class="section" id="example-1">
+<h3>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(x_n\)</span> be i.i.d. with mean <span class="math notranslate nohighlight">\(0\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.  Let <span class="math notranslate nohighlight">\(w_0 = 0\)</span> and <span class="math notranslate nohighlight">\(w_{n+1} = w_n + x_{n+1}/(n+1)\)</span>.<br />
+Then <span class="math notranslate nohighlight">\(w_n\)</span>
+is a martingale.  Moreover,</p>
+<div class="math notranslate nohighlight">
+\[E(w_n^2) = var(w_n) = var(x_ 1/1) + var(x_2/2) + \cdots + var(x_n/n) = \sigma^2(1 + 1/4 + \cdots + 1/n^2 )\leq \sigma^2\frac{\pi^2}{6}.\]</div>
+<p>Consequently, by the martingale convergence theorem, <span class="math notranslate nohighlight">\(w_n \to w\)</span> for some finite random variable <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>We simulate that process in two cases.</p>
+<ul class="simple">
+<li><p>Case (a): <span class="math notranslate nohighlight">\(x_n = {\cal N}(0, 1)\)</span>;</p></li>
+<li><p>Case (b): <span class="math notranslate nohighlight">\(x_n = U[-1, 1]\)</span>.</p></li>
+</ul>
+<p>Note that the limit depends on the realization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;300&#39;</span><span class="p">,</span> <span class="s1">&#39;500&#39;</span><span class="p">,</span> <span class="s1">&#39;700&#39;</span><span class="p">,</span><span class="s1">&#39;1000&#39;</span><span class="p">,</span><span class="s1">&#39;1500&#39;</span><span class="p">,</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span><span class="s1">&#39;2500&#39;</span><span class="p">,</span><span class="s1">&#39;3000&#39;</span><span class="p">,</span><span class="s1">&#39;3500&#39;</span><span class="p">,</span><span class="s1">&#39;4000&#39;</span><span class="p">,</span><span class="s1">&#39;4500&#39;</span><span class="p">,</span><span class="s1">&#39;5000&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span> <span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "c94467cb315b4309b4bb1174c1025b5e"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MG</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>  <span class="c1"># LR </span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span>  <span class="o">-</span> <span class="mi">1</span><span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$w_n$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Martingale Convergence&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+<span class="n">case</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case&#39;</span><span class="p">,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span> 
+    <span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">,</span>
+<span class="c1">#     icon=&#39;check&#39;</span>
+<span class="p">)</span> 
+
+
+
+<span class="n">N</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="nb">min</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">)</span>
+        
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">MG</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="n">case</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "247e5aedf0f24574962bb36ae6702c0e"}
+</script></div>
+</div>
+</div>
+</div>
+<div class="section" id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h2>
+<p>This example shows that adding a martingale noise does not modify the convergence.  Consider the following sequence that corresponds to the gradient algorithm to minimize <span class="math notranslate nohighlight">\((y - 1)^2\)</span>;</p>
+<div class="math notranslate nohighlight">
+\[y_{n+1} = y_n - \alpha_n 2 (y_n - 1).\]</div>
+<p>We know that if we choose <span class="math notranslate nohighlight">\(\alpha_n = a/n\)</span>, then <span class="math notranslate nohighlight">\(y_n \to 1\)</span>.  We then consider</p>
+<div class="math notranslate nohighlight">
+\[z_{n+1} = z_n - \alpha_n [2 (z_n - 1) + x_n]\]</div>
+<p>where the <span class="math notranslate nohighlight">\(x_n\)</span> are i.i.d. with mean zero and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.  The simulaiton shows that <span class="math notranslate nohighlight">\(z_n \to 1\)</span>.  We simulate the two cases of Example 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;300&#39;</span><span class="p">,</span> <span class="s1">&#39;500&#39;</span><span class="p">,</span> <span class="s1">&#39;700&#39;</span><span class="p">,</span><span class="s1">&#39;1000&#39;</span><span class="p">,</span><span class="s1">&#39;1500&#39;</span><span class="p">,</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span><span class="s1">&#39;2500&#39;</span><span class="p">,</span><span class="s1">&#39;3000&#39;</span><span class="p">,</span><span class="s1">&#39;3500&#39;</span><span class="p">,</span><span class="s1">&#39;4000&#39;</span><span class="p">,</span><span class="s1">&#39;4500&#39;</span><span class="p">,</span><span class="s1">&#39;5000&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2000&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span> <span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "6f7b027d637342a78e036b0ed853eb3a"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MG2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>  <span class="c1"># LR </span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span>  <span class="o">-</span> <span class="mi">1</span><span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y_n$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$z_n$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Convergence of SGD&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+<span class="n">MG2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter12_15_0.png" src="_images/Chapter12_15_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"c0a082b9112a47b5807948e85353f315": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "05272157c1744d0091d6551575dd079a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3b07bbcab8894248bc3378e448836845": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "$a$", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_c0a082b9112a47b5807948e85353f315", "style": "IPY_MODEL_05272157c1744d0091d6551575dd079a"}}, "1cdf84a438ef407fab3b2e5de14806fd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "31a7ba90e3fa4cc7bacc9b5e96155318": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "74a439512f0f422e8fcb35ff5586ef71": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250", "300", "350", "400", "450", "500"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 8, "layout": "IPY_MODEL_1cdf84a438ef407fab3b2e5de14806fd", "style": "IPY_MODEL_31a7ba90e3fa4cc7bacc9b5e96155318"}}, "0a0a85d081e24768a085adeac61ee525": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7a0db31398a0451d924b0f5cb0ef1a6e": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "689a75bac9c74e678589bef15eb9ec2f": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)", "(c)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_0a0a85d081e24768a085adeac61ee525", "style": "IPY_MODEL_7a0db31398a0451d924b0f5cb0ef1a6e", "tooltips": []}}, "9ac5fe4b9830499385053448e628450f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7ac10ab8af644e44a186d24eed46234a": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_74a439512f0f422e8fcb35ff5586ef71", "IPY_MODEL_3b07bbcab8894248bc3378e448836845", "IPY_MODEL_689a75bac9c74e678589bef15eb9ec2f", "IPY_MODEL_78de68c5d9864f28bbb342be5433658d"], "layout": "IPY_MODEL_9ac5fe4b9830499385053448e628450f"}}, "aa74e0a7d4f54ea08c3e23d732f25da0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "78de68c5d9864f28bbb342be5433658d": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_aa74e0a7d4f54ea08c3e23d732f25da0", "msg_id": "", "outputs": []}}, "2128f17bd17742d8823a7620a2bb3957": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e1add40332804c6f92cd9ec64e26340e": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "086c30f89375431fa41837a8ddc4703f": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "$a$", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_2128f17bd17742d8823a7620a2bb3957", "style": "IPY_MODEL_e1add40332804c6f92cd9ec64e26340e"}}, "879351a553a94b37a5cfc0d8dd36422e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5653b2ad75ef404f827cdfb1baf2220d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "5a681a063fe74eda852fb845c870c4c2": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250", "300", "350", "400", "450", "500"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 8, "layout": "IPY_MODEL_879351a553a94b37a5cfc0d8dd36422e", "style": "IPY_MODEL_5653b2ad75ef404f827cdfb1baf2220d"}}, "6b7d46bf0e6f405da22b50433b03ccd4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bf43464ae9da4abdabf3a11a1739b493": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "377453c5b2eb43f1870c14e6f4748910": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)", "(c)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_6b7d46bf0e6f405da22b50433b03ccd4", "style": "IPY_MODEL_bf43464ae9da4abdabf3a11a1739b493", "tooltips": []}}, "975cc19500cc46e8820aa8a909601eea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "19d6a27566bd49dcbdda6c79437c838c": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_5a681a063fe74eda852fb845c870c4c2", "IPY_MODEL_086c30f89375431fa41837a8ddc4703f", "IPY_MODEL_377453c5b2eb43f1870c14e6f4748910", "IPY_MODEL_2b35352c439a496192e4b1177c96df38"], "layout": "IPY_MODEL_975cc19500cc46e8820aa8a909601eea"}}, "fe6faf42effc47fea8469b07e05cb6fd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2b35352c439a496192e4b1177c96df38": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_fe6faf42effc47fea8469b07e05cb6fd", "msg_id": "", "outputs": []}}, "c2c82338840b46a0991252f19d8d26f1": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "07da392f33cb4041868799288c790f9b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "f2272383080b41059c91f7dd2749d74b": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["100", "300", "500", "700", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "4500", "5000"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 6, "layout": "IPY_MODEL_c2c82338840b46a0991252f19d8d26f1", "style": "IPY_MODEL_07da392f33cb4041868799288c790f9b"}}, "bd51de9ce5044f7a81b9579fde6f43ea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ed9504881b4b4a64b542ca4be0382155": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "c0b83853d6474150943b9a133ad16abf": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_bd51de9ce5044f7a81b9579fde6f43ea", "style": "IPY_MODEL_ed9504881b4b4a64b542ca4be0382155", "tooltips": []}}, "121c59d10c9047a28b40185f52041898": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c94467cb315b4309b4bb1174c1025b5e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_f2272383080b41059c91f7dd2749d74b", "IPY_MODEL_c0b83853d6474150943b9a133ad16abf", "IPY_MODEL_4bfd6f6799a344959dc3478a99840118"], "layout": "IPY_MODEL_121c59d10c9047a28b40185f52041898"}}, "778863b883ae4f3ba6e7588390e0e68f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4bfd6f6799a344959dc3478a99840118": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_778863b883ae4f3ba6e7588390e0e68f", "msg_id": "", "outputs": []}}, "cdaa9447634a4db1a1a07c2a07ef79e8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "808b06fcacc4422ba6e9c2cff7876583": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "03b476570ca44ba9a2b7b18c87e6fd80": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_cdaa9447634a4db1a1a07c2a07ef79e8", "style": "IPY_MODEL_808b06fcacc4422ba6e9c2cff7876583", "tooltips": []}}, "bd514ea7745844e7ab0ae56abf6f85a4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "13882c3192fc49cdbd8f701938146388": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "a5a4ab0ba730417ab1d027837a307101": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "N", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_bd514ea7745844e7ab0ae56abf6f85a4", "max": 4000, "min": 100, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 10, "style": "IPY_MODEL_13882c3192fc49cdbd8f701938146388", "value": 2000}}, "bf93aa9e7f3f4d7a82936e03b1445639": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "247e5aedf0f24574962bb36ae6702c0e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_03b476570ca44ba9a2b7b18c87e6fd80", "IPY_MODEL_a5a4ab0ba730417ab1d027837a307101", "IPY_MODEL_9ea0e9fb93bd42f096588320eea19cab"], "layout": "IPY_MODEL_bf93aa9e7f3f4d7a82936e03b1445639"}}, "1c44a924b49949a188c3aaf1d122df53": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9ea0e9fb93bd42f096588320eea19cab": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_1c44a924b49949a188c3aaf1d122df53", "msg_id": "", "outputs": [{"output_type": "display_data", "metadata": {"needs_background": "light"}, "data": {"text/plain": "<Figure size 1008x432 with 1 Axes>", "image/png": "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\n"}}]}}, "e93bbd5be1454326858e2969741413d7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bd177c2c81114701bd9a8a045c24099d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1486ac8eb3e9408a96ddd0011166fe02": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["100", "300", "500", "700", "1000", "1500", "2000", "2500", "3000", "3500", "4000", "4500", "5000"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 6, "layout": "IPY_MODEL_e93bbd5be1454326858e2969741413d7", "style": "IPY_MODEL_bd177c2c81114701bd9a8a045c24099d"}}, "f911307470c54f94bb4ede8fb5e5b2c8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3986e44d83cc47799697d13e890dbbf2": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "6a2a41ac07d543c9b0e45ed12266f859": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_f911307470c54f94bb4ede8fb5e5b2c8", "style": "IPY_MODEL_3986e44d83cc47799697d13e890dbbf2", "tooltips": []}}, "cfc058f121184aebb308396fcd8199fb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6f7b027d637342a78e036b0ed853eb3a": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_1486ac8eb3e9408a96ddd0011166fe02", "IPY_MODEL_6a2a41ac07d543c9b0e45ed12266f859", "IPY_MODEL_d6a2b7d3bf2a45528fe5fb6cbe7b2ca9"], "layout": "IPY_MODEL_cfc058f121184aebb308396fcd8199fb"}}, "0b8739c5aac14f799d879c5d332e3b2b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d6a2b7d3bf2a45528fe5fb6cbe7b2ca9": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_0b8739c5aac14f799d879c5d332e3b2b", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter11.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Speech Recognition A</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter13.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Route Planning A</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

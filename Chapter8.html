@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Link B &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tracking A" href="Chapter9.html" />
+    <link rel="prev" title="Digital Link A" href="Chapter7.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter8.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter8.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ldpc-code">
+   LDPC Code
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="digital-link-b">
+<h1>Digital Link B<a class="headerlink" href="#digital-link-b" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">notebook.nbextensions</span> <span class="kn">import</span> <span class="n">enable_nbextension</span> 
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this chapter, we continue our analysis of digital links.  The LDPC codes are widely used in applications. Moreover, they are a great illustration of Bayes’ Rule.</p>
+<div class="section" id="ldpc-code">
+<h2>LDPC Code<a class="headerlink" href="#ldpc-code" title="Permalink to this headline">¶</a></h2>
+<p>The LDPC code works as follows.  One transmits an  <span class="math notranslate nohighlight">\(n\)</span>-bit string <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> that we represent as a column vector.  To protect the transmission against errors, one appends an <span class="math notranslate nohighlight">\(m\)</span>-bit string <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> that one computes as <span class="math notranslate nohighlight">\(\mathbf{y} = H\mathbf{x}\)</span> where <span class="math notranslate nohighlight">\(H\)</span> is an <span class="math notranslate nohighlight">\(m\)</span>-by-<span class="math notranslate nohighlight">\(n\)</span> matrix whose entries are <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> and the operations are modulo <span class="math notranslate nohighlight">\(2\)</span>.  Typically, most entries of <span class="math notranslate nohighlight">\(H\)</span> are zeros, hence the name <strong>low density parity codes</strong>.  The discussion below is similar to that in the book.  We include it here to be self-contained.</p>
+<p>To explain the algorithm, consider the example illustrated in the figure below.</p>
+<p><img alt="title" src="_images/ldpc.pdf" /></p>
+<p>In this example, <span class="math notranslate nohighlight">\(y_1 = x_1 + x_3 + x_4\)</span>.  Also, <span class="math notranslate nohighlight">\(\mathbf{x} = 0100101\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y} = 001\)</span>.
+The transmitter sends <span class="math notranslate nohighlight">\([\mathbf{x} | \mathbf{y}] = 0100101001\)</span>. There is one transmission error and the receiver gets <span class="math notranslate nohighlight">\([\mathbf{x}' | \mathbf{y}'] = 0100101000\)</span>.  Since <span class="math notranslate nohighlight">\(\mathbf{y}' \neq H \mathbf{x}'\)</span>, the receiver knows that there was at least one transmission error.  How can it locate the errors?  Assuming that errors are unlikely, the receiver should find the minimum number of bits to flip in <span class="math notranslate nohighlight">\([\mathbf{x}' | \mathbf{y}']\)</span> to satisfy the equations.  By looking exhaustively, the receiver can find that the equations are satisfied by flipping only the last bit.  This takes <span class="math notranslate nohighlight">\(n + m\)</span> checks.  However, if more than one bit has been flipped, this exhaustive exploration is too time-consuming to be feasible when <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> are large.</p>
+<p>Instead of an exhaustive exploration, the algorithm proceeds iteratively as follows.</p>
+<p><strong>Step</strong> <span class="math notranslate nohighlight">\(1\)</span>: The <span class="math notranslate nohighlight">\(x\)</span>-nodes <span class="math notranslate nohighlight">\(\{x_1, \ldots, x_n\}\)</span> on the left in the graph of the figure compute their estimates <span class="math notranslate nohighlight">\(p_j\)</span> of <span class="math notranslate nohighlight">\(P(x_j = 1)\)</span>.
+For instance, since <span class="math notranslate nohighlight">\(x_1^\prime = 0\)</span> and the probability that an error flips the bit is <span class="math notranslate nohighlight">\(\epsilon\)</span>, node <span class="math notranslate nohighlight">\(x_1\)</span>
+uses Bayes’ Rule to calculate</p>
+<div class="math notranslate nohighlight">
+\[p_1 := P[x_1 = 1 | x_1^\prime = 0] = \frac{P(x_1 = 1)P[x_1^\prime = 0|x_1 = 1]}{P(x_1 = 1)P[x_1^\prime = 0|x_1 = 1] + P(x_1 = 0)P[x_1^\prime = 0|x_1 = 0]} = \frac{0.5 \epsilon}{0.5 \epsilon + 0.5 (1 - \epsilon)} = \epsilon.\]</div>
+<p>Each node <span class="math notranslate nohighlight">\(x_j\)</span> sends its estimate <span class="math notranslate nohighlight">\(p_j\)</span> to the <span class="math notranslate nohighlight">\(y\)</span>-nodes to which it is connected.</p>
+<p>Node <span class="math notranslate nohighlight">\(y_1\)</span> updates its estimate <span class="math notranslate nohighlight">\(q_1(1)\)</span> of <span class="math notranslate nohighlight">\(P(x_1 = 1)\)</span> as follows. (The notation is <span class="math notranslate nohighlight">\(q_i(j)\)</span> for the estimate that node <span class="math notranslate nohighlight">\(y_i\)</span> maintains of <span class="math notranslate nohighlight">\(P(x_j=1)\)</span>.) Node <span class="math notranslate nohighlight">\(y_1\)</span> has received the estimates <span class="math notranslate nohighlight">\(p_1, p_3, p_4\)</span> from the <span class="math notranslate nohighlight">\(x\)</span>-nodes and it knows that <span class="math notranslate nohighlight">\(y_1 = x_1 + x_3 + x_4\)</span> and <span class="math notranslate nohighlight">\(y_1^\prime = 1\)</span>.  Thus,
+<span class="math notranslate nohighlight">\(x_1 = 1\)</span> if <span class="math notranslate nohighlight">\(y_1 = 1 + x_3 + x_4\)</span>, i.e., if an odd number of random variables among <span class="math notranslate nohighlight">\(\{y_1, x_3, x_4\}\)</span>
+are equal to one. Let us call that event <span class="math notranslate nohighlight">\(E\)</span>. You can verify that <span class="math notranslate nohighlight">\(z = [1 - (1 - 2y_1)(1 - 2x_3)(1 - 2x_4)]/2\)</span> is
+equal to one if <span class="math notranslate nohighlight">\(E\)</span> occurs and to zero otherwise.  Hence, assuming independence,</p>
+<div class="math notranslate nohighlight">
+\[P(E) = E(z) = [1 - (1 - 2P(y_1 = 1)(1 - 2P(x_3=1))(1 - 2P(x_4=1))]/2.\]</div>
+<p>Given that <span class="math notranslate nohighlight">\(y_1^\prime = 0\)</span>, we find as before, using Bayes’ Rule, that <span class="math notranslate nohighlight">\(P[y_1 = 1|y_1^\prime = 0] = \epsilon\)</span>.
+Also, <span class="math notranslate nohighlight">\(P(x_j = 1)= p_j\)</span>.  Hence, we get</p>
+<div class="math notranslate nohighlight">
+\[q_1(1) = P(x_1 = 1) = P(E) = E(z) = [1 - (1 - 2 \epsilon)(1 - 2p_3)(1 - 2p_4)]/2.\]</div>
+<p>The other <span class="math notranslate nohighlight">\(y\)</span>-nodes update their estimates in the same way.</p>
+<p><strong>Step</strong> <span class="math notranslate nohighlight">\(2\)</span>: The <span class="math notranslate nohighlight">\(y\)</span>-nodes send their estimates to the <span class="math notranslate nohighlight">\(x\)</span>-nodes to which they are connected.  Consider node <span class="math notranslate nohighlight">\(x_1\)</span>. It gets the estimates <span class="math notranslate nohighlight">\(q_1(1), q_2(1)\)</span> from nodes <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>.  Also, it remembers that <span class="math notranslate nohighlight">\(x_1^\prime = 0\)</span>.  Node <span class="math notranslate nohighlight">\(x_1\)</span> uses these observations to update <span class="math notranslate nohighlight">\(p_1\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[p_1 = \frac{\epsilon q_1(1) q_2(1)}{\epsilon q_1(1) q_2(1) + (1 - \epsilon)(1 - q_1(1))(1 - q_2(1))}. \tag{6.1}\]</div>
+<p>To derive this formula, we use Bayes’ Rule again. Let <span class="math notranslate nohighlight">\(Y_1\)</span> and <span class="math notranslate nohighlight">\(Y_2\)</span> be the observations of nodes <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span>.  These nodes provided their estimates <span class="math notranslate nohighlight">\(q_1(1) = P[x_1 = 1 | Y_1]\)</span> and <span class="math notranslate nohighlight">\(q_2(1) = P[x_1 = 1|Y_2]\)</span>.  Also,
+we know that <span class="math notranslate nohighlight">\(x_1^\prime = 0\)</span>.  We want to combine these values to compute <span class="math notranslate nohighlight">\(P[x_1 = 1|x_1^\prime = 0, Y_1, Y_2]\)</span>.  Bayes’ Rule gives</p>
+<div class="math notranslate nohighlight">
+\[
+P[x_1 = 1|x_1^\prime = 0, Y_1, Y_2] = \frac{P(x_1=1, x_1^\prime = 0, Y_1, Y_2)}{P(x_1^\prime = 0, Y_1, Y_2)}\]</div>
+<div class="math notranslate nohighlight">
+\[~~~ =  \frac{P(x_1=1, x_1^\prime = 0, Y_1, Y_2)}{P(x_1 = 1, x_1^\prime = 0, Y_1, Y_2) + P(x_1 = 0, x_1^\prime = 0, Y_1, Y_2)}.\]</div>
+<p>Now,</p>
+<div class="math notranslate nohighlight">
+\[
+P(x_1=1, x_1^\prime = 0, Y_1, Y_2) = P(x_1=1)P[x_1^\prime = 0, Y_1, Y_2|x_1 = 1] \]</div>
+<div class="math notranslate nohighlight">
+\[~~~ = 0.5 P[x_1^\prime = 0 | x_1 = 1] P[Y_1|x_1 = 1]P[Y_2|x_1 = 1].\]</div>
+<p>Moreover,</p>
+<div class="math notranslate nohighlight">
+\[
+P[Y_1|x_1 = 1] = \frac{P[Y_1, x_1 = 1]}{P(x_1 = 1)} = \frac{P(Y_1)P[x_1 = 1|Y_1]}{P(x_1 = 1)}\]</div>
+<div class="math notranslate nohighlight">
+\[~~~ = \frac{P(Y_1) q_1(1)}{0.5} = 2 P(Y_1) q_1(1).\]</div>
+<p>\end{eqnarray*}</p>
+<p>Similarly, <span class="math notranslate nohighlight">\(P[Y_1|x_1 = 0] = 2 P(Y_1)(1 - q_1(1))\)</span>.  Putting together these formulas gives (6.1).</p>
+<p><strong>Step</strong> <span class="math notranslate nohighlight">\(2k + 1\)</span> similar to step <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p><strong>Step</strong> <span class="math notranslate nohighlight">\(2k + 2\)</span> is similar to step <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<p><strong>Termination:</strong> The algorithm can run for a pre-determined number of steps or one may have a stopping rule based on the change in the estimates <span class="math notranslate nohighlight">\(p_j\)</span>.  When the algorithm stops, one decides that <span class="math notranslate nohighlight">\(x_j = 1\)</span> if <span class="math notranslate nohighlight">\(p_j &gt; 0.5\)</span> and <span class="math notranslate nohighlight">\(x_j = 0\)</span> otherwise.</p>
+<p>For a tutorial and very nice applications to image and sound coding, see <a class="reference external" href="https://pypi.python.org/pypi/pyldpc/0.7.4">https://pypi.python.org/pypi/pyldpc/0.7.4</a>  Below, we propose a crude implementation, to illustrate the decoding algorithm.</p>
+<p>Not surprisingly, the performance of the LDPC code depends strongly on the choice of the matrix <span class="math notranslate nohighlight">\(H\)</span>.</p>
+<p>The code below generates a suitable parity matrix <span class="math notranslate nohighlight">\(H\)</span> using a method propoed by Robert Gallager.  It is from Hicham Janati: <a class="reference external" href="https://github.com/janatiH/pyldpc/blob/master/pyLDPC-Presentation.ipynb">https://github.com/janatiH/pyldpc/blob/master/pyLDPC-Presentation.ipynb</a>
+This code generates a regular <span class="math notranslate nohighlight">\(H\)</span> matrix with parameters <span class="math notranslate nohighlight">\((n, a, b)\)</span>, defined as a matrix where each <span class="math notranslate nohighlight">\(y_j\)</span> is connected to the same number <span class="math notranslate nohighlight">\(a\)</span> of <span class="math notranslate nohighlight">\(x_i\)</span> and each <span class="math notranslate nohighlight">\(x_i\)</span> is connected to the same number <span class="math notranslate nohighlight">\(b\)</span> of <span class="math notranslate nohighlight">\(y_j\)</span>. [Note: <span class="math notranslate nohighlight">\(a &lt; b\)</span> and <span class="math notranslate nohighlight">\(b\)</span> divides <span class="math notranslate nohighlight">\(n\)</span>.]</p>
+<p>Here is our simple implementation of the LDPC decoding algorithm.  The code generates a random vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, chosen uniformly at random in <span class="math notranslate nohighlight">\(\{0,1\}^n\)</span>.  It then transmits <span class="math notranslate nohighlight">\([\mathbf{x}, \mathbf{y} = H \mathbf{x}]\)</span>. The link flips each of those <span class="math notranslate nohighlight">\(n+m\)</span> bits independently with probability <span class="math notranslate nohighlight">\(\epsilon\)</span>.  The LDPC decoding algorithm runs for <span class="math notranslate nohighlight">\(100\)</span> steps. The code counts and print the number of decoding errors.</p>
+<p>**Notes: **</p>
+<p>(1) The code is not optimized and takes a few seconds for <span class="math notranslate nohighlight">\(n = 36\)</span>.</p>
+<p>(2) Recall that if <span class="math notranslate nohighlight">\(- log_{10}(BER) = 2,\)</span> then <span class="math notranslate nohighlight">\(BER = 10^{2}\)</span>. Here, the value of <span class="math notranslate nohighlight">\(- log_{10}(BER)\)</span> is selected by the widget.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">berd</span><span class="p">,</span><span class="n">nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">ber</span><span class="p">,</span> <span class="n">n</span>
+    <span class="n">ber</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">berd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+
+<span class="n">berd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$BER$&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span><span class="s1">&#39;14&#39;</span><span class="p">,</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="s1">&#39;24&#39;</span><span class="p">,</span><span class="s1">&#39;26&#39;</span><span class="p">,</span><span class="s1">&#39;28&#39;</span><span class="p">,</span><span class="s1">&#39;30&#39;</span><span class="p">,</span><span class="s1">&#39;32&#39;</span><span class="p">,</span><span class="s1">&#39;34&#39;</span><span class="p">,</span><span class="s1">&#39;36&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;12&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">berd</span> <span class="o">=</span> <span class="n">berd</span><span class="p">,</span> <span class="n">nd</span> <span class="o">=</span> <span class="n">nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "633bfb2cc2c948e288aab6306a224fb5"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RegularH</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d_v</span><span class="p">,</span><span class="n">d_c</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; ------------------------------------------------------------------------------</span>
+
+<span class="sd">    Builds a regular Parity-Check Matrix H (n,d_v = a,d_c = b) following Gallager&#39;s algorithm : </span>
+
+<span class="sd">    ----------------------------------------------------------------------------------</span>
+
+<span class="sd">    Parameters:</span>
+
+<span class="sd">     n: Number of columns (Same as number of coding bits)</span>
+<span class="sd">     d_v: number of ones per column (number of parity-check equations including a certain variable) </span>
+<span class="sd">     d_c: number of ones per row (number of variables participating in a certain parity-check equation);  </span>
+
+<span class="sd">    ----------------------------------------------------------------------------------</span>
+
+<span class="sd">    Errors: </span>
+
+<span class="sd">     The number of ones in the matrix is the same no matter how we calculate it (rows or columns), therefore, if m is </span>
+<span class="sd">     the number of rows in the matrix: </span>
+
+<span class="sd">     m*d_c = n*d_v with m &lt; n (because H is a decoding matrix) =&gt; Parameters must verify:</span>
+
+
+<span class="sd">     0 - all integer parameters</span>
+<span class="sd">     1 - d_v &lt; d_v</span>
+<span class="sd">     2 - d_c divides n </span>
+
+<span class="sd">    ---------------------------------------------------------------------------------------</span>
+
+<span class="sd">     Returns: 2D-array (shape = (m,n))</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">if</span>  <span class="n">n</span><span class="o">%</span><span class="k">d_c</span>:
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;d_c must divide n. Help(RegularH) for more info.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">d_c</span> <span class="o">&lt;=</span> <span class="n">d_v</span><span class="p">:</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;d_c must be greater than d_v. Help(RegularH) for more info.&#39;</span><span class="p">)</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">d_v</span><span class="p">)</span><span class="o">//</span> <span class="n">d_c</span>
+    <span class="n">a</span><span class="o">=</span><span class="n">m</span><span class="o">//</span><span class="n">d_v</span>
+    <span class="n">Set</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>  
+    
+
+    <span class="c1"># Filling the first set with consecutive ones in each row of the set </span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>     
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">d_c</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">d_c</span><span class="p">):</span> 
+            <span class="n">Set</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+
+    <span class="c1">#Create list of Sets and append the first reference set</span>
+    <span class="n">Sets</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">Sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Set</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+    <span class="c1">#Create remaining sets by permutations of the first set&#39;s columns: </span>
+    <span class="n">i</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">d_v</span><span class="p">):</span>
+        <span class="n">newSet</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Set</span><span class="p">)))</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">Sets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newSet</span><span class="p">)</span>
+
+    <span class="c1">#Returns concatenated list of sest:</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">Sets</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">H</span>
+
+<span class="k">def</span> <span class="nf">LDPC</span><span class="p">(</span><span class="n">BER</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    
+    <span class="c1"># Print the regular H matrix</span>
+    <span class="n">RegularH_test</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">RegularH_test</span><span class="p">:</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">RegularH</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regular parity matrix (n, a, b) = &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">4</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span> <span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> </span><span class="se">\n</span><span class="s1"> H: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span> 
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># steps in algorithm</span>
+    <span class="n">eps</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">BER</span><span class="p">)</span> <span class="c1"># BER</span>
+    <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">H</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">yp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># guesses of P(x_i = 1) by xi</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">))</span> <span class="c1"># q(j,i) is guess about P(x_i = 1) by yj</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># number of transmission errors</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">):</span> <span class="c1"># simulations    </span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># transmitted string</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">err</span> <span class="o">+</span> <span class="n">w</span>
+            <span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># received bits</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># transmitted parity check bits</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">eps</span><span class="p">)</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">err</span> <span class="o">+</span> <span class="n">w</span>
+            <span class="n">yp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># received parity check</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">eps</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span><span class="o">*</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># initial guess</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">):</span> <span class="c1"># iterations</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span> 
+                    <span class="k">if</span> <span class="n">H</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">A</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">eps</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span><span class="o">*</span><span class="n">yp</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+                            <span class="k">if</span> <span class="p">(</span><span class="n">k</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span> <span class="ow">and</span> <span class="n">H</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                                <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                        <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">A</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">A</span> <span class="o">=</span> <span class="n">eps</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">eps</span><span class="p">)</span><span class="o">*</span><span class="n">xp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">B</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">A</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">H</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">]</span>
+                        <span class="n">B</span> <span class="o">=</span> <span class="n">B</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="o">/</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="s2">&quot;Number of bit transmission errors after 100 transmissions of n bits:&quot;</span><span class="p">,</span><span class="n">err</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of bit decoding errors after 100 transmissions of n bits:&quot;</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">LDPC</span><span class="p">(</span><span class="n">ber</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regular parity matrix (n, a, b) =  (12, 3, 4) 
+ 
+ H: 
+ [[1 1 1 1 0 0 0 0 0 0 0 0]
+ [0 0 0 0 1 1 1 1 0 0 0 0]
+ [0 0 0 0 0 0 0 0 1 1 1 1]
+ [1 0 0 0 0 1 1 0 0 0 0 1]
+ [0 0 0 0 1 0 0 1 1 1 0 0]
+ [0 1 1 1 0 0 0 0 0 0 1 0]
+ [1 1 1 0 0 0 0 0 0 1 0 0]
+ [0 0 0 1 1 1 1 0 0 0 0 0]
+ [0 0 0 0 0 0 0 1 1 0 1 1]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of bit transmission errors after 100 transmissions of n bits: 14
+Number of bit decoding errors after 100 transmissions of n bits: 7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"058d3e840c5d438d9c194b894bd83bf8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1580d8088c6e45f2bb93624343260603": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "39777a727b5e4f4da1e77c538ab80deb": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "$BER$", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_058d3e840c5d438d9c194b894bd83bf8", "style": "IPY_MODEL_1580d8088c6e45f2bb93624343260603"}}, "05d3f79dea5e4bddb058691a3560866d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "79d2bca9b9cf49609fb21499317c6fe8": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a8bfd38b186b41bbb3e5859b3e9919c8": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["6", "8", "10", "12", "14", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "n", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_05d3f79dea5e4bddb058691a3560866d", "style": "IPY_MODEL_79d2bca9b9cf49609fb21499317c6fe8"}}, "89508915012f490687d67f362a016756": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "633bfb2cc2c948e288aab6306a224fb5": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_39777a727b5e4f4da1e77c538ab80deb", "IPY_MODEL_a8bfd38b186b41bbb3e5859b3e9919c8", "IPY_MODEL_d99457c5537f4580b4942bdfe303bd21"], "layout": "IPY_MODEL_89508915012f490687d67f362a016756"}}, "efe02e3f037e41ebbae4394360782ac6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d99457c5537f4580b4942bdfe303bd21": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_efe02e3f037e41ebbae4394360782ac6", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter7.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Digital Link A</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter9.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Tracking A</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

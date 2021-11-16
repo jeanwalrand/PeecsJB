@@ -1,0 +1,619 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PageRank B &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multiplexing A" href="Chapter3.html" />
+    <link rel="prev" title="PageRank A" href="Chapter1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comments">
+   Comments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#law-of-large-numbers-for-coin-flips">
+   Law of Large Numbers for Coin Flips
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#borel-cantelli-don-t-push-your-luck">
+     Borel-Cantelli: Don’t Push Your Luck!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slln-and-borel-cantelli">
+     SLLN and Borel-Cantelli
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slln-for-i-i-d-random-variables">
+     SLLN for i.i.d. Random Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slln-for-markov-chains">
+     SLLN for Markov Chains
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="pagerank-b">
+<h1>PageRank B<a class="headerlink" href="#pagerank-b" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>This chapter continues our exploration of <strong>discrete time Markov chains</strong>.  In particular, it studies the convergence of the fraction of time that a Markov chain spends in the states and also the convergence of the probability of being in the states.  We start with coin flips before moving to Markov chains.</p>
+</div>
+<div class="section" id="law-of-large-numbers-for-coin-flips">
+<h2>Law of Large Numbers for Coin Flips<a class="headerlink" href="#law-of-large-numbers-for-coin-flips" title="Permalink to this headline">¶</a></h2>
+<p>You flip a biased coin <span class="math notranslate nohighlight">\(N\)</span> times.  The probability of heads is <span class="math notranslate nohighlight">\(p\)</span>.  Let <span class="math notranslate nohighlight">\(X(N)\)</span> be the number of heads.  Then,</p>
+<div class="math notranslate nohighlight">
+\[P(X(N) = n) = {N \choose n} p^n (1 - p)^{N-n}, n = 0, 1, \ldots, N. \tag{2.1}\]</div>
+<p>Recall that <span class="math notranslate nohighlight">\({N \choose n} = N!/(n!(N - n)!)\)</span> where <span class="math notranslate nohighlight">\(m! = 1\times 2 \times \cdots \times m\)</span> and <span class="math notranslate nohighlight">\(0! := 1\)</span>.  The expression above is the <strong>binominal distribution</strong> with parameters <span class="math notranslate nohighlight">\(N\)</span> and <span class="math notranslate nohighlight">\(p\)</span> and we write <span class="math notranslate nohighlight">\(X(N) =_D B(N,p)\)</span>.</p>
+<p>We plot this distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>We display the widgets to select parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;0.9&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "afab13dfb8c446ad925eef44464c248d"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">IplotBinomial</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binomial p.m.f. with parameters N = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; and p = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>    
+<span class="n">IplotBinomial</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter2_5_0.png" src="_images/Chapter2_5_0.png" />
+</div>
+</div>
+<p>The figure shows that it is unlikely that <span class="math notranslate nohighlight">\(X(N)/N\)</span> differs much from <span class="math notranslate nohighlight">\(p\)</span>, specially when <span class="math notranslate nohighlight">\(N\)</span> is large.  In fact, a bit of algebra based (2.1) shows that, for any given <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[P( |\frac{X(N)}{N} - p| &gt; \epsilon) \leq A \exp\{- \alpha N\}, N \geq 1 \tag{2.2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(A &gt; 0\)</span> and <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> are constants that do not depend on <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>The book proves a similar inequality in section 2.2.</p>
+<p>We will use this fact to prove the following remarkable property:</p>
+<p><strong>Theorem (SLLN)</strong></p>
+<p>One has</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(N)}{N} \to p \mbox{ as } N \to \infty.\]</div>
+<p>The figure below illustrates that property, called the <strong>Strong Law of Large Numbers</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;0.9&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "a86568d1d2e14b21a6dbf90fce24e942"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SLLN_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulation&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fraction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fraction of heads in $n$ flips, for $n = 1, \ldots, N$&quot;</span><span class="p">)</span>
+    
+<span class="n">SLLN_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter2_8_0.png" src="_images/Chapter2_8_0.png" />
+</div>
+</div>
+<p>The SLLN says that, as you keep on flipping the coin, the fraction <span class="math notranslate nohighlight">\(X(N)/N\)</span> approaches <span class="math notranslate nohighlight">\(p\)</span>, for <strong>any experiment</strong>.  The inequality (2.1) says that for most experiments <span class="math notranslate nohighlight">\(X(N)/N\)</span> is close to <span class="math notranslate nohighlight">\(p\)</span>.  The SLLN says that for all experiments, <span class="math notranslate nohighlight">\(X(N)/N\)</span> gets closer and closer to <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<p>The proof of this result is based on the lemma below.</p>
+<div class="section" id="borel-cantelli-don-t-push-your-luck">
+<h3>Borel-Cantelli: Don’t Push Your Luck!<a class="headerlink" href="#borel-cantelli-don-t-push-your-luck" title="Permalink to this headline">¶</a></h3>
+<p>This result says that your luck will run out if you push it too far!</p>
+<p><strong>Borel-Cantelli Lemma:</strong> Assume that event <span class="math notranslate nohighlight">\(n\)</span> occurs with probability <span class="math notranslate nohighlight">\(p_n\)</span>, for <span class="math notranslate nohighlight">\(n = 1, 2, \ldots\)</span>.  If <span class="math notranslate nohighlight">\(\sum_{n=1}^\infty p_n &lt; \infty\)</span>, then only finitely many of the events occur. Moreover, if the events are independent and if <span class="math notranslate nohighlight">\(\sum_n p_n = \infty\)</span>, then infinitely many of the events occur. See the book for a proof of the lemma.</p>
+<p>As an example, say that coin <span class="math notranslate nohighlight">\(n\)</span> has a probability <span class="math notranslate nohighlight">\(p_n\)</span> of heads.  We flip the coins <span class="math notranslate nohighlight">\(0, 1, 2, \ldots, n\)</span>
+and collect <span class="math notranslate nohighlight">\(X_n\)</span> heads.  The B-C lemma says that if <span class="math notranslate nohighlight">\(\sum_n p_n &lt; \infty\)</span>, then <span class="math notranslate nohighlight">\(X_n\)</span> eventually stops growing and that <span class="math notranslate nohighlight">\(X_n \to \infty\)</span> if <span class="math notranslate nohighlight">\(\sum_n p_n = \infty\)</span>,</p>
+<p>We do the experiment below in two cases:</p>
+<ul class="simple">
+<li><p>In case (a), <span class="math notranslate nohighlight">\(p_n = 1/(n+1)\)</span></p></li>
+<li><p>In case (b), <span class="math notranslate nohighlight">\(p_n 2^{- 0.01n}\)</span> for <span class="math notranslate nohighlight">\(n = 0, 1, \ldots\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "ba7d8205ff8a4b2996945e8d6ead668a"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">BC_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">case</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>    
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span> <span class="mi">1</span>    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>            
+        <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number X[n] of heads&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of heads in $n$ flips, for $n = 1, \ldots,$&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39; for case &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">case</span><span class="p">))</span> 
+    <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Note that X[n] keeps on increasing&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Note that X(n) eventually stops increasing&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>        
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">d</span> <span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+<span class="n">BC_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">case</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter2_12_0.png" src="_images/Chapter2_12_0.png" />
+</div>
+</div>
+<p>Thus, in case (a), <span class="math notranslate nohighlight">\(\sum_n p_n = \infty\)</span> and, the coin flips being independent, B-C tells us that infinitely many coins yield heads.  In case (b), <span class="math notranslate nohighlight">\(\sum_n p_n &lt; \infty\)</span> and B-C states that only finitely many coins yield heads.  This result may not be very intuitive: it states that, in case (b), as you keep flipping coins forever, your luck runs out after a finite number of flips and you will never succeed thereafter!  (You may have to try (a) a number of times to see that <span class="math notranslate nohighlight">\(X_n\)</span> keeps on growing.)</p>
+</div>
+<div class="section" id="slln-and-borel-cantelli">
+<h3>SLLN and Borel-Cantelli<a class="headerlink" href="#slln-and-borel-cantelli" title="Permalink to this headline">¶</a></h3>
+<p>Let us apply B-C to prove the SLLN for the coin flips.</p>
+<p>Using (2.2) and B-C, we see that <span class="math notranslate nohighlight">\(\{|\frac{X(N)}{N} - p| &gt; \epsilon\}\)</span> occurs for finitely many <span class="math notranslate nohighlight">\(N\)</span>’s.  Hence, there is some <span class="math notranslate nohighlight">\(N_0\)</span> such that, for all <span class="math notranslate nohighlight">\(N \geq N_0\)</span>, one has <span class="math notranslate nohighlight">\(|\frac{X(N)}{N} - p| &gt; \epsilon\)</span>.  Since <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span> is arbitrary, this proves that <span class="math notranslate nohighlight">\(X(N)/N \to p\)</span> as <span class="math notranslate nohighlight">\(N \to \infty\)</span>.</p>
+</div>
+<div class="section" id="slln-for-i-i-d-random-variables">
+<h3>SLLN for i.i.d. Random Variables<a class="headerlink" href="#slln-for-i-i-d-random-variables" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots\)</span> be independent and identically distributed random variables.  Let also <span class="math notranslate nohighlight">\(X(N) = Y_1 + \cdots + Y_N\)</span>.  Then, under a weak condition,</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(N)}{N} \to E(Y_1) \mbox{ as } N \to \infty. \tag{2.4}\]</div>
+<p>The book proves that result assuming that <span class="math notranslate nohighlight">\(E(Y_1^4) &lt; \infty\)</span>.  Using that assumption, one shows that</p>
+<div class="math notranslate nohighlight">
+\[P(| \frac{X(N)}{N} - E(Y_1)| \geq \epsilon) \leq \frac{A}{N^2} \tag{2.5}\]</div>
+<p>for some constant <span class="math notranslate nohighlight">\(A\)</span> that does not depend on <span class="math notranslate nohighlight">\(N\)</span>.  Since these probabilities have a finite sum over <span class="math notranslate nohighlight">\(N\)</span>, one can use the same argument as for coin flips to prove (2.4).</p>
+</div>
+<div class="section" id="slln-for-markov-chains">
+<h3>SLLN for Markov Chains<a class="headerlink" href="#slln-for-markov-chains" title="Permalink to this headline">¶</a></h3>
+<p>As we saw in Chapter 1, if a Markov chain is irreducible, the fraction of time it spends in state <span class="math notranslate nohighlight">\(i\)</span> converges to <span class="math notranslate nohighlight">\(\pi(i)\)</span>, the invariant probability of that state.  Recall that we find <span class="math notranslate nohighlight">\(\pi\)</span> by solving the balance equations <span class="math notranslate nohighlight">\(\pi = \pi P\)</span>.</p>
+<p>The proof of the theorem looks that the successive times <span class="math notranslate nohighlight">\(\tau, \tau + T_1, \tau + T_1 + T_2, \ldots\)</span> when the Markov chain returns to state <span class="math notranslate nohighlight">\(i\)</span>.  The random variables <span class="math notranslate nohighlight">\(T_1, T_2, \ldots\)</span> are independent and identically distributed because the Markov chain restarts afresh whenever it enters state <span class="math notranslate nohighlight">\(i\)</span>.  Consequently, the SLLN holds for these times, and this shows that the time for <span class="math notranslate nohighlight">\(n\)</span> successive visits to state <span class="math notranslate nohighlight">\(i\)</span> is roughly <span class="math notranslate nohighlight">\(n E(T_1)\)</span>, which proves that the fraction of time in state <span class="math notranslate nohighlight">\(i\)</span> converges to <span class="math notranslate nohighlight">\(1/E(T_1)\)</span>.  One can then show that these limiting fractions of time solve the balance equations and, therefore, <span class="math notranslate nohighlight">\(1/E(T_1) = \pi(i)\)</span>.</p>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"7925bd277eed49c897629915cbd85b12": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "97a273d8b03a4285a548385251ad5c76": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6c51a0b799e443f5b1e1cecdf60d99fc": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "p", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_7925bd277eed49c897629915cbd85b12", "style": "IPY_MODEL_97a273d8b03a4285a548385251ad5c76"}}, "a4371159b3da452fa7d4a683f6e45d15": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5d507fc790b349fba5ab194eb81d4d62": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a8d7512524b345cbace4df46d2bb7246": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_a4371159b3da452fa7d4a683f6e45d15", "style": "IPY_MODEL_5d507fc790b349fba5ab194eb81d4d62"}}, "b2745e22000f4f649e231b9149263588": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "afab13dfb8c446ad925eef44464c248d": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_6c51a0b799e443f5b1e1cecdf60d99fc", "IPY_MODEL_a8d7512524b345cbace4df46d2bb7246", "IPY_MODEL_5d3fbd5ed33349f7874fae25795da5cb"], "layout": "IPY_MODEL_b2745e22000f4f649e231b9149263588"}}, "e7665edd76804c289db77abba1a66c59": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5d3fbd5ed33349f7874fae25795da5cb": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_e7665edd76804c289db77abba1a66c59", "msg_id": "", "outputs": []}}, "7ad44f16045f4a28a72d78f0fe9d4359": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f33e6f201d7141ff9fd3d2e67b25e1fe": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "d055462bf0c4472da4ee2c0edc5b1793": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "p", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_7ad44f16045f4a28a72d78f0fe9d4359", "style": "IPY_MODEL_f33e6f201d7141ff9fd3d2e67b25e1fe"}}, "cd6f7039ed1149b7823e343349b9ac37": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dfb9083cd97044abaa97b3e967deaa6c": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "59ef5bb154ba42d7afbb3368714873ad": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_cd6f7039ed1149b7823e343349b9ac37", "style": "IPY_MODEL_dfb9083cd97044abaa97b3e967deaa6c"}}, "cf8fdeb9eadd4e2db992e91cd2abf589": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a86568d1d2e14b21a6dbf90fce24e942": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_d055462bf0c4472da4ee2c0edc5b1793", "IPY_MODEL_59ef5bb154ba42d7afbb3368714873ad", "IPY_MODEL_c851b94b54db4e5bb3cbb0cffb8f6ea3"], "layout": "IPY_MODEL_cf8fdeb9eadd4e2db992e91cd2abf589"}}, "6340d31b7ec44df29156db679b1f1c77": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c851b94b54db4e5bb3cbb0cffb8f6ea3": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_6340d31b7ec44df29156db679b1f1c77", "msg_id": "", "outputs": []}}, "60564046ab9e4c35a2224793fb787c54": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7aee563f4fbe46489b51f448d7547c3f": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "568da2636aba4f5b89e1ca86df6b1528": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_60564046ab9e4c35a2224793fb787c54", "style": "IPY_MODEL_7aee563f4fbe46489b51f448d7547c3f"}}, "2ac5193ff8d94455abb158640ff9d1ea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "290ead16f035489ca8f21090bb8d11d3": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "6a4ec06660c94be5829ddef8a3a58ff0": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_2ac5193ff8d94455abb158640ff9d1ea", "style": "IPY_MODEL_290ead16f035489ca8f21090bb8d11d3", "tooltips": []}}, "f5824574e0d84a859d9d3ce791b0d1fd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ba7d8205ff8a4b2996945e8d6ead668a": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_568da2636aba4f5b89e1ca86df6b1528", "IPY_MODEL_6a4ec06660c94be5829ddef8a3a58ff0", "IPY_MODEL_a652502504da41f4895894e3c0b26c59"], "layout": "IPY_MODEL_f5824574e0d84a859d9d3ce791b0d1fd"}}, "53eece18241f4ccd809232af7a451ad2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a652502504da41f4895894e3c0b26c59": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_53eece18241f4ccd809232af7a451ad2", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">PageRank A</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter3.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Multiplexing A</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

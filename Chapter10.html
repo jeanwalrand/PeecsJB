@@ -1,0 +1,1031 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tracking B &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Speech Recognition A" href="Chapter11.html" />
+    <link rel="prev" title="Tracking A" href="Chapter9.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter10.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observability-and-the-kalman-filter">
+   Observability and the Kalman Filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-kalman-filter-for-an-observable-system">
+     Theorem (Kalman Filter for an Observable System)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-unobservable-random-walk">
+     Example 1: Unobservable Random Walk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-observable-random-walk-with-unknown-drift">
+     Example 2: Observable Random Walk with unknown drift
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reachability-and-kalman-filter">
+   Reachability and Kalman Filter
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-kalman-filter-for-an-observable-and-reachable-system">
+     Theorem: (Kalman Filter for an Observable and Reachable System)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extended-kalman-filter">
+   Extended Kalman Filter
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="tracking-b">
+<h1>Tracking B<a class="headerlink" href="#tracking-b" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>In this chapter, we explore the properties and an extension of the Kalman filter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">notebook.nbextensions</span> <span class="kn">import</span> <span class="n">enable_nbextension</span> 
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="observability-and-the-kalman-filter">
+<h2>Observability and the Kalman Filter<a class="headerlink" href="#observability-and-the-kalman-filter" title="Permalink to this headline">¶</a></h2>
+<p>Intuitively, a system is <strong>observable</strong> if the observations are rich enough to track the state.</p>
+<p>Consider the following trivial example:</p>
+<p>\begin{eqnarray*}
+X(n+1) &amp;=&amp; X(n) + V(n) \
+Y(n) &amp;=&amp; W(n)
+\end{eqnarray*}
+where <span class="math notranslate nohighlight">\(V(n)\)</span> and <span class="math notranslate nohighlight">\(W(n)\)</span> are independent zero-mean noise sequences with variances <span class="math notranslate nohighlight">\(\sigma^2_v\)</span> and <span class="math notranslate nohighlight">\(\sigma_w^2\)</span> and <span class="math notranslate nohighlight">\(E(X(0)) = 0, var(X(0)) = 1\)</span>.</p>
+<p>In this case, <span class="math notranslate nohighlight">\(Y^n = \{Y(0), \ldots, Y(n)\}\)</span> is independent of <span class="math notranslate nohighlight">\(X(n)\)</span>.<br />
+Hence <span class="math notranslate nohighlight">\(\bar X(n) := L[X(n) | Y^n] = E(X(n)) = 0\)</span>.
+Also,</p>
+<div class="math notranslate nohighlight">
+\[var(X(n) - \bar X(n)) = var(X(n)) = var(X(0)) + var(V(0)) + \cdots + var(V(n-1))\]</div>
+<div class="math notranslate nohighlight">
+\[~~~ = 1 + n \sigma_v^2.\]</div>
+<p>Thus, the estimation error grows without bound. This is not surprising since the observation <span class="math notranslate nohighlight">\(Y(n)\)</span> does not tell us anything about the value of <span class="math notranslate nohighlight">\(X(n)\)</span>.  Intuitively, one cannot observe <span class="math notranslate nohighlight">\(X(n)\)</span> from the <span class="math notranslate nohighlight">\(Y(n)\)</span>.</p>
+<p>The book explains that the system</p>
+<p>\begin{eqnarray*}
+X(n+1) &amp;=&amp; AX(n) + V(n) \
+Y(n) &amp;=&amp; CX(n) + W(n)
+\end{eqnarray*}</p>
+<p>is <strong>observable</strong> if the null space of the <strong>observability matrix</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[
+\begin{array}{c}
+C \\
+CA \\
+\vdots \\
+CA^{d-1} 
+\end{array}
+\right] \end{split}\]</div>
+<p>is <span class="math notranslate nohighlight">\(\{\mathbf{0}\}\)</span>.  Here, <span class="math notranslate nohighlight">\(d\)</span> is the dimension of <span class="math notranslate nohighlight">\(X(n)\)</span>.</p>
+<p>The book discusses the following result:</p>
+<div class="section" id="theorem-kalman-filter-for-an-observable-system">
+<h3>Theorem (Kalman Filter for an Observable System)<a class="headerlink" href="#theorem-kalman-filter-for-an-observable-system" title="Permalink to this headline">¶</a></h3>
+<p>If the system is observable, then <span class="math notranslate nohighlight">\(\Sigma_n\)</span>, the covariance of <span class="math notranslate nohighlight">\(X(n) - \bar X(n)\)</span>
+is bounded.  Moreover, if <span class="math notranslate nohighlight">\(\Sigma_0 = 0\)</span>, then <span class="math notranslate nohighlight">\(\Sigma_n \to \Sigma\)</span> and <span class="math notranslate nohighlight">\(K_n \to K\)</span>.</p>
+<p>We illustrate this result on some examples below.</p>
+</div>
+<div class="section" id="example-1-unobservable-random-walk">
+<h3>Example 1: Unobservable Random Walk<a class="headerlink" href="#example-1-unobservable-random-walk" title="Permalink to this headline">¶</a></h3>
+<p>This is an extreme and simplistic example, but it shows that if the observations are too poor, the error variance blows up.</p>
+<div class="math notranslate nohighlight">
+\[X(n+1) = X(n) + V(n)\]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = W(n) \]</div>
+<div class="math notranslate nohighlight">
+\[var(V(n)) = varV, var(W(n)) = varW.\]</div>
+<p>Here,</p>
+<div class="math notranslate nohighlight">
+\[ A = 1 \mbox{ and } C = 0.\]</div>
+<p>Thus, the dimension of <span class="math notranslate nohighlight">\(X(n)\)</span> is <span class="math notranslate nohighlight">\(d = 1\)</span> and the observability matrix is <span class="math notranslate nohighlight">\(C = 0\)</span>. The null space of this matrix is <span class="math notranslate nohighlight">\(\Re\)</span> and the system is not observable.</p>
+<p>For this system, we plot <span class="math notranslate nohighlight">\(\sigma_n^2 = var(X_n - \bar X_n)\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">varVd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">varV</span>
+    <span class="n">varV</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">varVd</span><span class="p">)</span>
+
+<span class="n">varVd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">varVd</span> <span class="o">=</span> <span class="n">varVd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "2f8e3c7c4ef94ae3bd67acf0454ea90c"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KF6</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>  
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>        
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">sigma</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">v</span> <span class="o">+</span> <span class="mi">1</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">pls</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\sigma_n^2$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error variance&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+<span class="n">KF6</span><span class="p">(</span><span class="n">varV</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter10_5_0.png" src="_images/Chapter10_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="example-2-observable-random-walk-with-unknown-drift">
+<h3>Example 2: Observable Random Walk with unknown drift<a class="headerlink" href="#example-2-observable-random-walk-with-unknown-drift" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[X_1(n+1) = X_1(n) + X_2(n) + V(n)\]</div>
+<div class="math notranslate nohighlight">
+\[X_2(n+1) = X_2(n) \]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = X_1(n) + W(n) \]</div>
+<div class="math notranslate nohighlight">
+\[var(V(n)) = varV, var(W(n)) = varW.\]</div>
+<p>Here,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \left[
+\begin{array}{c c}
+1 &amp; 1 \\
+0 &amp; 1 
+\end{array}
+\right] \mbox{ and }
+C = [1, 0].\end{split}\]</div>
+<p>Thus, the dimension of <span class="math notranslate nohighlight">\(X(n)\)</span> is <span class="math notranslate nohighlight">\(d = 2\)</span> and the observability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[
+\begin{array}{c}
+C \\
+CA 
+\end{array}
+\right] = \left[
+\begin{array}{c c}
+1 &amp; 0 \\
+1 &amp; 1
+\end{array}
+\right]. \end{split}\]</div>
+<p>The null space of this matrix is <span class="math notranslate nohighlight">\(\mathbf{0}\)</span>.  Indeed, if some vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is such that the
+matrix above multipled by <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is equal to zero, then <span class="math notranslate nohighlight">\(x_1 = 0, x_1 + x_2 = 0\)</span>, so that
+<span class="math notranslate nohighlight">\(\mathbf{x} = \mathbf{0}\)</span>.  Thus, this system is observable.  Note that the output does not see the drift directly.  However, it can notice it indirectly.  Indeed, the difference between successivel values of <span class="math notranslate nohighlight">\(X_1(n)\)</span>  is an indication of the drift.  In fact, if there was no noise, this difference would be equal to the drift.</p>
+<p>For this system, we plot <span class="math notranslate nohighlight">\(\Sigma_n(1,1)\)</span> and <span class="math notranslate nohighlight">\(K_n\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">varVd</span><span class="p">,</span><span class="n">varWd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span>
+    <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">varVd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">varWd</span><span class="p">)</span>
+
+<span class="n">varVd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">varWd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varW&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">varVd</span> <span class="o">=</span> <span class="n">varVd</span><span class="p">,</span> <span class="n">varWd</span> <span class="o">=</span> <span class="n">varWd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "0598be2bc57f418d9461c417ff9df239"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KF7</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">):</span> 
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">Xb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">]])</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>    
+    <span class="n">Sv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">Sx</span> <span class="o">=</span> <span class="n">S</span>
+    <span class="n">Sw</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">Xb</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Xb</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span> 
+    <span class="n">K1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">K2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">X</span><span class="p">[:,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">X</span><span class="p">[:,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[</span><span class="mi">1</span><span class="p">]</span> 
+        <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">Xb</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">Xb</span><span class="p">[:,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">])[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span> <span class="n">Xb</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]))[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sx</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="n">Sv</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">Sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">)),</span><span class="n">S</span><span class="p">)</span> 
+        <span class="n">sigma</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">pls</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Sigma_n(1,1)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK1</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K1</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$K_1(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK2</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K2</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;$K_2(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error covariance and Kalman gains&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+<span class="n">KF7</span><span class="p">(</span><span class="n">varV</span><span class="p">,</span><span class="n">varW</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter10_8_0.png" src="_images/Chapter10_8_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reachability-and-kalman-filter">
+<h2>Reachability and Kalman Filter<a class="headerlink" href="#reachability-and-kalman-filter" title="Permalink to this headline">¶</a></h2>
+<p>Intuitively, a system is <strong>reachable</strong> if the noise can drive its state to any arbitrary value.
+Consider the random walk with an unknown but constant drift:</p>
+<div class="math notranslate nohighlight">
+\[X_1(n+1) = X_1(n) + X_2(n) + V(n) \]</div>
+<div class="math notranslate nohighlight">
+\[X_2(n+1) = X_2(n) \]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = X_1(n) + W(n)\]</div>
+<div class="math notranslate nohighlight">
+\[var(V(n)) = varV, var(W(n)) = varW.\]</div>
+<p>The noise cannot modify the drift <span class="math notranslate nohighlight">\(X_2(n)\)</span>.  Ths, this system is not reachable.</p>
+<p>Consider the following system:</p>
+<div class="math notranslate nohighlight">
+\[ X(n+1) = AX(n) + QV(n)\]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = CX(n) + W(n)\]</div>
+<p>where <span class="math notranslate nohighlight">\(V(n)\)</span> are uncorrelated across time and <span class="math notranslate nohighlight">\(\Sigma_V = \mathbf{I}\)</span>.  That is, the components of <span class="math notranslate nohighlight">\(V(n)\)</span> are uncorrelated and have variance <span class="math notranslate nohighlight">\(1\)</span>.
+It is <strong>reachable</strong> if the following <strong>reachability matrix</strong>  is full rank:</p>
+<div class="math notranslate nohighlight">
+\[[Q, AQ, A^2Q, \ldots, A^{d-1}Q] \]</div>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> is the dimension of <span class="math notranslate nohighlight">\(X(n)\)</span>.</p>
+<p>For instance, in the case of the random walk with constant drift,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A = \left[
+\begin{array}{c c}
+1 &amp; 1 \\
+0 &amp; 1 
+\end{array}
+\right] \mbox{ and }
+Q = \left[
+\begin{array}{c c}
+1 &amp; 0 \\
+0 &amp; 0 
+\end{array}
+\right].\end{split}\]</div>
+<p>Accordingly, the reachability matrix is as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}[Q, AQ] = \left[
+\begin{array}{c c c c}
+1 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 0
+\end{array}
+\right]. \end{split}\]</div>
+<p>The range of this matrix is <span class="math notranslate nohighlight">\(\{(x, 0)', x \in \Re\)</span>, which has dimension <span class="math notranslate nohighlight">\(1\)</span>.  This is a fancy way of saying that the noise cannot change <span class="math notranslate nohighlight">\(X_2(n)\)</span>.  Since the reachability matrix is not full rank, the system is not reachable.</p>
+<p>The result about reachability is as follows.</p>
+<div class="section" id="theorem-kalman-filter-for-an-observable-and-reachable-system">
+<h3>Theorem: (Kalman Filter for an Observable and Reachable System)<a class="headerlink" href="#theorem-kalman-filter-for-an-observable-and-reachable-system" title="Permalink to this headline">¶</a></h3>
+<p>If the system is both observable and reachable, then the filter with a constant gain <span class="math notranslate nohighlight">\(K\)</span> is such that the error convariance converges to the same limit <span class="math notranslate nohighlight">\(\Sigma\)</span> as the Kalman filter with gain <span class="math notranslate nohighlight">\(K_n\)</span>.</p>
+<p>Note that for the filter with constant gain <span class="math notranslate nohighlight">\(K\)</span>, one has</p>
+<div class="math notranslate nohighlight">
+\[S_n = A \Sigma_{n-1} A' + \Sigma_V\]</div>
+<div class="math notranslate nohighlight">
+\[\Sigma_n = (I - KC)S_n.\]</div>
+<p>That is,</p>
+<div class="math notranslate nohighlight">
+\[\Sigma_n = (I - KC)[A \Sigma_{n-1} A' + \Sigma_V ]. \tag{8.1}\]</div>
+</div>
+<div class="section" id="example-1">
+<h3>Example 1:<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>We illustrate this latter theorem on the random walk with unknown drift example.  To do this, we run the equations (7.2)-(7.4) that give the updates of <span class="math notranslate nohighlight">\(K_n, S_n, \Sigma_n\)</span> as we did in the previous example.  We then take the limiting value of <span class="math notranslate nohighlight">\(K\)</span> and we run the equations (8.1).  <span class="math notranslate nohighlight">\(\Sigma_n^*(1,1)\)</span> is the error covariance for <span class="math notranslate nohighlight">\(X_1(n)\)</span> when using the limiting gain.</p>
+<p>The example shows that using the limiting gain <span class="math notranslate nohighlight">\(K\)</span> is not a good idea.  The reason is that the system is not reachable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">varVd</span><span class="p">,</span><span class="n">varWd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span>
+    <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">varVd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">varWd</span><span class="p">)</span>
+
+<span class="n">varVd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">varWd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varW&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">varVd</span> <span class="o">=</span> <span class="n">varVd</span><span class="p">,</span> <span class="n">varWd</span> <span class="o">=</span> <span class="n">varWd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "617abd6c77a0484ca584ce2bee87e3a8"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KF8</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>  
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigmab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">]])</span>
+    <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v</span><span class="p">]])</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">Kb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>    
+    <span class="n">Sv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">Sx</span> <span class="o">=</span> <span class="n">S</span>
+    <span class="n">Sxb</span> <span class="o">=</span> <span class="n">S</span>
+    <span class="n">Sw</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">sigmab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">K1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">K2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+        
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sx</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="n">Sv</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">Sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">)),</span><span class="n">S</span><span class="p">)</span> 
+        <span class="n">sigma</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Kb</span> <span class="o">=</span> <span class="n">K</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sxb</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="n">Sv</span>
+        <span class="n">Sxb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">)),</span><span class="n">Sb</span><span class="p">)</span> 
+        <span class="n">sigmab</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sxb</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+       
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">pls</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Sigma_n(1,1)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plsb</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigmab</span><span class="p">,</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Sigma_n^*(1,1)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK1</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K1</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$K_1(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK2</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K2</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;$K_2(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error covariance and Kalman gains; error covariance when using the limiting gain&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+<span class="n">KF8</span><span class="p">(</span><span class="n">varV</span><span class="p">,</span><span class="n">varW</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter10_12_0.png" src="_images/Chapter10_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>We now consider the random walk with unknown but changing drift.  Recall the system:</p>
+<div class="math notranslate nohighlight">
+\[X_1(n+1) = X_1(n) + X_2(n) + V_1(n) \]</div>
+<div class="math notranslate nohighlight">
+\[X_2(n+1) = X_2(n) + V_2(n)\]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = X_1(n) + W(n)\]</div>
+<div class="math notranslate nohighlight">
+\[var(V_1(n)) = varV1, var(V_2(n)) = varV2, var(W(n)) = varW.\]</div>
+<p>For this system,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[
+\begin{array}{c c}
+1 &amp; 1 \\
+0 &amp; 1
+\end{array}
+\right],
+C = [0, 1], \mbox{ and } Q = \left[
+\begin{array}{c c}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right]. \end{split}\]</div>
+<p>Accordingly, the observability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[
+\begin{array}{c}
+C \\
+CA 
+\end{array}
+\right] = \left[
+\begin{array}{c c}
+1 &amp; 0 \\
+1 &amp; 1
+\end{array}
+\right], \end{split}\]</div>
+<p>so that the system is observable.  Also, the reachability matrix is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}[Q, AQ] = \left[
+\begin{array}{c c c c}
+1 &amp; 0 &amp; 1 &amp; 1\\
+0 &amp; 1 &amp; 0 &amp; 1
+\end{array}
+\right], \end{split}\]</div>
+<p>so that the system is also reachable.</p>
+<p>As in the previous example, we compute the error covariance of the Kalman filter and that of the filter with the constant (limiting) gain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">varV1d</span><span class="p">,</span><span class="n">varV2d</span><span class="p">,</span><span class="n">varWd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">varV1</span><span class="p">,</span> <span class="n">varV2</span><span class="p">,</span> <span class="n">varW</span>
+    <span class="n">varV1</span><span class="p">,</span> <span class="n">varV2</span><span class="p">,</span> <span class="n">varW</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">varV1d</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">varV2d</span><span class="p">),</span><span class="nb">float</span><span class="p">(</span><span class="n">varWd</span><span class="p">)</span>
+
+<span class="n">varV1d</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV1&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">varV2d</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV2&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">varWd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.4&#39;</span><span class="p">,</span> <span class="s1">&#39;0.6&#39;</span><span class="p">,</span> <span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.6&#39;</span><span class="p">,</span><span class="s1">&#39;1.8&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;2.2&#39;</span><span class="p">,</span><span class="s1">&#39;2.4&#39;</span><span class="p">,</span><span class="s1">&#39;2.6&#39;</span><span class="p">,</span><span class="s1">&#39;2.8&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;3.2&#39;</span><span class="p">,</span><span class="s1">&#39;3.4&#39;</span><span class="p">,</span><span class="s1">&#39;3.6&#39;</span><span class="p">,</span><span class="s1">&#39;3.8&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;4.2&#39;</span><span class="p">,</span><span class="s1">&#39;4.4&#39;</span><span class="p">,</span><span class="s1">&#39;4.6&#39;</span><span class="p">,</span><span class="s1">&#39;4.8&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;5.2&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varW&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">varV1d</span> <span class="o">=</span> <span class="n">varV1d</span><span class="p">,</span> <span class="n">varV2d</span> <span class="o">=</span> <span class="n">varV2d</span><span class="p">,</span> <span class="n">varWd</span> <span class="o">=</span> <span class="n">varWd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "84e84e2ad99e46c28d417534f460d569"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KF9</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">,</span><span class="n">w</span><span class="p">):</span> 
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigmab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v2</span><span class="p">]])</span>
+    <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v2</span><span class="p">]])</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">Kb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">transpose</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>    
+    <span class="n">Sv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">v1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">v2</span><span class="p">]])</span>
+    <span class="n">Sx</span> <span class="o">=</span> <span class="n">S</span>
+    <span class="n">Sxb</span> <span class="o">=</span> <span class="n">S</span>
+    <span class="n">Sw</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v1</span>
+    <span class="n">sigmab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v1</span>
+    <span class="n">K1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">K2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+        
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sx</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="n">Sv</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">Sx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">)),</span><span class="n">S</span><span class="p">)</span> 
+        <span class="n">sigma</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sx</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">K2</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Kb</span> <span class="o">=</span> <span class="n">K</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Sxb</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span> <span class="o">+</span> <span class="n">Sv</span>
+        <span class="n">Sxb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span><span class="n">C</span><span class="p">)),</span><span class="n">Sb</span><span class="p">)</span> 
+        <span class="n">sigmab</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sxb</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+       
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">pls</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Sigma_n(1,1)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plsb</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">sigmab</span><span class="p">,</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Sigma_n^*(1,1)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK1</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K1</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$K_1(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plK2</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">K2</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;$K_2(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error covariance and Kalman gains; error covariance when using the limiting gain&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+<span class="n">KF9</span><span class="p">(</span><span class="n">varV1</span><span class="p">,</span><span class="n">varV2</span><span class="p">,</span><span class="n">varW</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter10_15_0.png" src="_images/Chapter10_15_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="extended-kalman-filter">
+<h2>Extended Kalman Filter<a class="headerlink" href="#extended-kalman-filter" title="Permalink to this headline">¶</a></h2>
+<p>Some nonlinear systems behave almost like lineat systems locally in time.  One may then hope that the Kalman filter may provide good estimates in such situations.</p>
+<p>To illustrate the ideas, we consider a simple example similar to a random walk, except that the observations are slightly nonlinear.  Specifically, we assume that</p>
+<div class="math notranslate nohighlight">
+\[X(n+1) = 0.9 X(n) + V(n)\]</div>
+<div class="math notranslate nohighlight">
+\[Y(n) = (10 - X(n))^{-2} + W(n).\]</div>
+<p>The interpretation is that the object is at <span class="math notranslate nohighlight">\(X(n)\)</span> and moves around <span class="math notranslate nohighlight">\(0\)</span> while
+being perturbed by <span class="math notranslate nohighlight">\(V(n)\)</span>.  The observation
+is the power of a radar wave reflected by the object.  The radar is at location <span class="math notranslate nohighlight">\(10\)</span>.
+This power decreases like the square of the distance <span class="math notranslate nohighlight">\(|10 - X(n)|\)</span> between the radar and the object.</p>
+<p>Assuming that <span class="math notranslate nohighlight">\(Z(n) := X(n) - \bar X(n)\)</span> is small, we write</p>
+<div class="math notranslate nohighlight">
+\[Y(n) = (10 - \bar X(n) - Z(n))^{-2} + W(n)\]</div>
+<div class="math notranslate nohighlight">
+\[~~\approx (10 - \bar X(n))^{-2} + 2(10 - \bar X(n))^{-3} Z(n) + W(n)\]</div>
+<div class="math notranslate nohighlight">
+\[~~\approx 10 - \bar X(n))^{-2} + 2(10 - \bar X(n))^{-3} (X(n) - \bar X(n)) + W(n) \]</div>
+<div class="math notranslate nohighlight">
+\[~~\approx (10 - \bar X(n))^{-3}(10 - 3 \bar X(n)) + 2(10 - \bar X(n))^{-3} X(n) + W(n).\]</div>
+<p>Thus, assuming the estimates <span class="math notranslate nohighlight">\(\bar X(n)\)</span> are fairly accurate, the system is almost linear in the state, but the coefficients depend on the estimate.  This suggests the following Kalman filter:</p>
+<div class="math notranslate nohighlight">
+\[\bar X(n+1) = 0.9 \bar X(n) + K_n[Y(n) - \bar Y(n)] \]</div>
+<div class="math notranslate nohighlight">
+\[\bar Y(n) = (1 - \bar X(n))^{-3}(1 - 3 \bar X(n)) + 1.8(1 - \bar X(n))^{-3} X(n) \]</div>
+<div class="math notranslate nohighlight">
+\[K_n = S_nC_n'[C_nS_nC_n' + \Sigma_W]^{-1}\]</div>
+<div class="math notranslate nohighlight">
+\[S_n = 0.81 \Sigma_{n-1} + \Sigma_V \]</div>
+<div class="math notranslate nohighlight">
+\[\Sigma_n = (I - K_nC_n)S_n \]</div>
+<div class="math notranslate nohighlight">
+\[C_n = 2(1 - \bar X(n))^{-3}.\]</div>
+<p>We test this filter in the next code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">varVd</span><span class="p">,</span><span class="n">varWd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span>
+    <span class="n">varV</span><span class="p">,</span> <span class="n">varW</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">varVd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">varWd</span><span class="p">)</span>
+
+<span class="n">varVd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0.02&#39;</span><span class="p">,</span> <span class="s1">&#39;0.04&#39;</span><span class="p">,</span> <span class="s1">&#39;0.08&#39;</span><span class="p">,</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span><span class="s1">&#39;0.12&#39;</span><span class="p">,</span><span class="s1">&#39;0.14&#39;</span><span class="p">,</span><span class="s1">&#39;0.16&#39;</span><span class="p">,</span><span class="s1">&#39;0.18&#39;</span><span class="p">,</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="s1">&#39;0.22&#39;</span><span class="p">,</span><span class="s1">&#39;0.24&#39;</span><span class="p">,</span><span class="s1">&#39;0.26&#39;</span><span class="p">,</span><span class="s1">&#39;0.28&#39;</span><span class="p">,</span><span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.32&#39;</span><span class="p">,</span><span class="s1">&#39;0.34&#39;</span><span class="p">,</span><span class="s1">&#39;0.36&#39;</span><span class="p">,</span><span class="s1">&#39;0.38&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.42&#39;</span><span class="p">,</span><span class="s1">&#39;0.44&#39;</span><span class="p">,</span><span class="s1">&#39;0.46&#39;</span><span class="p">,</span><span class="s1">&#39;0.48&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.52&#39;</span><span class="p">,</span><span class="s1">&#39;0.54&#39;</span><span class="p">,</span><span class="s1">&#39;0.56&#39;</span><span class="p">,</span><span class="s1">&#39;0.58&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varV&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">varWd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0.02&#39;</span><span class="p">,</span> <span class="s1">&#39;0.04&#39;</span><span class="p">,</span> <span class="s1">&#39;0.08&#39;</span><span class="p">,</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span><span class="s1">&#39;0.12&#39;</span><span class="p">,</span><span class="s1">&#39;0.14&#39;</span><span class="p">,</span><span class="s1">&#39;0.16&#39;</span><span class="p">,</span><span class="s1">&#39;0.18&#39;</span><span class="p">,</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="s1">&#39;0.22&#39;</span><span class="p">,</span><span class="s1">&#39;0.24&#39;</span><span class="p">,</span><span class="s1">&#39;0.26&#39;</span><span class="p">,</span><span class="s1">&#39;0.28&#39;</span><span class="p">,</span><span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.32&#39;</span><span class="p">,</span><span class="s1">&#39;0.34&#39;</span><span class="p">,</span><span class="s1">&#39;0.36&#39;</span><span class="p">,</span><span class="s1">&#39;0.38&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.42&#39;</span><span class="p">,</span><span class="s1">&#39;0.44&#39;</span><span class="p">,</span><span class="s1">&#39;0.46&#39;</span><span class="p">,</span><span class="s1">&#39;0.48&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.52&#39;</span><span class="p">,</span><span class="s1">&#39;0.54&#39;</span><span class="p">,</span><span class="s1">&#39;0.56&#39;</span><span class="p">,</span><span class="s1">&#39;0.58&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;varW&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">varVd</span> <span class="o">=</span> <span class="n">varVd</span><span class="p">,</span> <span class="n">varWd</span> <span class="o">=</span> <span class="n">varWd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "aafdec5c1f8f4dd3984d65b8e47a717e"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">KF10</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>  
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">Xb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sigma</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">Xb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+    <span class="n">Xb</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span>
+           
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="mf">0.81</span><span class="o">*</span><span class="n">sigma</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">S</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="p">(</span><span class="n">C</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">S</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sigma</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="p">)</span><span class="o">*</span><span class="n">S</span>
+        <span class="n">Yb</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">+</span> <span class="mf">1.8</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">Xb</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">K</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">-</span><span class="n">Yb</span><span class="p">)</span>  
+    <span class="n">X</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+    <span class="n">Y</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">w</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>    
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plX</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plXb</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Xb</span><span class="p">,</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$Xb(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plY</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$Y(n)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;States, Observations, Estimates&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    
+<span class="n">KF10</span><span class="p">(</span><span class="n">varV</span><span class="p">,</span><span class="n">varW</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter10_18_0.png" src="_images/Chapter10_18_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"eaeb9188dadc43fca0035c1231c176ca": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "124ddd68c6204d539a83209358aeeea7": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a7f3b9c098e947afb12af7a0b41c3053": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_eaeb9188dadc43fca0035c1231c176ca", "style": "IPY_MODEL_124ddd68c6204d539a83209358aeeea7"}}, "a01864ad8beb469cad0627ef07b43d14": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2f8e3c7c4ef94ae3bd67acf0454ea90c": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_a7f3b9c098e947afb12af7a0b41c3053", "IPY_MODEL_b2098c3450ee4846af9cfeca790284ad"], "layout": "IPY_MODEL_a01864ad8beb469cad0627ef07b43d14"}}, "d41ffa44cd404d6db7e17483e57f3969": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b2098c3450ee4846af9cfeca790284ad": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_d41ffa44cd404d6db7e17483e57f3969", "msg_id": "", "outputs": []}}, "4b26fcf2d9ab49c7b7bb3097618c5250": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "761227258f2d4cab8071462f2b6f7daa": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "fdafc15c7615489bba2c1ed8d67ab9f0": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_4b26fcf2d9ab49c7b7bb3097618c5250", "style": "IPY_MODEL_761227258f2d4cab8071462f2b6f7daa"}}, "bb82850113144987ab2dd120234a0613": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "df80f4b990fd4a5683cdf13530903755": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "8a64a94e54ac473d984e3128a7d9ef04": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varW", "description_tooltip": null, "disabled": false, "index": 19, "layout": "IPY_MODEL_bb82850113144987ab2dd120234a0613", "style": "IPY_MODEL_df80f4b990fd4a5683cdf13530903755"}}, "953ffd48d6dc4d1490278c4ea4d295c5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0598be2bc57f418d9461c417ff9df239": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_fdafc15c7615489bba2c1ed8d67ab9f0", "IPY_MODEL_8a64a94e54ac473d984e3128a7d9ef04", "IPY_MODEL_ab29c10e2e0f43c7bd32433c272b6d6c"], "layout": "IPY_MODEL_953ffd48d6dc4d1490278c4ea4d295c5"}}, "8f7e18c50fae46309571e090cc62e1a2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ab29c10e2e0f43c7bd32433c272b6d6c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8f7e18c50fae46309571e090cc62e1a2", "msg_id": "", "outputs": []}}, "e88a7f1c694a4e7fa796ffb3fecdd74d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "da881030147d49098b69d6c9ac53217b": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "28192272ffff424385290aa65d56e38f": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_e88a7f1c694a4e7fa796ffb3fecdd74d", "style": "IPY_MODEL_da881030147d49098b69d6c9ac53217b"}}, "3894cc3ad6834d67b797fec81d5b2229": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a1b03ac23d1c45ca92b080aaada1e709": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c5159a5b47bd422088e31030bd01937e": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varW", "description_tooltip": null, "disabled": false, "index": 19, "layout": "IPY_MODEL_3894cc3ad6834d67b797fec81d5b2229", "style": "IPY_MODEL_a1b03ac23d1c45ca92b080aaada1e709"}}, "1c61d1e596ed45faae5d3671bcf17b7d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "617abd6c77a0484ca584ce2bee87e3a8": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_28192272ffff424385290aa65d56e38f", "IPY_MODEL_c5159a5b47bd422088e31030bd01937e", "IPY_MODEL_e0f1222863874872b8a9c1d5f46f7037"], "layout": "IPY_MODEL_1c61d1e596ed45faae5d3671bcf17b7d"}}, "4bae1c6fb3f64a21a477b3599f3e4b2d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e0f1222863874872b8a9c1d5f46f7037": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_4bae1c6fb3f64a21a477b3599f3e4b2d", "msg_id": "", "outputs": []}}, "8ccb29f05a6a487e80baafac2864c68f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "effe87d3254c450591e2cc3c01b69c67": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "22a5dfa6f1de41e2ae89c297d173bf9d": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV1", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_8ccb29f05a6a487e80baafac2864c68f", "style": "IPY_MODEL_effe87d3254c450591e2cc3c01b69c67"}}, "3934b9b57af34f8195f1ea1516447c27": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f70ab091fc704bd4a032f6cb54c0dc71": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "71ff2b41b46346ff9b7ef9972a1cf056": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV2", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_3934b9b57af34f8195f1ea1516447c27", "style": "IPY_MODEL_f70ab091fc704bd4a032f6cb54c0dc71"}}, "6338e6330a9b494990983602c48102dd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e530363eaa0747c2b0e7da5a3cf7c5e7": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e82e6c5dc4b94bd99cb7213d94bb0884": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.2", "0.4", "0.6", "0.8", "1", "1.2", "1.4", "1.6", "1.8", "2", "2.2", "2.4", "2.6", "2.8", "3", "3.2", "3.4", "3.6", "3.8", "4", "4.2", "4.4", "4.6", "4.8", "5", "5.2"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varW", "description_tooltip": null, "disabled": false, "index": 19, "layout": "IPY_MODEL_6338e6330a9b494990983602c48102dd", "style": "IPY_MODEL_e530363eaa0747c2b0e7da5a3cf7c5e7"}}, "a4f907c477274e22b35527a35771a67f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "84e84e2ad99e46c28d417534f460d569": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_22a5dfa6f1de41e2ae89c297d173bf9d", "IPY_MODEL_71ff2b41b46346ff9b7ef9972a1cf056", "IPY_MODEL_e82e6c5dc4b94bd99cb7213d94bb0884", "IPY_MODEL_4a4374b5fd7b48c79d6ed2016ca02696"], "layout": "IPY_MODEL_a4f907c477274e22b35527a35771a67f"}}, "9b5dfa844ee34e7ca55cdab95db16cf8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4a4374b5fd7b48c79d6ed2016ca02696": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9b5dfa844ee34e7ca55cdab95db16cf8", "msg_id": "", "outputs": []}}, "451caf6f45594a00a8099f54b561fbf2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1735b9a5b3284f3186631f5e2c2b40c2": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "30195233cce047499b6a0928c2a40336": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0", "0.02", "0.04", "0.08", "0.1", "0.12", "0.14", "0.16", "0.18", "0.2", "0.22", "0.24", "0.26", "0.28", "0.3", "0.32", "0.34", "0.36", "0.38", "0.4", "0.42", "0.44", "0.46", "0.48", "0.5", "0.52", "0.54", "0.56", "0.58", "0.6"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varV", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_451caf6f45594a00a8099f54b561fbf2", "style": "IPY_MODEL_1735b9a5b3284f3186631f5e2c2b40c2"}}, "e3143d186e7a461fa79c47ab0eb451ef": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f088cba6842f4abc87309a5e235b9b82": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "509a4e767c8e48778dcdd83108e5cd9a": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0", "0.02", "0.04", "0.08", "0.1", "0.12", "0.14", "0.16", "0.18", "0.2", "0.22", "0.24", "0.26", "0.28", "0.3", "0.32", "0.34", "0.36", "0.38", "0.4", "0.42", "0.44", "0.46", "0.48", "0.5", "0.52", "0.54", "0.56", "0.58", "0.6"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "varW", "description_tooltip": null, "disabled": false, "index": 9, "layout": "IPY_MODEL_e3143d186e7a461fa79c47ab0eb451ef", "style": "IPY_MODEL_f088cba6842f4abc87309a5e235b9b82"}}, "c1398124feb448408908dec243c58888": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "aafdec5c1f8f4dd3984d65b8e47a717e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_30195233cce047499b6a0928c2a40336", "IPY_MODEL_509a4e767c8e48778dcdd83108e5cd9a", "IPY_MODEL_2ae29105163549028b6d6c0b4270ee32"], "layout": "IPY_MODEL_c1398124feb448408908dec243c58888"}}, "7dc5b529339c4a5499ed88e8975fa536": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2ae29105163549028b6d6c0b4270ee32": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7dc5b529339c4a5499ed88e8975fa536", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter9.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Tracking A</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter11.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Speech Recognition A</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

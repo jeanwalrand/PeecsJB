@@ -1,0 +1,1259 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appendix 1: Prerequisites &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Route Planning A" href="Chapter13.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Appendix_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Appendix_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-simple-plot">
+   A Simple Plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-basics">
+   Python: basics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     Exercise 3
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-4">
+     Exercise 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-5">
+     Exercise 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-6">
+     Exercise 6
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-7">
+     Exercise 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-8">
+     Exercise 8
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-9">
+     Exercise 9
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-and-their-maximization">
+   Functions and their maximization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-10">
+     Exercise 10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-program">
+   Linear Program
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-11">
+     Exercise 11
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gradient-algorithm">
+     Gradient Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-12">
+     Exercise 12
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability">
+   Probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-13">
+     Exercise 13
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-14">
+     Exercise 14
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-limit-theorem">
+   Central Limit Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-15">
+     Exercise 15
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-16">
+     Exercise 16
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-17">
+     Exercise 17
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas">
+   Pandas
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="appendix-1-prerequisites">
+<h1>Appendix 1: Prerequisites<a class="headerlink" href="#appendix-1-prerequisites" title="Permalink to this headline">¶</a></h1>
+<p>This appendix is a quick refresher.</p>
+<p>We review the <strong>Python</strong> syntax and commonly used structures and functions. We then discuss the <strong>optimization</strong> of functions and key ideas in <strong>Probability</strong> such as the central limit theorem and confidence intervals. We also describe some operations in <strong>Pandas</strong>.  To run the code, click the rocket symbol on the top of the page, select <strong>live code</strong>, and wait for <strong>ready</strong>, then click run on the cells. Run each of them without skipping.  You can edit the code to see what changes.</p>
+<p>First, we import some libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-simple-plot">
+<h2>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this headline">¶</a></h2>
+<p>We plot a sine wave.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span> <span class="c1"># np.arange(N) is a list [0, 1, ..., N - 1]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">X</span><span class="p">)</span> <span class="c1"># list of sin(10x) for x in X</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Plot of sin(10x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_3_0.png" src="_images/Appendix_1_3_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="python-basics">
+<h2>Python: basics<a class="headerlink" href="#python-basics" title="Permalink to this headline">¶</a></h2>
+<p>This notebook assumes that you run all the cells in sequence.  If some quantity is defined in one cell, it keeps its value in subsequent cells, unless it is redefined.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### list</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">6.1</span><span class="p">]</span> <span class="c1"># a list of &#39;floats&#39;</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="mi">2</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> 
+<span class="c1"># run this cell</span>
+<span class="c1"># Note that Python indexes start at 0, not 1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.2, -0.9, 4, 6.1, [4.5, -0.9], 12.899999999999999, 12.9, 6.1, -0.9, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It is sometimes useful to sort a list.  Here, we sort the list A by decreasing value of the sine of the element.</span>
+<span class="k">def</span> <span class="nf">bySine</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">A</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">bySine</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.2, 6.1, -0.9, 4.5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>Define a list A2 of 10 floats. Find the maximum, minimum, average.  Sort the list in increasing order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if then else, for</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Looking for the first element in A that is between x and y:&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- You should choose x &lt; y&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span> 
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- The first such element has index &#39;</span><span class="p">,</span><span class="n">n</span><span class="p">,</span> <span class="s1">&#39; and its value is &#39;</span><span class="p">,</span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> 
+            <span class="k">break</span> <span class="c1"># break the loop</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- There is no such element&#39;</span><span class="p">)</span>
+<span class="c1"># run this cell</span>
+<span class="c1"># After that, change the values of x and y and try again</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking for the first element in A that is between x and y:
+- The first such element has index  1  and its value is  6.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Write your own algorithm to sort the list A in increasing order; your algorithm can only use one compare operation per step.  Track the number of steps your algorithm takes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Applying a function to each element of a list</span>
+<span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="p">]</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.24, 37.21, 0.81, 20.25]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>Write an algorithm to calculate the average value of <span class="math notranslate nohighlight">\((a - mean)^4\)</span> for the elements <span class="math notranslate nohighlight">\(a\)</span> of the list <span class="math notranslate nohighlight">\(A\)</span>.
+In this expression, <span class="math notranslate nohighlight">\(mean\)</span> is the average of the elements <span class="math notranslate nohighlight">\(a\)</span> in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list of lists</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># M[0] is the first list in M, M[0][0] is the first element in the first list</span>
+<span class="c1"># run this cell </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 5, 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="c1"># sum the first row</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Permalink to this headline">¶</a></h3>
+<p>Write your algorithm to find the indices <span class="math notranslate nohighlight">\((i, j)\)</span> for which <span class="math notranslate nohighlight">\(M[i][j]\)</span> is the maximum value in the list of lists.</p>
+</div>
+<div class="section" id="exercise-5">
+<h3>Exercise 5<a class="headerlink" href="#exercise-5" title="Permalink to this headline">¶</a></h3>
+<p>How do you find the sum of the first column of <span class="math notranslate nohighlight">\(M\)</span>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="c1"># convert the list of lists into an array</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2  3  1  4]
+ [ 5  1  0  3]
+ [ 7 -2  3  5]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Q</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Q</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># run this cell</span>
+<span class="c1"># Note the indexing and summing a row or a column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 5, 0, 9, 2)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-6">
+<h3>Exercise 6<a class="headerlink" href="#exercise-6" title="Permalink to this headline">¶</a></h3>
+<p>How do you find the index of the row with the maximum sum?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span> <span class="c1"># Careful about the brackets for the list of lists!</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span> <span class="c1"># This is the product of the matrices R and Q</span>
+<span class="n">P</span>
+<span class="c1"># recall that the element [i, j] of P is the product of row i of R by column j of Q</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[29, -7,  8, 17],
+       [22,  1,  3, 14]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-7">
+<h3>Exercise 7<a class="headerlink" href="#exercise-7" title="Permalink to this headline">¶</a></h3>
+<p>Let</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M_1 = \left[ 
+\begin{array}{c c}
+3 &amp; 2 \\
+1 &amp; 4
+\end{array}
+\right] \mbox{ and } M_2 = \left[ 
+\begin{array}{c c}
+5 &amp; 7 \\
+2 &amp; 1
+\end{array}
+\right].\end{split}\]</div>
+<p>Compare <span class="math notranslate nohighlight">\(M_1 M_2\)</span> and <span class="math notranslate nohighlight">\(M_2M_1\)</span>.</p>
+</div>
+<div class="section" id="exercise-8">
+<h3>Exercise 8<a class="headerlink" href="#exercise-8" title="Permalink to this headline">¶</a></h3>
+<p>Define the <strong>trace</strong> <span class="math notranslate nohighlight">\(tr(M)\)</span> of a square matrix <span class="math notranslate nohighlight">\(M\)</span> as the sum of its diagonal elements.  Create two matrices (arrays) <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(T\)</span> that are <span class="math notranslate nohighlight">\(4 \times 6\)</span> and <span class="math notranslate nohighlight">\(6 \times 4\)</span>, respectively.  Verify that <span class="math notranslate nohighlight">\(tr(TU) = tr(UT)\)</span>. Can you explain why?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Recall that Q = &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximum element of Q is &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Q</span><span class="p">))</span>
+<span class="n">am</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximizing sequential index of Q is &#39;</span><span class="p">,</span> <span class="n">am</span><span class="p">,</span> <span class="s1">&#39;, counting left to right and top to bottom&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; (starting from index 0)&#39;</span><span class="p">)</span>
+<span class="c1"># The maximizing index of Q that of the concatenated list of row 0 followed by row 1 followed by row 2</span>
+<span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">am</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">am</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">am</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximizing (i,j) indices of Q are &#39;</span><span class="p">,(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>  <span class="c1"># [i,j] indices in the array of the maximizer</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Q[i,j] = &#39;</span><span class="p">,</span><span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span> <span class="c1"># checking that this yields np.max(Q)</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Recall that Q = 
+[[ 2  3  1  4]
+ [ 5  1  0  3]
+ [ 7 -2  3  5]]
+The maximum element of Q is  7
+The maximizing sequential index of Q is  8 , counting left to right and top to bottom
+ (starting from index 0)
+The maximizing (i,j) indices of Q are  (2, 0)
+Q[i,j] =  7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-9">
+<h3>Exercise 9<a class="headerlink" href="#exercise-9" title="Permalink to this headline">¶</a></h3>
+<p>Define a matrix <span class="math notranslate nohighlight">\(W\)</span> that is <span class="math notranslate nohighlight">\(3\)</span> by <span class="math notranslate nohighlight">\(5\)</span>.  Find the indices <span class="math notranslate nohighlight">\((i, j)\)</span> of the minimum element of <span class="math notranslate nohighlight">\(W\)</span>.</p>
+</div>
+</div>
+<div class="section" id="functions-and-their-maximization">
+<h2>Functions and their maximization<a class="headerlink" href="#functions-and-their-maximization" title="Permalink to this headline">¶</a></h2>
+<p>A real-valued function <span class="math notranslate nohighlight">\(f(.)\)</span> defined on a set <span class="math notranslate nohighlight">\(D\)</span> assigns a real number <span class="math notranslate nohighlight">\(f(x)\)</span> to every <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<p>The maximum of <span class="math notranslate nohighlight">\(f(\cdot)\)</span> on <span class="math notranslate nohighlight">\(D\)</span> is the largest of the elements <span class="math notranslate nohighlight">\(\{f(x), x \in D\}\)</span>. The maximizer of the function in <span class="math notranslate nohighlight">\(D\)</span> is the value of <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(f(x)\)</span> is the maximum of <span class="math notranslate nohighlight">\(f(\cdot)\)</span> on <span class="math notranslate nohighlight">\(D\)</span>. The function <span class="math notranslate nohighlight">\(f(\cdot)\)</span> is called  the <strong>objective function</strong> and the set <span class="math notranslate nohighlight">\(X\)</span> is called the <strong>admissible set</strong>.</p>
+<p>In many cases, the set <span class="math notranslate nohighlight">\(D\)</span> is defined via other functions.  For instance, if <span class="math notranslate nohighlight">\(g(.)\)</span> and <span class="math notranslate nohighlight">\(h(.)\)</span> are two real-valued function on a set <span class="math notranslate nohighlight">\(S\)</span>, one may define <span class="math notranslate nohighlight">\(D\)</span> as the set of elements <span class="math notranslate nohighlight">\(x\)</span> in <span class="math notranslate nohighlight">\(S\)</span> such that <span class="math notranslate nohighlight">\(g(x) \leq a\)</span> and <span class="math notranslate nohighlight">\(h(x) \leq b\)</span> for some real numbers <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>. In such a case, the conditions <span class="math notranslate nohighlight">\(g(x) \leq a\)</span> and <span class="math notranslate nohighlight">\(h(x) \leq b\)</span> are called the <strong>constraints</strong>.</p>
+<p>Many problems involve finding the maximum of a function.  A brute-force way is to search systematically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">6000</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">40</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">10000</span> <span class="o">-</span> <span class="mi">200</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2000</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.05</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="p">)))</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># array of N zeros</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">H</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">lbG</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">ubH</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3000</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lbG</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;2000&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ubH</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;3000&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># run cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_25_0.png" src="_images/Appendix_1_25_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Let us look for the maximum of f such that g &gt;= 2000 and h =&lt; 3000&#39;</span><span class="p">)</span> 
+<span class="n">Z</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="p">[</span><span class="n">F</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">-</span> <span class="n">Z</span><span class="o">*</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span> <span class="ow">or</span> <span class="n">H</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span> <span class="c1"># W &lt;= 0 outside the admissible set, W &gt; 0 inside</span>
+<span class="c1"># Note the penalty for violating the constraints.</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">G</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2000</span> <span class="ow">or</span> <span class="n">H</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3000</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No feasible value of x was found&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The answer is &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39; and the corresponding value of x is &#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Let us look for the maximum of f such that g &gt;= 2000 and h =&lt; 3000
+The answer is  5809  and the corresponding value of x is  37
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, this is very time-consuming if the set <span class="math notranslate nohighlight">\(X\)</span> is very large. One should be aware that the shortness of the code does not imply that the algorithm is efficient!  In this case, the code evaluates the functions <span class="math notranslate nohighlight">\(f(.), g(.), h(.)\)</span> for every element of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="section" id="exercise-10">
+<h3>Exercise 10<a class="headerlink" href="#exercise-10" title="Permalink to this headline">¶</a></h3>
+<p>Write an algorithm with <strong>grid refinements</strong> to solve the previous optimization problem. That is, find the maximum over a coarse grid as before, then find the maximum in a finer grid around the previous maximizer, and so on.</p>
+<p>We will see more efficient methods when the functions have suitable properties such as linear or convex.</p>
+</div>
+</div>
+<div class="section" id="linear-program">
+<h2>Linear Program<a class="headerlink" href="#linear-program" title="Permalink to this headline">¶</a></h2>
+<p>The figure below illustrates the optimization problem when the objective function and the constraints are linear.</p>
+<p><img alt="title" src="_images/LP1.pdf" /></p>
+<p>This figure shows an example where the possible values <span class="math notranslate nohighlight">\(x = [x[0], x[1]]\)</span> of <span class="math notranslate nohighlight">\(X\)</span> are two-dimensional vectors of real numbers. The objective function is <span class="math notranslate nohighlight">\(f(x) = c[0]x[0] + c[1]x[1]\)</span>.  There are six constraints:</p>
+<div class="math notranslate nohighlight">
+\[A[i,0]x[0] + A[i,1]x[1] \leq b[i], i = 0, \ldots, 5.\]</div>
+<p>Each constraint corresponds to a half-plane.  The blue set of admissible points where the <span class="math notranslate nohighlight">\(6\)</span> constraints are satisfied is a polytope.  The picture makes it quite clear that the maximum of the function over the admissible set occurs at one of the vertices of the polytope.  Thus, instead of checking the values at all the admissible points (there are infinitely many of them!), it suffices to compute the values at the <span class="math notranslate nohighlight">\(6\)</span> vertices and find the largest one. That is what the <strong>simplex</strong> algorithm does.</p>
+<p>The cell below illustrates the algorithm for the following problem:</p>
+<div class="math notranslate nohighlight">
+\[\mbox{Maximize } 2*x[0] + x[1]\]</div>
+<div class="math notranslate nohighlight">
+\[\mbox{such that } x[0] - x[1] &lt;= 5 \]</div>
+<div class="math notranslate nohighlight">
+\[~~~~~~~~~~~~~~~~ - 0.5x[0] + x[1] &lt;= 2 \]</div>
+<div class="math notranslate nohighlight">
+\[~~~~~~~~~~~~~~~~~~~~ - (2/3)*x[0] - x[1] &lt;= -4.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linear Programming Example</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We now run the simplex algorithm:&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># The algorithm minimizes cx, so it maximizes - cx = [2, 1]x</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span><span class="n">A_ub</span> <span class="o">=</span> <span class="n">A</span><span class="p">,</span> <span class="n">b_ub</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;simplex&quot;</span><span class="p">)</span>
+<span class="n">opt</span>
+<span class="c1"># run this cell</span>
+<span class="c1"># The output gives the maximum of the function (fun) and the maximizer (x)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We now run the simplex algorithm:
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     con: array([], dtype=float64)
+     fun: -37.0
+ message: &#39;Optimization terminated successfully.&#39;
+     nit: 4
+   slack: array([ 0.        ,  0.        , 14.33333333])
+  status: 0
+ success: True
+       x: array([14.,  9.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-11">
+<h3>Exercise 11<a class="headerlink" href="#exercise-11" title="Permalink to this headline">¶</a></h3>
+<p>Try the previous algorithm on the following problem:</p>
+<div class="math notranslate nohighlight">
+\[\mbox{Maximize } 2*x[0] + x[1]\]</div>
+<div class="math notranslate nohighlight">
+\[\mbox{such that } x[0] + x[1] &lt;= 5 \]</div>
+<div class="math notranslate nohighlight">
+\[~~~~~~~~~~~~~~~~ x[0] - x[1] &lt;= -2 \]</div>
+<div class="math notranslate nohighlight">
+\[~~~~~~~~~~~~~~~~~~~~ - 2*x[0] + x[1] &lt;= -6.\]</div>
+<p>Can you explain what happened?  (Hint: Sketch the admissible set.)</p>
+</div>
+<div class="section" id="gradient-algorithm">
+<h3>Gradient Algorithm<a class="headerlink" href="#gradient-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>When the objective function is nonlinear, the maximum may occur in the interior of the admissible set.  The gradient algorithm is commonly used to find that maximum.  As an example, we look for the maximum of <span class="math notranslate nohighlight">\(f(n) = sin(x) - 0.8x\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>.  Here is a graph of that function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">F</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) = sin(x) - 0.8x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># run this cell</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_33_0.png" src="_images/Appendix_1_33_0.png" />
+</div>
+</div>
+<p>The gradient algorithm is as follows.  Let <span class="math notranslate nohighlight">\(x(n)\)</span> be the value of <span class="math notranslate nohighlight">\(x\)</span> after <span class="math notranslate nohighlight">\(n\)</span> steps.  The next value is <span class="math notranslate nohighlight">\(x(n+1) = x(n) + a(n)*f'(x(n))\)</span> where <span class="math notranslate nohighlight">\(f'(x)\)</span> is the derivative of <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(a(n)\)</span> is a positive number, called the step size, that decreases with <span class="math notranslate nohighlight">\(n\)</span>.  The basic idea is simple: if <span class="math notranslate nohighlight">\(f'(x(n)) &gt; 0\)</span>, then the function is increasing at <span class="math notranslate nohighlight">\(x(n)\)</span>, so that the maximizer is larger than <span class="math notranslate nohighlight">\(x(n)\)</span>. Thus, one choose <span class="math notranslate nohighlight">\(x(n+1)\)</span> larger than <span class="math notranslate nohighlight">\(x(n)\)</span>. The opposite is true if <span class="math notranslate nohighlight">\(f'(x(n)) &lt; 0\)</span>.  The step sizes should decrease to avoid keeping overshooting or undershooting the maximizer.</p>
+<p>There are rules for choosing the step sizes. Also, one has to make sure that <span class="math notranslate nohighlight">\(x(n+1)\)</span> remains inside <span class="math notranslate nohighlight">\([0, 1]\)</span>. Thus, a more precise algoorithm is</p>
+<div class="math notranslate nohighlight">
+\[x(n+1) = \max\{0, \min\{1, x(n) + (10/(n+1))f'(x(n))\}\}.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># number of steps</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># derivative of f(x)</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.8</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">fp</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X[n]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After &#39;</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39; steps, the algorithm finds x = &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_35_0.png" src="_images/Appendix_1_35_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  20  steps, the algorithm finds x =  0.644
+</pre></div>
+</div>
+</div>
+</div>
+<p>Choosing the number of steps is a bit tricky.  One method is to use a <strong>stopping rule</strong> based on the progress of the algorithm or on the value of the derivative.  For instance, one may decide to stop when <span class="math notranslate nohighlight">\(f'(x(n))\)</span> is very small.  We try that approach below. To make sure the algorithm stops, we give up after <span class="math notranslate nohighlight">\(Nmax\)</span> steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="c1"># X is a list that contains the float 0</span>
+<span class="n">Nmax</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># threshold on derivative for our stopping rule</span>
+<span class="k">def</span> <span class="nf">fp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.8</span>
+<span class="n">more</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">while</span> <span class="n">more</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">Nmax</span><span class="p">:</span> <span class="c1"># stop when more == False or after Nmax steps</span>
+    <span class="n">derivative</span> <span class="o">=</span> <span class="n">fp</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">fp</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))))</span>
+    <span class="n">more</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">derivative</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">epsilon</span> <span class="c1"># keep trying until the derivative is less than epsilon</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X[n]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After &#39;</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39; steps, the algorithm finds x = &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_37_0.png" src="_images/Appendix_1_37_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After  27  steps, the algorithm finds x =  0.643
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-12">
+<h3>Exercise 12<a class="headerlink" href="#exercise-12" title="Permalink to this headline">¶</a></h3>
+<p>Try the previous algorithm with the step size <span class="math notranslate nohighlight">\(1/(n+1)\)</span> instead of <span class="math notranslate nohighlight">\(10/(n+1)\)</span>.</p>
+</div>
+</div>
+<div class="section" id="probability">
+<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
+<p>A key concepts in Probability is a <strong>random experiment</strong> defined by a set of <strong>outcomes</strong> and a <strong>probability</strong> attached to each outcome.  For instance, when you flip a fair coin, there are two outcomes (<span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(T\)</span>) and each outcome has probability <span class="math notranslate nohighlight">\(0.5\)</span>.  We write <span class="math notranslate nohighlight">\(P(H) = 0.5\)</span> and <span class="math notranslate nohighlight">\(P(T) = 0.5\)</span>. If the coin is biased, one may have <span class="math notranslate nohighlight">\(P(H) = 0.6\)</span> and <span class="math notranslate nohighlight">\(P(T) = 0.4\)</span>.  The probabilities of the different outcomes add up to one.</p>
+<p>A <strong>random variable</strong> is a real number <span class="math notranslate nohighlight">\(X(a)\)</span> associated to each outcome <span class="math notranslate nohighlight">\(a\)</span> of a random experiment. For instance, say that the radom experiment is flipping the biased coin defined above and <span class="math notranslate nohighlight">\(X(H) = 3, X(T) = 7\)</span>.</p>
+<p>One defines <span class="math notranslate nohighlight">\(P(X=x)\)</span> as the probability that the value of the random varable is <span class="math notranslate nohighlight">\(x\)</span>.  For our biased coin, <span class="math notranslate nohighlight">\(P(X=3) = 0.6\)</span> and <span class="math notranslate nohighlight">\(P(X = 7) = 0.4\)</span>.  The collection of pairs <span class="math notranslate nohighlight">\((x, P(X=x))\)</span> is called the <strong>distribution</strong> of <span class="math notranslate nohighlight">\(X\)</span>. (It is also called the probability mass function.)</p>
+<p>The <strong>expected value</strong> <span class="math notranslate nohighlight">\(E(X)\)</span> of a random variable <span class="math notranslate nohighlight">\(X\)</span> is defined as the sum over the outcomes of the value of the random variable multiplied by its probability.  That is <span class="math notranslate nohighlight">\(E(X) = \sum_a X(a)P(a)\)</span>.  For our biased coin example, <span class="math notranslate nohighlight">\(E(X) = X(H)P(H) + X(T)P(T) = 3 \times 0.6 + 7 \times 0.4 = 4.6\)</span>.</p>
+<p>The <strong>significance</strong> of the expected value comes from the <strong>Law of Large Numbers</strong>. That law states that if we repeat the random experiment a large number <span class="math notranslate nohighlight">\(N\)</span> of times, then the fraction of times <span class="math notranslate nohighlight">\(N(a)/N\)</span> that the outcome is <span class="math notranslate nohighlight">\(a\)</span> aproaches <span class="math notranslate nohighlight">\(P(a)\)</span>, where <span class="math notranslate nohighlight">\(N(a)\)</span> is the number of times that the outcome is <span class="math notranslate nohighlight">\(a\)</span>.  That is <span class="math notranslate nohighlight">\(N(a)/N \approx P(a)\)</span>. Imagine we get <span class="math notranslate nohighlight">\(X(a)\)</span> every time that the outcome is <span class="math notranslate nohighlight">\(a\)</span>. We then get <span class="math notranslate nohighlight">\(\sum_a aN(a)\)</span> after <span class="math notranslate nohighlight">\(N\)</span> experiment. Consequently, we get <span class="math notranslate nohighlight">\((1/N) \sum_a aN(a) \approx \sum_a aP(a) = E(X)\)</span> per experiment. Thus, the expected value is the average value per experiment, when we repeat the experiment a large number of times.</p>
+<p>Some random variables take a <strong>continuous</strong> range of values. In such a case, think of the distribution of <span class="math notranslate nohighlight">\(X\)</span> as defining <span class="math notranslate nohighlight">\(P(X \in (x, x + \epsilon))\)</span> for all <span class="math notranslate nohighlight">\(x\)</span>, where <span class="math notranslate nohighlight">\(\epsilon\)</span> is very small.  This probability is almost proportional to <span class="math notranslate nohighlight">\(\epsilon\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[P(X \in (x, x + \epsilon)) \approx f(x)\epsilon.\]</div>
+<p>We call <span class="math notranslate nohighlight">\(f(\cdot)\)</span> the <strong>probability density function (pdf)</strong> of <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>One example is the <strong>uniform</strong> distribution on <span class="math notranslate nohighlight">\([0, 1]\)</span> defined by <span class="math notranslate nohighlight">\(f(x) = 1\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span> and <span class="math notranslate nohighlight">\(f(x) = 0\)</span> otherwise. Intuitively, that random variable is equally likely to take any value in <span class="math notranslate nohighlight">\([0, 1]\)</span>. Another example is the <strong>standard Gaussian</strong> or <strong>normal</strong> random variable defined by</p>
+<div class="math notranslate nohighlight">
+\[f(x) = (1/\sqrt{2 \pi}) \exp\{- x^2/2\}.\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(E(X) = \sum_n n \epsilon P(X \in [n \epsilon, n \epsilon + \epsilon])\)</span> Hence,</p>
+<div class="math notranslate nohighlight">
+\[E(X) =  \sum_n n \epsilon f(n \epsilon) \epsilon = \int x f(x) dx.\]</div>
+<p>With Python we can easily visualize random variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.6</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">U</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">G</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_40_0.png" src="_images/Appendix_1_40_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="c1">## One can plot the probability density function of the continuous random variables U and G as follows.</span>
+<span class="n">Val</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.04</span><span class="o">*</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span> <span class="c1"># values of random variable</span>
+<span class="n">pdfU</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">Val</span><span class="p">]</span>  <span class="c1"># probability density of U at those values</span>
+<span class="n">pdfG</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">Val</span><span class="p">]</span> <span class="c1"># probability density of G at those values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Val</span><span class="p">,</span><span class="n">pdfU</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdfU&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Val</span><span class="p">,</span><span class="n">pdfG</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdfG&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_41_0.png" src="_images/Appendix_1_41_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can verify the law of large number</span>
+<span class="k">def</span> <span class="nf">sampleMean</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+    <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">M</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">M</span>
+<span class="k">for</span> <span class="n">A</span> <span class="ow">in</span> <span class="p">[</span><span class="n">B</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">G</span><span class="p">]:</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">sampleMean</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Note that the sample means approach 0.6, 0.5, 0 which are the expected values of the three random variables.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_42_0.png" src="_images/Appendix_1_42_0.png" />
+</div>
+</div>
+<p>The sample mean converges faster if the distribution is less spread out. For instance, define a random variable that is uniform on <span class="math notranslate nohighlight">\([0.4, 0.6]\)</span>.  Its expected value is <span class="math notranslate nohighlight">\(0.5\)</span>, like that of a uniform random variable on <span class="math notranslate nohighlight">\([0, 1]\)</span>, but it is less spread out.  We expect the sample mean to converge faster.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">U2</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">A</span> <span class="ow">in</span> <span class="p">[</span><span class="n">U</span><span class="p">,</span><span class="n">U2</span><span class="p">]:</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">sampleMean</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_44_0.png" src="_images/Appendix_1_44_0.png" />
+</div>
+</div>
+<div class="section" id="exercise-13">
+<h3>Exercise 13<a class="headerlink" href="#exercise-13" title="Permalink to this headline">¶</a></h3>
+<p>Consider the experiment of rolling a balanced die with outcomes <span class="math notranslate nohighlight">\(\{1, 2, \ldots, 6\}\)</span>.  Verify the law of large numbers for that experiment.</p>
+</div>
+<div class="section" id="exercise-14">
+<h3>Exercise 14<a class="headerlink" href="#exercise-14" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(P = [p_0, \ldots, p_{n-1}]\)</span> be a list of <span class="math notranslate nohighlight">\(n\)</span> positive numbers that add up to one. Create a function <span class="math notranslate nohighlight">\(pick(U,P)\)</span> for <span class="math notranslate nohighlight">\(U \in [0, 1]\)</span> that returns the value <span class="math notranslate nohighlight">\(0\)</span> when <span class="math notranslate nohighlight">\(U &lt; p_0\)</span> and the value <span class="math notranslate nohighlight">\(m\)</span> when <span class="math notranslate nohighlight">\(p_0 + \cdots + p_{m-1} &lt; U &lt; p_0 + \cdots + p_m\)</span>.</p>
+<p>Argue that, if <span class="math notranslate nohighlight">\(U\)</span> is random and uniform in <span class="math notranslate nohighlight">\([0, 1]\)</span>, then <span class="math notranslate nohighlight">\(pick(U,P)\)</span> takes the value <span class="math notranslate nohighlight">\(m\)</span> with probability <span class="math notranslate nohighlight">\(p_m\)</span> for <span class="math notranslate nohighlight">\(m \in \{0, \ldots, n-1\}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="central-limit-theorem">
+<h2>Central Limit Theorem<a class="headerlink" href="#central-limit-theorem" title="Permalink to this headline">¶</a></h2>
+<p>The spread of a distribution is measured by its <strong>variance</strong> defined as <span class="math notranslate nohighlight">\(var(X) = E((X - E(X))^2)\)</span>. Intuitively, this quantity evaluates how much <span class="math notranslate nohighlight">\(X\)</span> tends to differ from <span class="math notranslate nohighlight">\(E(X)\)</span>.  The <strong>standard deviation</strong> is defined as the square root of the variance. That is <span class="math notranslate nohighlight">\(SD(X) = \sqrt{var(X)}\)</span>.  For the examples above, one has</p>
+<div class="math notranslate nohighlight">
+\[SD(U) = 1/sqrt{12} \approx 0.3, SD(U2) = 0.2 SD(U) \approx 0.06, SD(B) = , SD(G) = 1.\]</div>
+<p>Think of <span class="math notranslate nohighlight">\(SD(X)\)</span> as the typical deviation from <span class="math notranslate nohighlight">\(E(X)\)</span>.</p>
+<p>When properly scaled, the average of random variables approach a standard Gaussian random variable.  Specifically, say that <span class="math notranslate nohighlight">\(X_1, \ldots, X_n\)</span> are the values from repeated experiments of a random variable <span class="math notranslate nohighlight">\(X\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[\frac{X_1 + \cdots + X_n - nE(X)}{SD(X) \sqrt{n}} \approx G\]</div>
+<p>where <span class="math notranslate nohighlight">\(G\)</span> is a standard Gaussian random variable.</p>
+<p>We verify the CLT by plotting the fraction of the scaled averages of the random variables U, B, G that fall in diffent intervals of <span class="math notranslate nohighlight">\([-2, 2]\)</span>.  Specifically, we repeat the following experiment <span class="math notranslate nohighlight">\(1000\)</span> times: Generate <span class="math notranslate nohighlight">\(N\)</span> random variables and compute their scaled average; count the fraction of those scaled averages that fall in intervals of <span class="math notranslate nohighlight">\([-3, 3]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># number of intervals in [-3, 3]: [-3,-3 +6/M), [-3 +4/M, -3 + 2*6/M), ..., [-3 + 19*6/M, 2)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="mi">6</span><span class="o">/</span><span class="n">M</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">)]</span>
+<span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">std</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="o">*</span><span class="n">mean</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">std</span><span class="o">*</span><span class="n">n</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">FU</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">FB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">FG</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">SDU</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">SDB</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">SDG</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.6</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="n">SDB</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># identifies the interval in which x falls</span>
+    <span class="n">FB</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="n">SDU</span><span class="p">)</span> 
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># identifies the interval in which x falls</span>
+    <span class="n">FU</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">SDG</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># identifies the interval in which x falls</span>
+    <span class="n">FG</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span>
+<span class="n">pdfG</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">6</span><span class="o">/</span><span class="n">M</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">FB</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">FU</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">FG</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;G&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">pdfG</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdfG&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Appendix_1_48_0.png" src="_images/Appendix_1_48_0.png" />
+</div>
+</div>
+<p>The probability that a standard Gaussian random variable falls in the interval <span class="math notranslate nohighlight">\([-2.6, 2.6]\)</span> is approximately <span class="math notranslate nohighlight">\(90\%\)</span>.  Combining this fact with the CLT, we conclude that the probability that the scaled average of <span class="math notranslate nohighlight">\(N\)</span> random variables falls in that interval is also about <span class="math notranslate nohighlight">\(90\%\)</span>.  Thus,</p>
+<div class="math notranslate nohighlight">
+\[P\left(-2.6 \leq \frac{X_1 + \cdots + X_n - nE(X)}{SD(X) \sqrt{n}} \leq 2.6\right) \approx 0.9.\]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight">
+\[P\left( E(X) \in \left[ AV(X) - 2.6 SD(X)/\sqrt{n}, AV(X) + 2.6 SD(X)/\sqrt{n} \right] \right) \approx 0.9\]</div>
+<p>where <span class="math notranslate nohighlight">\(AV(X) = (X_1 + \cdots + X_n)/n\)</span> is the <strong>sample average</strong> of the random values.</p>
+<p>One says that the interval in the above expression is the <span class="math notranslate nohighlight">\(90\%\)</span> <strong>confidence interval</strong> for the mean <span class="math notranslate nohighlight">\(E(X)\)</span> of the random variables.</p>
+<p>In practice, if <span class="math notranslate nohighlight">\(STD(X)\)</span> is not known, one can generally replace it by
+the <strong>sample standard deviation</strong> <span class="math notranslate nohighlight">\(SSD(X)\)</span> defined as</p>
+<div class="math notranslate nohighlight">
+\[SSD(X)^2 = \frac{1}{n} \left( (X_1 - AV(X))^2 + \cdots + (X_n - AV(X))^2 \right).\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(SSD(X)\)</span> is essentially <span class="math notranslate nohighlight">\(E(X - E(X))^2 = VAR(X)\)</span>, but the law of large numbers.</p>
+<p>Let us check with our examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="k">def</span> <span class="nf">sampleAverageAndSD</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">ave</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span> <span class="o">-</span> <span class="n">ave</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="p">]</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ave</span><span class="p">,</span> <span class="n">std</span>  
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">ave</span><span class="p">,</span><span class="n">std</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">ave</span> <span class="o">-</span> <span class="mf">2.6</span><span class="o">*</span><span class="n">std</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">mean</span> <span class="ow">and</span> <span class="n">mean</span> <span class="o">&lt;=</span> <span class="n">ave</span> <span class="o">+</span> <span class="mf">2.6</span><span class="o">*</span><span class="n">std</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)))</span>
+<span class="n">CU</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CB</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CG</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">SDU</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">SDB</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.6</span><span class="o">*</span><span class="mf">0.4</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">SDG</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.6</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">ave</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sampleAverageAndSD</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+    <span class="n">CB</span> <span class="o">+=</span> <span class="n">test</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="n">ave</span><span class="p">,</span><span class="n">std</span><span class="p">)</span><span class="o">/</span><span class="n">K</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">ave</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sampleAverageAndSD</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">CU</span> <span class="o">+=</span> <span class="n">test</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="n">ave</span><span class="p">,</span><span class="n">std</span><span class="p">)</span><span class="o">/</span><span class="n">K</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="n">ave</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">sampleAverageAndSD</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+    <span class="n">CG</span> <span class="o">+=</span> <span class="n">test</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ave</span><span class="p">,</span><span class="n">std</span><span class="p">)</span><span class="o">/</span><span class="n">K</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The fraction of times that the mean falls in the confidence interval is&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">CB</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s1">&#39; for B; &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">CU</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s1">&#39; for U; &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">CG</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s1">&#39; for G.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The fraction of times that the mean falls in the confidence interval is
+0.99  for B;  0.99  for U;  0.99  for G.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-15">
+<h3>Exercise 15<a class="headerlink" href="#exercise-15" title="Permalink to this headline">¶</a></h3>
+<p>Repeat the previous cells for the experiment of rolling a balanced die.</p>
+</div>
+<div class="section" id="exercise-16">
+<h3>Exercise 16<a class="headerlink" href="#exercise-16" title="Permalink to this headline">¶</a></h3>
+<p>Repeat the previous cells when the experiment yields the outcome <span class="math notranslate nohighlight">\(m\)</span> with probability <span class="math notranslate nohighlight">\(p_m\)</span> for <span class="math notranslate nohighlight">\(m \in \{0, \ldots, n-1\}\)</span> where the <span class="math notranslate nohighlight">\(p_m\)</span> are positive and add up to one.</p>
+</div>
+<div class="section" id="exercise-17">
+<h3>Exercise 17<a class="headerlink" href="#exercise-17" title="Permalink to this headline">¶</a></h3>
+<p>Perform the Chi-Square test on the examples of Exercises 15 and 16.</p>
+</div>
+</div>
+<div class="section" id="pandas">
+<h2>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
+<p>Pandas is a toolkit to manipulate dataframes that are essentially spreadsheets.  One can import and export from Excel, so Pandas provides a simple way to manipulate large data sets.</p>
+<p>The cell below shows how to use pandas to create a table of values of the Gaussian distribution with mean zero and variance one (the standard Gaussian distribution).  Specifically, the table displays the values of x such that <span class="math notranslate nohighlight">\(P(SG \leq x) = 0.005, 0.01, 0.05,\)</span> or <span class="math notranslate nohighlight">\(0.1\)</span>, where <span class="math notranslate nohighlight">\(SG\)</span> is a standard Gaussian random variable.  The code uses the ‘inverse’ cdf of the SG random variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;P(SG &lt; x)&quot;</span><span class="p">]</span>
+<span class="n">SGvalues</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">column_names</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="c1"># create DataFrame with indicated columns</span>
+<span class="n">Values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">Values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># here, 0 is the mean - find inverse CDF of standard Gaussian</span>
+<span class="n">SGvalues</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span> <span class="c1"># set column &#39;x&#39; to vals</span>
+<span class="n">SGvalues</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;P(SG &lt; x)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Values</span> <span class="c1"># set column &#39;P(SG &lt; x)&#39; to Values</span>
+<span class="n">blankIndex</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">SGvalues</span><span class="p">)</span> <span class="c1"># prepare blank index</span>
+<span class="n">SGvalues</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">blankIndex</span> <span class="c1"># set index to blank index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SGvalues</span><span class="p">)</span> <span class="c1"># print DataFrame  </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         x  P(SG &lt; x)
+ -2.575829      0.005
+ -2.326348      0.010
+ -1.644854      0.050
+ -1.281552      0.100
+</pre></div>
+</div>
+</div>
+</div>
+<p>The cell below shows how to read individual cells in the DataFrame. You can set these values in the same way.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We recreate the DataFrame, but we keep its index</span>
+<span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="s2">&quot;P(SG &lt; x)&quot;</span><span class="p">]</span>
+<span class="n">SGvalues</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">column_names</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="c1"># create DataFrame with indicated columns</span>
+<span class="n">Values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">Values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># here, 0 is the mean - find inverse CDF of standard Gaussian</span>
+<span class="n">SGvalues</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span> <span class="c1"># set column &#39;x&#39; to vals</span>
+<span class="n">SGvalues</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;P(SG &lt; x)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Values</span> <span class="c1"># set column &#39;P(SG &lt; x)&#39; to Values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The DataFrame with its index:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SGvalues</span><span class="p">)</span> <span class="c1"># print DataFrame  </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selected searches:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value in cell [2,1] = &#39;</span><span class="p">,</span> <span class="n">SGvalues</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># read cell [2,1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Value in cell [0,x] = &#39;</span><span class="p">,</span><span class="n">SGvalues</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="c1"># read cell with row index 0 and column &#39;x&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Indices n where value in cell [n, P(SG &lt;x)] = 0.01: &#39;</span><span class="p">,</span> <span class="n">SGvalues</span><span class="p">[</span><span class="n">SGvalues</span><span class="p">[</span><span class="s1">&#39;P(SG &lt; x)&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.01</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="c1"># find row indices where the &#39;P(SG &lt; x)&#39; value is 0.01</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The DataFrame with its index:
+          x  P(SG &lt; x)
+0 -2.575829      0.005
+1 -2.326348      0.010
+2 -1.644854      0.050
+3 -1.281552      0.100
+Selected searches:
+Value in cell [2,1] =  0.05
+Value in cell [0,x] =  -2.575829303548901
+Indices n where value in cell [n, P(SG &lt;x)] = 0.01:  [1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter13.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Route Planning A</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

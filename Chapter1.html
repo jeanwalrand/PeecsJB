@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PageRank A &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PageRank B" href="Chapter2.html" />
+    <link rel="prev" title="Introduction" href="Chapter0.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figure-1-2">
+   Figure 1.2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-1-5">
+     Figure 1.5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#figure-1-6">
+     Figure 1.6
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="pagerank-a">
+<h1>PageRank A<a class="headerlink" href="#pagerank-a" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>This chapter illustrates chapter 1 in the textbook.</p>
+<p>As always, click the <strong>rocket</strong> symbol and select <strong>Live Code</strong>.</p>
+<p>This chapter introduces finite <strong>discrete time Markov chains</strong>.  A DTMC is a sequence of random variables <span class="math notranslate nohighlight">\(\{X_0, X_1, X_2, \ldots \}\)</span> that take values in a finite set of <strong>states</strong> <span class="math notranslate nohighlight">\({\cal X}\)</span>. The DTMC is specified by the distribution of the initial state <span class="math notranslate nohighlight">\(X_0\)</span> (for instance by specifying the value of <span class="math notranslate nohighlight">\(X_0\)</span> or indicating how it is selected at random in <span class="math notranslate nohighlight">\({\cal X}\)</span>) and the transition probabilities <span class="math notranslate nohighlight">\(P(i,j)\)</span> for <span class="math notranslate nohighlight">\(i,j \in {\cal X}\)</span>.  Here, <span class="math notranslate nohighlight">\(P(i,j)\)</span> is the probability that the Markov chain goes from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> in the next step.  The transition probabilities are often shown in a transition diagram.</p>
+<div class="section" id="figure-1-2">
+<h2>Figure 1.2<a class="headerlink" href="#figure-1-2" title="Permalink to this headline">¶</a></h2>
+<p><img alt="title" src="_images/1-2.pdf" /></p>
+<p>Figure 1.2 illustrates a small web-browsing examples.  There are <span class="math notranslate nohighlight">\(5\)</span> web pages: <span class="math notranslate nohighlight">\(A, B, C, D, E\)</span>.  When on page <span class="math notranslate nohighlight">\(A\)</span>, the reader is equally likely to go next to page <span class="math notranslate nohighlight">\(B\)</span> or to page <span class="math notranslate nohighlight">\(D\)</span>.  Similarly, when on a given page, the reader is equally likely to follow any of the arrows that go out of the page.  These transitions happen when the reader clicks on one of the links on the page.  One is interested in the sequence of pages that the reader visits. In particular, one would like to rank the pages in decreasing order of their frequency of visits.  This order corresponds to the decreasing “relevance” of the pages.  That is the basic idea of PageRank.</p>
+<p>The code simulates the Markov chain shown in Figure 1.2, plots the fraction of time it spends in the different states, and the probability of being in the different states. You can choose the initial state <span class="math notranslate nohighlight">\(X_0\)</span> and the number of steps <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>We load necessary libraries and some useful functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">discreteRV</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">):</span> <span class="c1"># here x = [x[0],...,x[K-1]], p = [p[0], ..., p[K-1]]</span>
+    <span class="c1"># returns a random value equal to x[k] with probability p[k]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span> <span class="c1"># P[0] = p[0], p[1] = p[1], P[2] = p[0] + p[1], ..., P[K-1] = p[0] + ... + p[K-1] = 1</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># here is our uniform RV</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">U</span> <span class="o">&lt;</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">K</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">z</span>
+        
+<span class="k">def</span> <span class="nf">MC</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">P</span><span class="p">):</span>
+    <span class="c1"># returns X[0], X[1], ..., X[N-1]</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="c1"># number of states</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="c1"># [0,1,2]: the possible values of X[n]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="c1"># The successive values of the Markov chain; X[0] = 0</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x0</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">])</span> <span class="c1"># Q[i,n] will be the probability that X[n] = i</span>
+    <span class="n">Q</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="n">x0</span><span class="p">]</span> <span class="c1"># Q[:,0] is the unit vector in direction x0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># we make a fresh copy of P[X[n]] as discreteRV modifies the order of p</span>
+                           <span class="c1"># otherwise, modifying p would also modify the rows of P</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">discreteRV</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">Q</span><span class="p">[:,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;k,kj-&gt;j&#39;</span><span class="p">,</span><span class="n">Q</span><span class="p">[:,</span><span class="n">n</span><span class="p">],</span><span class="n">P</span><span class="p">)</span> <span class="c1"># the Einstein sum indicates how to manipulate indices</span>
+                                                 <span class="c1"># np.einsum(&#39;ik,kj-&gt;i,j&#39;,A,B) is the product of A and B</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Q</span>
+
+<span class="c1"># We create a plotting function that we use later.</span>
+<span class="c1"># We define the plots of values V, fraction of times F, and distribution D, if states are &#39;states&#39;.</span>
+
+<span class="k">def</span> <span class="nf">plotMC</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">initialState</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">states</span><span class="p">,</span><span class="n">whatToPlot</span><span class="p">):</span>  <span class="c1"># whatToPlot = &#39;VFD&#39; if we want everything, or a subset</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">))[</span><span class="n">states</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">initialState</span><span class="p">)]</span>
+    <span class="n">X</span><span class="p">,</span><span class="n">Q</span> <span class="o">=</span> <span class="n">MC</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">X0</span><span class="p">,</span><span class="n">P</span><span class="p">)</span>
+    
+    
+    <span class="k">if</span> <span class="s1">&#39;F&#39;</span> <span class="ow">in</span> <span class="n">whatToPlot</span><span class="p">:</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">M</span><span class="p">,</span><span class="n">N</span><span class="p">])</span> <span class="c1"># F[i,n] will be the fraction of time that X[m] = i for m in 0, ..., n-1</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span> <span class="c1"># compute fraction of time in states</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+                <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+                
+    <span class="n">timeSteps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="s1">&#39;V&#39;</span> <span class="ow">in</span> <span class="n">whatToPlot</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># We specify the size of the figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">M</span><span class="p">),</span> <span class="n">states</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$X[n]$&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Markov Chain $X$ with initial state &quot;</span><span class="o">+</span><span class="n">initialState</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">timeSteps</span><span class="p">,</span><span class="n">X</span><span class="p">);</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s1">&#39;D&#39;</span> <span class="ow">in</span> <span class="n">whatToPlot</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># We specify the size of the figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of $X[n]$ with initial state &quot;</span><span class="o">+</span><span class="n">initialState</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">timeSteps</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;P[X[n] = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;F&#39;</span> <span class="ow">in</span> <span class="n">whatToPlot</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># We specify the size of the figure</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fraction of time in states for $X[n]$ with initial state &quot;</span><span class="o">+</span><span class="n">initialState</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">timeSteps</span><span class="p">,</span> <span class="n">F</span><span class="p">[</span><span class="n">i</span><span class="p">,:],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;State &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>     
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define the widget to select a markov chain that we simulate in the next cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">X0d</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">X0</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">X0</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">X0d</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">X0d</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$X_0$:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span> 
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">X0d</span> <span class="o">=</span> <span class="n">X0d</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "362164306bed4d968584062c65d59ed8"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#We use the plotting function in combination with widgets.</span>
+
+<span class="k">def</span> <span class="nf">IplotMC</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>  <span class="c1"># Interactive plots with initial state w and duration specified by widgets </span>
+    
+    <span class="n">P</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="c1"># the transition matrix of the web search graph</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">,</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">,</span><span class="s1">&#39;E&#39;</span><span class="p">]</span>
+    <span class="n">plotMC</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">X0</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">states</span><span class="p">,</span><span class="s1">&#39;VFD&#39;</span><span class="p">)</span>
+       
+<span class="n">IplotMC</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>   
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;To change the parameter values, go back to the previous cell, </span><span class="se">\n</span><span class="s1"> adjust widgets, and run this cell again&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter1_4_0.png" src="_images/Chapter1_4_0.png" />
+<img alt="_images/Chapter1_4_1.png" src="_images/Chapter1_4_1.png" />
+<img alt="_images/Chapter1_4_2.png" src="_images/Chapter1_4_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>To change the parameter values, go back to the previous cell, 
+ adjust widgets, and run this cell again
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>top figure</strong> shows the random sequence of pages that the reader visits.  One cannot predict this sequence exactly since the reader chooses the next steps randomly.  Thus, the actual sequence will vary from experiment to experiment.</p>
+<p>The <strong>middle figure</strong> shows the fraction of time that the reader visits the different pages.  For instance, it plots the number of times during <span class="math notranslate nohighlight">\(\{0, 1, \ldots, n\}\)</span> that the reader visited pages <span class="math notranslate nohighlight">\(A\)</span> divided by <span class="math notranslate nohighlight">\(n + 1\)</span> (the number of steps).  If this ratio is <span class="math notranslate nohighlight">\(17\%\)</span> for a particular <span class="math notranslate nohighlight">\(n\)</span>, it means that the reader visited page <span class="math notranslate nohighlight">\(A\)</span> <span class="math notranslate nohighlight">\(17\%\)</span> of the time up to step <span class="math notranslate nohighlight">\(n\)</span>.  These fractions are random, since the sequence is random.  However, the middle figure shows that these fractions converge to some positive numbers.  Moreover, as you can test, these limiting fractions do not depend on the initial state, nor on the actual experiment.  Thus, these limits are relevant to any actual sequence.  The larger the fraction, the most “relevant” the page probably is.</p>
+<p>The <strong>bottom figure</strong> plots the probability of being on the different pages as a function of <span class="math notranslate nohighlight">\(n\)</span>.  For instance, if the probability of being on page <span class="math notranslate nohighlight">\(A\)</span> at time step <span class="math notranslate nohighlight">\(n\)</span> is <span class="math notranslate nohighlight">\(0.13\)</span>, this means that if one were to perform a large number of experiments, then about <span class="math notranslate nohighlight">\(13\%\)</span> of them would be on page <span class="math notranslate nohighlight">\(A\)</span> at step <span class="math notranslate nohighlight">\(n\)</span>.  Thus, in contrast with the top and middle figure, the bottom figure plots average values across all possible realizations of the experiment, instead of the values that correspond to one given experiment.  Let <span class="math notranslate nohighlight">\(\pi_n(i) = P(X_n = i)\)</span> and <span class="math notranslate nohighlight">\(\pi_n\)</span> be the row vector with components <span class="math notranslate nohighlight">\(\pi_n(i)\)</span>.  Then one has <span class="math notranslate nohighlight">\(\pi_{n} = \pi_{n-1} P = \pi_0 P^n\)</span> where <span class="math notranslate nohighlight">\(P\)</span> is the matrix of transition probabilities <span class="math notranslate nohighlight">\(P(i,j)\)</span>.</p>
+<p>If you compare the bottom figure and the middle one, you see that
+the fractions of time in the states converge to the same values as the limiting probabilities of being in the states.  Moreover, it turns out that one can calculate this limiting values by solving the balance equations <span class="math notranslate nohighlight">\(\pi = \pi P\)</span>.  These limiting values indicate the relevance of the pages. Hence, with some simple algebra one can compute the relevance of pages. This is the PageRank algorithm.  The actual implementation by Google features a large number of tweaks to improve the relevance attached to specific keywords when you perform a search.</p>
+<p>The fractions of time and <span class="math notranslate nohighlight">\(\pi_n\)</span> converge because the Markov chain is <strong>irreducible</strong> and <strong>aperiodic</strong>.|</p>
+<div class="section" id="figure-1-5">
+<h3>Figure 1.5<a class="headerlink" href="#figure-1-5" title="Permalink to this headline">¶</a></h3>
+<p><img alt="title" src="_images/1-5.pdf" /></p>
+<p>Figure 1.5 shows three different Markov chains.  The code below simulates them and plots the fraction of time in the states.  You select the Markov chain (a), (b), or (c) with the buttons and the number of steps <span class="math notranslate nohighlight">\(N\)</span> with the slider.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">cased</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">case</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">case</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span> <span class="s1">&#39;(c)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span> 
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">cased</span> <span class="o">=</span> <span class="n">cased</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "f6de0f573b0b49faaeaf78efd2523dcd"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">IplotFigure1_5</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">p33</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">][[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="s1">&#39;(b)&#39;</span><span class="p">,</span><span class="s1">&#39;(c)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">case</span><span class="p">)]</span> <span class="c1"># specifies P[3,3] as a function of selected case</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;3&#39;</span><span class="p">]</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mf">0.6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">-</span><span class="n">p33</span><span class="p">,</span><span class="n">p33</span><span class="p">]]</span>
+    <span class="n">plotMC</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">states</span><span class="p">,</span><span class="s1">&#39;VFD&#39;</span><span class="p">)</span>
+        
+<span class="n">IplotFigure1_5</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter1_8_0.png" src="_images/Chapter1_8_0.png" />
+<img alt="_images/Chapter1_8_1.png" src="_images/Chapter1_8_1.png" />
+<img alt="_images/Chapter1_8_2.png" src="_images/Chapter1_8_2.png" />
+</div>
+</div>
+<p>The three Markov chains behave quite differently.  (a) exhibits some periodicity: the state is <span class="math notranslate nohighlight">\(2\)</span> for all the odd steps and the probabilities of being in the states do not converge: the Markov chain (a) is <strong>periodic</strong>;   (b) is more smooth and the probabilities converge: it is <strong>aperiodic</strong>; (c) gets trapped in state <span class="math notranslate nohighlight">\(3\)</span>: it is <strong>not irreducible</strong>.</p>
+<p>Note that for (a), although the probabilities do not converge, the fractions of time converge to limits that do not depend on the experiment nor on the initial state. This is so because the Markov chain is <strong>irreducible</strong>. As in the case of Figure 1.2, one can compute these limits by solving the balance equations.  Thus, fractions of time converge for an irreducible Markov chain even if it is periodic. Also, for any irreducible Markov chain (periodic or not), the balance equations have one and only one solution (that sums to one).</p>
+</div>
+<div class="section" id="figure-1-6">
+<h3>Figure 1.6<a class="headerlink" href="#figure-1-6" title="Permalink to this headline">¶</a></h3>
+<p>In Figure 1.6, one flips a balanced die.  Here, we show a different example: we flip a loaded coin that has probability <span class="math notranslate nohighlight">\(p\)</span> of heads.  We count the fraction of heads after <span class="math notranslate nohighlight">\(n\)</span> flips. You can choose <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;0.9&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "29cbf849260e446fb1f9094517552a51"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SLLN_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">colours</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="s2">&quot;g&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulation&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colours</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;p = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fraction&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fraction of heads after $n$ flips, for $n = 1, \ldots, N$&quot;</span><span class="p">)</span>
+    
+<span class="n">SLLN_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter1_11_0.png" src="_images/Chapter1_11_0.png" />
+</div>
+</div>
+<p>The fraction of heads converges to <span class="math notranslate nohighlight">\(p\)</span>, for any experiment.  This property is a consequence of the <strong>Strong Law of Large Numbers</strong>.  Note that the same property holds for <strong>irreducible</strong> Markov chains, as we saw in the cases of Figure 1.2 and Figure 1.5(a) and Figure 1.5(b).</p>
+<p>You can replace <span class="math notranslate nohighlight">\(np.random.binomial(1,p)\)</span> by <span class="math notranslate nohighlight">\(np.random.uniform(0,2*p)\)</span> in the code above to verify that the convergence is similar for another distribution.</p>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"70215e058cea49748abce1c326a4ee18": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "012a35bfe44548849f9b2670b8a716fc": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "90d2578af98a43218ab7d6469aae0f80": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["A", "B", "C", "D", "E"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "$X_0$:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_70215e058cea49748abce1c326a4ee18", "style": "IPY_MODEL_012a35bfe44548849f9b2670b8a716fc", "tooltips": []}}, "988283ea7dfd43348aae042908ce72d7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3653c9bc09d14ab5a025c2ac253a1a68": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "405e2250a73b4acdb115a5a9ba5d64be": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_988283ea7dfd43348aae042908ce72d7", "style": "IPY_MODEL_3653c9bc09d14ab5a025c2ac253a1a68"}}, "b1bfbd8444aa421bb5e873a8694ad3e6": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "362164306bed4d968584062c65d59ed8": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_90d2578af98a43218ab7d6469aae0f80", "IPY_MODEL_405e2250a73b4acdb115a5a9ba5d64be", "IPY_MODEL_aef855b09f694a568b0086599d83104c"], "layout": "IPY_MODEL_b1bfbd8444aa421bb5e873a8694ad3e6"}}, "cdee8f343a494ce8b18fff72c6de51dd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "aef855b09f694a568b0086599d83104c": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cdee8f343a494ce8b18fff72c6de51dd", "msg_id": "", "outputs": []}}, "f929a31ac8a64f21928af85c1c57dec9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3ec11fdb104943bdb5a4e07082ac084d": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "983b783e253f4f1e90c4efae1349322d": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)", "(c)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_f929a31ac8a64f21928af85c1c57dec9", "style": "IPY_MODEL_3ec11fdb104943bdb5a4e07082ac084d", "tooltips": []}}, "decbac39568f499992c53374ae2672ba": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3dd512bb4edb4c49870365b51e4fc610": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "d62fac9433094e24b7be2fb761f99927": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_decbac39568f499992c53374ae2672ba", "style": "IPY_MODEL_3dd512bb4edb4c49870365b51e4fc610"}}, "f3e05069356d4c5998689e98e6eb75b3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f6de0f573b0b49faaeaf78efd2523dcd": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_983b783e253f4f1e90c4efae1349322d", "IPY_MODEL_d62fac9433094e24b7be2fb761f99927", "IPY_MODEL_fce57938c35143638cb9f6e2de1efc0a"], "layout": "IPY_MODEL_f3e05069356d4c5998689e98e6eb75b3"}}, "70c27a6fa2b64e7db2e1cf55dc6237b8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "fce57938c35143638cb9f6e2de1efc0a": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_70c27a6fa2b64e7db2e1cf55dc6237b8", "msg_id": "", "outputs": []}}, "d0842d71850c4ec6b11896a792fd5b25": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d46fdc7b77944c2391e03c5ea15addae": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b7448776f4c247dea6ecc449498d9051": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "p", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_d0842d71850c4ec6b11896a792fd5b25", "style": "IPY_MODEL_d46fdc7b77944c2391e03c5ea15addae"}}, "48f56e85c4c448338b9c87f668900e60": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "527f3a09a2fb4eaabfa93b25b34858f0": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "54b8c45e745641d4ac60a389f5f2a654": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_48f56e85c4c448338b9c87f668900e60", "style": "IPY_MODEL_527f3a09a2fb4eaabfa93b25b34858f0"}}, "9bed7d2e7ba3408f979bfdbd5a32f61f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "29cbf849260e446fb1f9094517552a51": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_b7448776f4c247dea6ecc449498d9051", "IPY_MODEL_54b8c45e745641d4ac60a389f5f2a654", "IPY_MODEL_330c2239c3a7497facce001e404b9f78"], "layout": "IPY_MODEL_9bed7d2e7ba3408f979bfdbd5a32f61f"}}, "46b6a630888848a184a029cecf0989dd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "330c2239c3a7497facce001e404b9f78": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_46b6a630888848a184a029cecf0989dd", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter0.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter2.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">PageRank B</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplexing A &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multiplexing B" href="Chapter4.html" />
+    <link rel="prev" title="PageRank B" href="Chapter2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter5.html">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter3.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#central-limit-theorem-for-coin-flips">
+   Central Limit Theorem for Coin Flips
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#theorem-clt">
+     Theorem (CLT)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#properties-of-gaussian-random-variables">
+   Properties of Gaussian Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clt-for-i-i-d-random-variables">
+   CLT for i.i.d. Random Variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#confidence-intervals">
+   Confidence Intervals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coin-flips">
+     Coin Flips
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#i-i-d-random-variables">
+     I.i.d. Random Variables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polling">
+   Polling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connection-multiplexing">
+   Connection Multiplexing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-estimate">
+     First Estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-estimate">
+     Second Estimate
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#third-estimate">
+     Third Estimate
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-access">
+   Multiple Access
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aloha">
+     ALOHA
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#backoff-slots">
+     Backoff Slots
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rts-cts-aloha">
+       RTS/CTS ALOHA
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#event-driven-simulation">
+     Event-Driven Simulation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="multiplexing-a">
+<h1>Multiplexing A<a class="headerlink" href="#multiplexing-a" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>This chapter explores the statistical sharing of resources.  The main tool is the central limit theorem that enables the calculation of confidence intervals.  Along the way, we discuss Gaussian random variables.</p>
+<div class="section" id="central-limit-theorem-for-coin-flips">
+<h2>Central Limit Theorem for Coin Flips<a class="headerlink" href="#central-limit-theorem-for-coin-flips" title="Permalink to this headline">¶</a></h2>
+<p>You flip a biased coin <span class="math notranslate nohighlight">\(N\)</span> times.  The probability of heads is <span class="math notranslate nohighlight">\(p\)</span>.  Let <span class="math notranslate nohighlight">\(X(N)\)</span> be the number of heads.  Then,</p>
+<div class="math notranslate nohighlight">
+\[P(X(N) = n) = {N \choose n} p^n (1 - p)^{N-n}, n = 0, 1, \ldots, N. \tag{3.1}\]</div>
+<p>The main result is as follows:</p>
+<div class="section" id="theorem-clt">
+<h3>Theorem (CLT)<a class="headerlink" href="#theorem-clt" title="Permalink to this headline">¶</a></h3>
+<p>One has</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(N) - Np}{\sqrt{Np(1-p)}} \Rightarrow {\cal N}(0,1) \mbox{ as } N \to \infty. \tag{3.2}\]</div>
+<p>This result states that, when <span class="math notranslate nohighlight">\(N\)</span> is large, the random variable on the left of (3.2) is almost distributed like a <span class="math notranslate nohighlight">\({\cal N}(0,1)\)</span> random variable <span class="math notranslate nohighlight">\(X\)</span>.  By definition, <span class="math notranslate nohighlight">\(X =_D {\cal N}(0,1)\)</span> if its p.d.f. is <span class="math notranslate nohighlight">\(f(x)\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{\sqrt{2 \pi}} \exp\{- \frac{x^2}{2}\}. \tag{3.3}\]</div>
+<p>The graph below illustrates that result. But firrst, we display the widgets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">px</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">px</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;0.9&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">px</span> <span class="o">=</span> <span class="n">px</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "259c7bf1d7ea452fb404fd4c4800ca70"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bino_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="n">i</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">i</span> 
+        <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">((</span><span class="n">i</span> <span class="o">-</span> <span class="n">N</span><span class="o">*</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="p">))</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+        
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binomial p.m.f. vs. Gaussian p.d.f&#39;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Binomial Distribution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Gaussian pdf&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">bino_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_4_0.png" src="_images/Chapter3_4_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="properties-of-gaussian-random-variables">
+<h2>Properties of Gaussian Random Variables<a class="headerlink" href="#properties-of-gaussian-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>We use frequently the following values:</p>
+<p><strong>Fact 1:</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(X =_D {\cal N}(0,1)\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[ P(|X| &gt; 1.65) \approx 10\% \tag{3.4}\]</div>
+<div class="math notranslate nohighlight">
+\[P(|X| &gt; 2) \approx 5\% \tag{3.5}.\]</div>
+<p>The following table gives more values of <span class="math notranslate nohighlight">\(g(x) = P(|X| &gt; x)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">Values</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">k</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">COLUMNS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x = &#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">Values</span><span class="p">:</span>
+        <span class="n">COLUMNS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">COLUMNS</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;x = &#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;P(SG &gt; x) = &#39;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">Values</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">+</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">blankIndex</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># prepare blank index</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">blankIndex</span> <span class="c1"># set index to blank index</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c1"># print DataFrame</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          x =   0.0       0.1      0.2       0.3       0.4       0.5
+  P(SG &gt; x) =   0.5  0.460172  0.42074  0.382089  0.344578  0.308538
+
+          x =        0.6       0.7       0.8      0.9       1.0       1.1
+  P(SG &gt; x) =   0.274253  0.241964  0.211855  0.18406  0.158655  0.135666
+
+          x =       1.2     1.3       1.4       1.5       1.6       1.7
+  P(SG &gt; x) =   0.11507  0.0968  0.080757  0.066807  0.054799  0.044565
+
+          x =       1.8       1.9      2.0       2.1       2.2       2.3
+  P(SG &gt; x) =   0.03593  0.028717  0.02275  0.017864  0.013903  0.010724
+
+          x =        2.4      2.5       2.6       2.7       2.8       2.9
+  P(SG &gt; x) =   0.008198  0.00621  0.004661  0.003467  0.002555  0.001866
+
+          x =       3.0       3.1       3.2       3.3       3.4       3.5
+  P(SG &gt; x) =   0.00135  0.000968  0.000687  0.000483  0.000337  0.000233
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Definition:</strong> <span class="math notranslate nohighlight">\({\cal N}(\mu, \sigma^2)\)</span></p>
+<p>The random variable <span class="math notranslate nohighlight">\(Y\)</span> is said to be Gaussian with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, which we write as <span class="math notranslate nohighlight">\(Y =_D {\cal N}(\mu, \sigma^2)\)</span>, if we can write <span class="math notranslate nohighlight">\(Y = \mu + \sigma X\)</span> where <span class="math notranslate nohighlight">\(X =_D {\cal N}(0, 1)\)</span>.  Equivalently, the pdf of <span class="math notranslate nohighlight">\(Y\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[f_Y(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\{- \frac{(x - \mu)^2}{2 \sigma^2}\}. \tag{3.6}\]</div>
+<p>Equivalently, <span class="math notranslate nohighlight">\(Y\)</span> is such that</p>
+<div class="math notranslate nohighlight">
+\[E(\exp\{i u Y\}) = \exp\{i u \mu - \frac{1}{2} u^2 \sigma^2\}. \tag{3.7}\]</div>
+<p><strong>Theorem: Sum of Independent Gaussians</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(X_i =_D {\cal N}(\mu_i, \sigma_i^2)\)</span> for <span class="math notranslate nohighlight">\(i = 1, 2\)</span> be independent.  Then,</p>
+<div class="math notranslate nohighlight">
+\[X_1 + X_2 =_D {\cal N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2). \tag{3.8}\]</div>
+</div>
+<div class="section" id="clt-for-i-i-d-random-variables">
+<h2>CLT for i.i.d. Random Variables<a class="headerlink" href="#clt-for-i-i-d-random-variables" title="Permalink to this headline">¶</a></h2>
+<p><strong>Theorem (CLT)</strong>
+Let <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots\)</span> be independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. Let also <span class="math notranslate nohighlight">\(X(N) = Y_1 + \cdots + Y_N\)</span>.  Then</p>
+<div class="math notranslate nohighlight">
+\[\frac{X(N) - N \mu}{\sigma\sqrt{N}} \Rightarrow {\cal N}(0,1). \tag{3.9}\]</div>
+<p>The book sketches a proof. The method is to calculate <span class="math notranslate nohighlight">\(E(\exp\{iuZ(N)\})\)</span> where <span class="math notranslate nohighlight">\(Z(N)\)</span> is the left-hand side of (3.8) and to show that this expression converges <span class="math notranslate nohighlight">\(\exp\{- u^2/2\}\)</span>.</p>
+</div>
+<div class="section" id="confidence-intervals">
+<h2>Confidence Intervals<a class="headerlink" href="#confidence-intervals" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(Y_1, Y_2, \ldots\)</span> be as in the theorem above.  Using (3.4) we find that, for <span class="math notranslate nohighlight">\(N \gg 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[P(|\frac{X(N) - N\mu}{\sigma \sqrt{N}}| &gt; 2) \approx 5\%. \]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight">
+\[P(\mu \in [\frac{X(N)}{N} - \frac{2\sigma}{\sqrt{N}}, \frac{X(N)}{N} + \frac{2\sigma}{\sqrt{N}} ]) \approx 95\%. \tag{3.10}\]</div>
+<p>One writes that</p>
+<div class="math notranslate nohighlight">
+\[ [\frac{X(N)}{N} - \frac{2\sigma}{\sqrt{N}}, \frac{X(N)}{N} + \frac{2\sigma}{\sqrt{N}} ] \mbox{ is a } 95\% \mbox{ confidence interval for } \mu. \tag{3.11}\]</div>
+<p>In many applications, one wishes to estimate <span class="math notranslate nohighlight">\(\mu\)</span> and one uses <span class="math notranslate nohighlight">\(X(N)/N\)</span> as an estimate.  Then (3.11) provides a confidence interval for <span class="math notranslate nohighlight">\(\mu\)</span>.  In many cases, one does not know <span class="math notranslate nohighlight">\(\sigma\)</span>.  There are two possible ways for deriving a confidence interval in such cases: either using an upper bound for <span class="math notranslate nohighlight">\(\sigma\)</span> or replacing <span class="math notranslate nohighlight">\(\sigma^2\)</span> by the empirical variance <span class="math notranslate nohighlight">\(\sigma_N^2\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[\sigma_N^2 := \frac{1}{N-1} \sum_{n=1}^N Y_n^2 - (\frac{X(N)}{N})^2. \tag{3.12}\]</div>
+<div class="section" id="coin-flips">
+<h3>Coin Flips<a class="headerlink" href="#coin-flips" title="Permalink to this headline">¶</a></h3>
+<p>The following plot illustrates that result for coin flips.  In that case, one has <span class="math notranslate nohighlight">\(\sigma = \sqrt{p(1-p)} \leq 0.5\)</span>.  Hence, replacing <span class="math notranslate nohighlight">\(\sigma\)</span> by <span class="math notranslate nohighlight">\(0.5\)</span> in (3.11), we find that</p>
+<div class="math notranslate nohighlight">
+\[[\frac{X(N)}{N} - \frac{1}{\sqrt{N}}, \frac{X(N)}{N} + \frac{1}{\sqrt{N}} ] \mbox{ is a } 95\% \mbox{ confidence interval for } p. \tag{3.13}\]</div>
+<p>We simulate the coin flips and plot <span class="math notranslate nohighlight">\(X(n)/n \pm 1/\sqrt{n}.\)</span>  For comparison, we also plot <span class="math notranslate nohighlight">\(X(n)/n \pm 2 \sigma_n/\sqrt{n}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">p</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">pd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">,</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="s1">&#39;0.6&#39;</span><span class="p">,</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span><span class="s1">&#39;0.9&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">pd</span> <span class="o">=</span> <span class="n">pd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "bb52d0abfd29479b9b3508a0d3697293"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CLT1_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">sMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="c1"># sample mean</span>
+    <span class="n">sVar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># sample variance</span>
+    <span class="n">Dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># std. dev.</span>
+    <span class="n">sDev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># sample std. dev.</span>
+    <span class="n">Mean</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">sMean</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">sMean</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">Dev</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sDev</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confidence interval for $p$&quot;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X(n)/n$&quot;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">+</span> <span class="n">Dev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X(n)/n + 1/\sqrt</span><span class="si">{n}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">-</span> <span class="n">Dev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X(n)/n - 1/\sqrt</span><span class="si">{n}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">+</span> <span class="n">sDev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X(n)/n + 2 \sigma_n/\sqrt</span><span class="si">{n}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">-</span> <span class="n">sDev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$X(n)/n - 2 \sigma_n/\sqrt</span><span class="si">{n}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+<span class="n">CLT1_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">p</span><span class="p">)</span> 
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_11_0.png" src="_images/Chapter3_11_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="i-i-d-random-variables">
+<h3>I.i.d. Random Variables<a class="headerlink" href="#i-i-d-random-variables" title="Permalink to this headline">¶</a></h3>
+<p>Next, we consider random variables <span class="math notranslate nohighlight">\(Y_m\)</span> that are i.i.d. In case (a), they are <span class="math notranslate nohighlight">\(U[0, 1]\)</span>; in case (b), they are <span class="math notranslate nohighlight">\(U\{1, 2, \ldots, 6\}\)</span>; in case (c), they are <span class="math notranslate nohighlight">\(Expo(1)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "6d10ee314c864970a9b0bb48cd8b6d88"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CLT2_demo</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">sMean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># sample mean</span>
+    <span class="n">sVar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># sample variance</span>
+    <span class="n">sDev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># sample std. dev.</span>
+    <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(b)&#39;</span><span class="p">:</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="mf">3.5</span>
+    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(c)&#39;</span><span class="p">:</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">Mean</span> <span class="o">=</span> <span class="n">mu</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(b)&#39;</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        
+        <span class="n">sMean</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">sMean</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">sMean</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sDev</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">sVar</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confidence interval for $\mu$ in case &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">case</span><span class="p">))</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;SM = sample mean&quot;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Mean</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sDev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;SM + 2 SD/sqrt(n)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sMean</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">sDev</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;SM - 2 SD/sqrt(n)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">d</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+<span class="n">CLT2_demo</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_14_0.png" src="_images/Chapter3_14_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="polling">
+<h2>Polling<a class="headerlink" href="#polling" title="Permalink to this headline">¶</a></h2>
+<p>How many coins do we have to flip in order to estimate <span class="math notranslate nohighlight">\(p\)</span> within <span class="math notranslate nohighlight">\(3\%\)</span> with <span class="math notranslate nohighlight">\(95\%\)</span> confidence?  That is, how large should <span class="math notranslate nohighlight">\(n\)</span> be for the confidence interval (3.12) to be <span class="math notranslate nohighlight">\(\pm 3\%\)</span>? One needs <span class="math notranslate nohighlight">\(1/\sqrt{n} = 3\%\)</span>, so that <span class="math notranslate nohighlight">\(n = (1/0.03)^2 = 1112.\)</span></p>
+<p>As a standard application, assume that the potential voters in the next presidential election choose candidate <span class="math notranslate nohighlight">\(A\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> and candidate <span class="math notranslate nohighlight">\(B\)</span> otherwise.  By polling <span class="math notranslate nohighlight">\(1112\)</span> people, one can estimate <span class="math notranslate nohighlight">\(p\)</span> with a margin of error of <span class="math notranslate nohighlight">\(3\%\)</span>, with <span class="math notranslate nohighlight">\(95\%\)</span> confidence.</p>
+</div>
+<div class="section" id="connection-multiplexing">
+<h2>Connection Multiplexing<a class="headerlink" href="#connection-multiplexing" title="Permalink to this headline">¶</a></h2>
+<p>Imagine <span class="math notranslate nohighlight">\(N\)</span> Internet users in one office building.  They share the building’s Internet access link that has rate <span class="math notranslate nohighlight">\(1\)</span>Gbps <span class="math notranslate nohighlight">\(= 10^9\)</span>bps.  How large can <span class="math notranslate nohighlight">\(N\)</span> be if we want every active user to have an acess rate equal to <span class="math notranslate nohighlight">\(10\)</span>Mbps <span class="math notranslate nohighlight">\(= 10^7\)</span>bps?  (One assumes that the active users get an equal share of the access link.)</p>
+<div class="section" id="first-estimate">
+<h3>First Estimate<a class="headerlink" href="#first-estimate" title="Permalink to this headline">¶</a></h3>
+<p>If the <span class="math notranslate nohighlight">\(N\)</span> users are all active, we need <span class="math notranslate nohighlight">\(N \times 10^7 \leq 10^9\)</span>, i.e., <span class="math notranslate nohighlight">\(N \leq 100\)</span>.</p>
+</div>
+<div class="section" id="second-estimate">
+<h3>Second Estimate<a class="headerlink" href="#second-estimate" title="Permalink to this headline">¶</a></h3>
+<p>However, users are not active all the time.  Say that a user is active <span class="math notranslate nohighlight">\(10\%\)</span> of the time.  Then we expect to need <span class="math notranslate nohighlight">\(0.1 \times N \times 10^7 \leq 10^9\)</span>, i.e., <span class="math notranslate nohighlight">\(N \leq 1000\)</span>.</p>
+</div>
+<div class="section" id="third-estimate">
+<h3>Third Estimate<a class="headerlink" href="#third-estimate" title="Permalink to this headline">¶</a></h3>
+<p>We suspect that the calculation above is a bit optimistic.  Indeed, it assumes that exactly <span class="math notranslate nohighlight">\(10\%\)</span> of the users are active all the time.  What if more than <span class="math notranslate nohighlight">\(10\%\)</span> of the users happen to be active at the same time?  Say that the users are active independently with probability <span class="math notranslate nohighlight">\(p = 0.1\)</span>.  Using (3.1) and (3.4) and the symmetry of the pdf (3.2), we find that</p>
+<div class="math notranslate nohighlight">
+\[P(\frac{X(N) - Np}{\sqrt{Np(1-p)}} \geq 2) \approx \frac{5\%}{2} = 2.5\%.\]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight">
+\[P(X(N) &gt; Np + 2 \sqrt{Np(1 - p)}) \approx 2.5\%.\]</div>
+<p>Thus, if we choose <span class="math notranslate nohighlight">\(N\)</span> so that <span class="math notranslate nohighlight">\((Np + 2 \sqrt{Np(1 - p)})10^7 \leq 10^9\)</span>, then we know that <span class="math notranslate nohighlight">\(P(10^7 X(N) \geq 10^9) \approx 2.5\%\)</span>, so that the users have access to <span class="math notranslate nohighlight">\(10\)</span>Mbps at least <span class="math notranslate nohighlight">\(97.5\%\)</span> of the time.  With <span class="math notranslate nohighlight">\(p = 0.1\)</span>, the inequality becomes <span class="math notranslate nohighlight">\(0.1N + 0.6 \sqrt{N} \leq 100\)</span>.  Equivalently, <span class="math notranslate nohighlight">\(N \leq 828\)</span>.</p>
+</div>
+</div>
+<div class="section" id="multiple-access">
+<h2>Multiple Access<a class="headerlink" href="#multiple-access" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aloha">
+<h3>ALOHA<a class="headerlink" href="#aloha" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Aloha</strong> protocol is a randomized multiple acess scheme that radios can use to share one channel.  In its basic form, time is divided into slots whose length suffices to transmit a packet.  There are <span class="math notranslate nohighlight">\(N\)</span> radios.  In each time slot, every radio transmits independently with probability <span class="math notranslate nohighlight">\(p\)</span>.  Thus, the number <span class="math notranslate nohighlight">\(X\)</span> of radios that transmit
+in one time slot is such that <span class="math notranslate nohighlight">\(X =_D B(N,p)\)</span>.  A time slot is wasted unless exactly one radio transmits.  Thus, the probability of success is <span class="math notranslate nohighlight">\(P(X = 1) = Np(1 - p)^{N-1}\)</span>.  This probability is maximized when <span class="math notranslate nohighlight">\(p = 1/N\)</span>, in which case one has <span class="math notranslate nohighlight">\(P(X = 1) = (1 - 1/N)^{N-1} \approx 1/e \approx 36\%.\)</span></p>
+<p>Here is a plot of <span class="math notranslate nohighlight">\(P(X = 1)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "28fbd2f4d344448d962a5dd9ef5c6a91"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CSMA1_demo</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">PSuccess</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">oneOverE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">pValues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="n">M</span>
+        <span class="n">pValues</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">PSuccess</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pValues</span><span class="p">,</span><span class="n">PSuccess</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Probability of success&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pValues</span><span class="p">,</span><span class="n">oneOverE</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;1/e&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Success Probability&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$p$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Success Probability in Aloha Protocol&quot;</span><span class="p">)</span>
+
+<span class="n">CSMA1_demo</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_19_0.png" src="_images/Chapter3_19_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="backoff-slots">
+<h3>Backoff Slots<a class="headerlink" href="#backoff-slots" title="Permalink to this headline">¶</a></h3>
+<p>In the basic Aloha protocol, recall that the nodes transmit independently with probability <span class="math notranslate nohighlight">\(p\)</span> in each time slot.  Here, we consider a small variation of the protocol.  Time is divided into small slots that are long enough so that if on node transmits first in a slot, the other nodes hear that transmission and do not try to transmit until the first node has finished sending its packet, which takes <span class="math notranslate nohighlight">\(M\)</span> slots.</p>
+<p>In this case, there may be a number of idle slots followed by a first non-idle one.  Let <span class="math notranslate nohighlight">\(X\)</span> be the number of transmission in a slot.  Thus, <span class="math notranslate nohighlight">\(X = B(N,p)\)</span> where there are <span class="math notranslate nohighlight">\(N\)</span> active nodes. The probability that a slot is not idle is <span class="math notranslate nohighlight">\(\alpha := P(X &gt; 0) = 1 - P(X = 0) = 1 - (1 - p)^N\)</span>.  The probability that a non-idle slot is occupied by a single transmission is</p>
+<div class="math notranslate nohighlight">
+\[P[X = 1 | X &gt; 0] = P(X = 1)/P(X &gt; 0) = Np(1-p)^{N-1}/\alpha =: \beta/\alpha.\]</div>
+<p>The average number of slots until the first nonempty one is <span class="math notranslate nohighlight">\(1/\alpha\)</span>.  Thus, on average, there are <span class="math notranslate nohighlight">\(1/\alpha - 1\)</span> idle slots, followed by <span class="math notranslate nohighlight">\(M\)</span> transmission slots with probability <span class="math notranslate nohighlight">\(\beta/\alpha\)</span> or <span class="math notranslate nohighlight">\(M\)</span> wasted slots with probability <span class="math notranslate nohighlight">\(1 - \beta/\alpha\)</span> because of a collision.  The average duration of this cycle is <span class="math notranslate nohighlight">\(1/\alpha - 1 + M\)</span>.  Accordingly, the fraction of time that the node uses to transmit successfully is given by</p>
+<div class="math notranslate nohighlight">
+\[\eta = \frac{M \beta/\alpha}{1/\alpha - 1 + M} = \frac{M \beta}{(M-1) \alpha + 1}.\]</div>
+<p>The code below plots the value of <span class="math notranslate nohighlight">\(\eta\)</span> as a function of <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Md</span><span class="p">,</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">M</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">M</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Md</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+    
+<span class="n">Md</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="s1">&#39;60&#39;</span><span class="p">,</span><span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;80&#39;</span><span class="p">,</span><span class="s1">&#39;90&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;13&#39;</span><span class="p">,</span><span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Md</span><span class="o">=</span><span class="n">Md</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "32802f38e79949d599d395f49f412a4e"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CSMA3_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="n">S</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">N</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="o">*</span><span class="n">beta</span><span class="o">/</span><span class="p">((</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">alpha</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">maxb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">pb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">S</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$N = 5; $&quot;</span> <span class="o">+</span> <span class="s2">&quot;Max = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">maxb</span> + &quot;; p* = &quot; + &quot;%0.2f&quot;%pb)
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Success Probability&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$p$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Success Probability in Aloha Protocol with Contention Slots&quot;</span><span class="p">)</span>
+    
+<span class="n">CSMA3_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>         
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_22_0.png" src="_images/Chapter3_22_0.png" />
+</div>
+</div>
+<p>The graph shows that the efficiency of this protocol is close to <span class="math notranslate nohighlight">\(80\%\)</span>, much larger than the efficiency <span class="math notranslate nohighlight">\(1/e \approx 36\%\)</span> of the basic protocol.  What is the basic cause of this increase in efficiency?  In the basic scheme, a cycle is successful if exactly one radio transmits.  In this scheme, a cycle is successful if the first nonempty contention slot is used by a single radio.  This latter probability can be made close to one if the probability of transmitting in one slot is very small.  However, the tradeoff is that this increases the number of idle contention slots before the first transmission.</p>
+<div class="section" id="rts-cts-aloha">
+<h4>RTS/CTS ALOHA<a class="headerlink" href="#rts-cts-aloha" title="Permalink to this headline">¶</a></h4>
+<p>In the basic Aloha protocol, a transmission slot is wasted when two or more radios transmit.  A more efficient protocol uses a request to send (RTS) and clear to send (CTS) mechanism that operates as follows.  Time is divided into one contention slots, one acknowledgment slot, then <span class="math notranslate nohighlight">\(M\)</span> transmission slots.  During the contention slot, the <span class="math notranslate nohighlight">\(N\)</span> active radios transmit independently an RTS with probability <span class="math notranslate nohighlight">\(p\)</span> that indicate the ID of their intended destination.  If a radio was successful in marking a reservation, the radio with the ID indicated in the reservation acknowledges the request by sending a CTS. In that case, the successful radio transmits during the next <span class="math notranslate nohighlight">\(M\)</span> slots.  If no radio is acknowledged, the process restarts. The figure below illustrates the operations.</p>
+<p><img alt="title" src="_images/CSMA2.pdf" /></p>
+<p>In this figure, during the first slot, one radio is successful in making a reservation for detination <span class="math notranslate nohighlight">\(B\)</span>, i.e., it is alone transmitting a reservation.  During the next slot, radio <span class="math notranslate nohighlight">\(B\)</span> acknowledges the reservation.  Durning the next <span class="math notranslate nohighlight">\(M\)</span> slots, all the radios then listen to the channel, except for the successful radio that transmits its packet.  At the end of that transmission, when the channel is idle again, the process repeats. However, it turns out that no station makes a reservation during the next slot, no radio sends an acknowledgment.  After this second idle slot, the process repeats but this time more than one radio attempts to make a reservation. Consequently, no radio sends an acknowledgmment after that collision.</p>
+<p>With probability <span class="math notranslate nohighlight">\(\alpha = Np(1-p)^{N-1}\)</span>, the contention slot is successful. In that case, there are <span class="math notranslate nohighlight">\(2 + M\)</span> slots of which <span class="math notranslate nohighlight">\(M\)</span> are occupied with transmissions.  With probability <span class="math notranslate nohighlight">\(1 - \alpha\)</span> there are <span class="math notranslate nohighlight">\(2\)</span> wasted slots.
+Thus, the fraction of useful slots is</p>
+<div class="math notranslate nohighlight">
+\[\eta := \frac{M \alpha}{2 + M \alpha}.\]</div>
+<p>Ideally, <span class="math notranslate nohighlight">\(p = 1/N\)</span>, so that <span class="math notranslate nohighlight">\(\alpha \approx 1/e\)</span>.  In that case, <span class="math notranslate nohighlight">\(\eta \approx M/(5.6 + M)\)</span>.  If <span class="math notranslate nohighlight">\(M = 40\)</span>, then <span class="math notranslate nohighlight">\(\eta \approx 88\%\)</span>.  If <span class="math notranslate nohighlight">\(N = 100,\)</span> then <span class="math notranslate nohighlight">\(\eta \approx 95\%\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(p\)</span> is not optimized, <span class="math notranslate nohighlight">\(\alpha &lt; 1/e\)</span> and <span class="math notranslate nohighlight">\(\eta\)</span> is smaller.  Here is a plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Md</span><span class="p">,</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">M</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">M</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Md</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+    
+<span class="n">Md</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="s1">&#39;60&#39;</span><span class="p">,</span><span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;80&#39;</span><span class="p">,</span><span class="s1">&#39;90&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">,</span><span class="s1">&#39;13&#39;</span><span class="p">,</span><span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="s1">&#39;18&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Md</span><span class="o">=</span><span class="n">Md</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "f1ff75f0eb094f32b427ed54db9616c3"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CSMA2_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="n">S</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">N</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="o">/</span><span class="p">(</span><span class="n">M</span> <span class="o">+</span> <span class="mi">2</span><span class="o">/</span><span class="n">alpha</span><span class="p">)</span> 
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">maxb</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">pb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">S</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$N = 5; $&quot;</span> <span class="o">+</span> <span class="s2">&quot;Max = &quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">maxb</span> + &quot;; p* = &quot; + &quot;%0.2f&quot;%pb)
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Success Probability&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$p$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Success Probability in Aloha Protocol with RTS/CTS&quot;</span><span class="p">)</span>
+    
+<span class="n">CSMA2_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_26_0.png" src="_images/Chapter3_26_0.png" />
+</div>
+</div>
+<p>This example shows that the RTS/CTS mechanism improves the efficiency of Aloha. Moreover, it shows that choosing <span class="math notranslate nohighlight">\(p = 0.1\)</span> is reasonable as long as the number <span class="math notranslate nohighlight">\(N\)</span> of active radios is not larger than <span class="math notranslate nohighlight">\(20\)</span>.  The efficiency of this scheme is similar to that of the contention slots mechanism.  However, the RTS/CTS has another benefit: by listening to the CTS message, the radios close to the intended destination know they should not transmit until the destination acknowledges the reception of the packet. This is useful, because some of those radios may hear the destination but not the source of the packet.</p>
+</div>
+</div>
+<div class="section" id="event-driven-simulation">
+<h3>Event-Driven Simulation<a class="headerlink" href="#event-driven-simulation" title="Permalink to this headline">¶</a></h3>
+<p>In the next cell we simulate a buffer that serves customers with i.i.d. <span class="math notranslate nohighlight">\(U[5,25]\)</span> service times and i.i.d. <span class="math notranslate nohighlight">\(U[3,A]\)</span> interarrival times.  The point of the example is to illustrate <strong>event-driven simulation</strong> in Python.  An event is either an arrival or a service completion.  There is a source and a queue.  A service completion decreases the number of customers and generates a new service completion time.  Such a queue is called a GI/GI/1 queue because the interarrival times and service times are i.i.d. and there is a single server.</p>
+<p>The point of event-driven simulation is to jump from event to event and not waste time simulating steps where nothing happens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Ad</span><span class="p">,</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">A</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Ad</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+    
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="s1">&#39;60&#39;</span><span class="p">,</span><span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;80&#39;</span><span class="p">,</span><span class="s1">&#39;90&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Ad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;16&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span><span class="s1">&#39;24&#39;</span><span class="p">,</span><span class="s1">&#39;26&#39;</span><span class="p">,</span><span class="s1">&#39;28&#39;</span><span class="p">,</span><span class="s1">&#39;30&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Ad</span><span class="o">=</span><span class="n">Ad</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "0013a6ce0b2e4c78a8f96b4d31190655"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">queue_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">A</span><span class="p">):</span> <span class="c1"># N is the number of events, A is the parameter in U[0,A] interarrival times</span>
+    <span class="n">queue_length</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># = number of customers</span>
+    <span class="n">service_completion_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># next service completion time</span>
+    <span class="n">next_arrival_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># = time  until next arrival</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># keeps track of the real time</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># list queue lengths</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># list times when the queue length changes</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">queue_length</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="p">(</span><span class="n">queue_length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">service_completion_time</span> <span class="o">&gt;</span> <span class="n">next_arrival_time</span><span class="p">):</span> <span class="c1"># arrival            </span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">next_arrival_time</span> <span class="c1"># arrival into queue at &#39;time&#39;</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
+            <span class="n">next_arrival_time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">A</span><span class="p">)</span> <span class="c1"># next arrival time</span>
+            <span class="n">queue_length</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">Q</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">queue_length</span>            
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># departure</span>
+            <span class="n">time</span> <span class="o">=</span> <span class="n">service_completion_time</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span>
+            <span class="n">queue_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">queue_length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">service_completion_time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+            <span class="n">Q</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">queue_length</span>
+            
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Queue length&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Backlog of GI/GI/1 queue&quot;</span><span class="p">)</span>
+    
+<span class="n">queue_demo</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>           
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter3_30_0.png" src="_images/Chapter3_30_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"72163a4dd7404729a9aca8729da78c23": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ef1a32ace2514513964ba932c78aa867": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "51c557cfabeb4dc5ba6fd23d34f1d66e": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "p", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_72163a4dd7404729a9aca8729da78c23", "style": "IPY_MODEL_ef1a32ace2514513964ba932c78aa867"}}, "164c3d7467b649ca9862ca319dfb5965": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7e1ef9ad400d4756bc6a75dab6f6d1d3": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a5e5accef11e4435b02d6bda57b802e8": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_164c3d7467b649ca9862ca319dfb5965", "style": "IPY_MODEL_7e1ef9ad400d4756bc6a75dab6f6d1d3"}}, "38e8e350643e4fe28e1bcf562c035564": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "259c7bf1d7ea452fb404fd4c4800ca70": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_51c557cfabeb4dc5ba6fd23d34f1d66e", "IPY_MODEL_a5e5accef11e4435b02d6bda57b802e8", "IPY_MODEL_65d652ee15044f5ba0fbf50ea30a6c7a"], "layout": "IPY_MODEL_38e8e350643e4fe28e1bcf562c035564"}}, "47801651e93c4631a2c28deae9ebfb31": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "65d652ee15044f5ba0fbf50ea30a6c7a": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_47801651e93c4631a2c28deae9ebfb31", "msg_id": "", "outputs": []}}, "47741fc62dfe4fe0b85aed5cccf77aad": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "26dd41abb32645e4b74692a0b6fb87a6": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "1126beab406e4a929c52fd743383f62e": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "p", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_47741fc62dfe4fe0b85aed5cccf77aad", "style": "IPY_MODEL_26dd41abb32645e4b74692a0b6fb87a6"}}, "136c9fe413d6445b972dfc7f7dc6289f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "13f260f7716846aeb1fb882263718234": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a6fc77f491fe4d4fb098577f54242b8a": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_136c9fe413d6445b972dfc7f7dc6289f", "style": "IPY_MODEL_13f260f7716846aeb1fb882263718234"}}, "e6cac8cafa384bb194726a90204f1148": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bb52d0abfd29479b9b3508a0d3697293": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_1126beab406e4a929c52fd743383f62e", "IPY_MODEL_a6fc77f491fe4d4fb098577f54242b8a", "IPY_MODEL_a0e452920a33496092147769fe46b14e"], "layout": "IPY_MODEL_e6cac8cafa384bb194726a90204f1148"}}, "cb2646e7d3f9461c94a4ae54a6c91314": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a0e452920a33496092147769fe46b14e": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_cb2646e7d3f9461c94a4ae54a6c91314", "msg_id": "", "outputs": []}}, "85d86f7973d34b54858ba2502b6ac95b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6620dcba77fd485985f6a31283103702": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "03e89547ff354f339d42bd082c581e62": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_85d86f7973d34b54858ba2502b6ac95b", "style": "IPY_MODEL_6620dcba77fd485985f6a31283103702"}}, "b9eb663afb6846f4b782a1ab18a42db2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "48003de73d5e449cabca58099730c4e6": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "76472c21d8d745e9b0b5266bd3556859": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_b9eb663afb6846f4b782a1ab18a42db2", "style": "IPY_MODEL_48003de73d5e449cabca58099730c4e6", "tooltips": []}}, "829d90e338da444db42372d9ae3e2d27": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "6d10ee314c864970a9b0bb48cd8b6d88": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_03e89547ff354f339d42bd082c581e62", "IPY_MODEL_76472c21d8d745e9b0b5266bd3556859", "IPY_MODEL_65dc6bbe2b9945719e3701dd8e763aa4"], "layout": "IPY_MODEL_829d90e338da444db42372d9ae3e2d27"}}, "7bdb9b92a4c445619e54d0ea8520c9eb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "65dc6bbe2b9945719e3701dd8e763aa4": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7bdb9b92a4c445619e54d0ea8520c9eb", "msg_id": "", "outputs": []}}, "7fa88b51fe8541339fbb8f4152e1c566": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c9adeea9df394aa884e7915a82d70bcd": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "98b8624915f64bb286abba45752d70fe": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_7fa88b51fe8541339fbb8f4152e1c566", "style": "IPY_MODEL_c9adeea9df394aa884e7915a82d70bcd"}}, "21a8ad40a4054ce1ab7faf7f88772c31": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "28fbd2f4d344448d962a5dd9ef5c6a91": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_98b8624915f64bb286abba45752d70fe", "IPY_MODEL_cfc65c87a249453097199a9cf1abf13d"], "layout": "IPY_MODEL_21a8ad40a4054ce1ab7faf7f88772c31"}}, "8b9a96fc0ac344c9a673f8414bedc3f9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cfc65c87a249453097199a9cf1abf13d": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_8b9a96fc0ac344c9a673f8414bedc3f9", "msg_id": "", "outputs": []}}, "389a4154123b4ec89f3f28483307e399": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8898b749bebd48a3b8c28894ed4b4176": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "80e518f8b8714591b86cde22eadc58a8": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "M", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_389a4154123b4ec89f3f28483307e399", "style": "IPY_MODEL_8898b749bebd48a3b8c28894ed4b4176"}}, "f59e36ae2c5f4b24872ebfea95df8ed3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c4a77408424d49cf9d136b21bbb35870": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3c30777ad88a43fb99394feba6488ad1": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["1", "3", "5", "7", "10", "13", "15", "18", "20"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_f59e36ae2c5f4b24872ebfea95df8ed3", "style": "IPY_MODEL_c4a77408424d49cf9d136b21bbb35870"}}, "953186f5b32146a39543800f41d812af": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "32802f38e79949d599d395f49f412a4e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_80e518f8b8714591b86cde22eadc58a8", "IPY_MODEL_3c30777ad88a43fb99394feba6488ad1", "IPY_MODEL_11bb98559ed64e299baa3f9edd162d19"], "layout": "IPY_MODEL_953186f5b32146a39543800f41d812af"}}, "f63dc7e6dade43a0a36527fbbf87ce71": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "11bb98559ed64e299baa3f9edd162d19": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_f63dc7e6dade43a0a36527fbbf87ce71", "msg_id": "", "outputs": []}}, "95a00714353341f881b7c02abcf87f53": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9bb462e068ef4376a865d5483e3d1a62": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "70116463a356414ba22b8281384a0300": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "M", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_95a00714353341f881b7c02abcf87f53", "style": "IPY_MODEL_9bb462e068ef4376a865d5483e3d1a62"}}, "66885bb7f9634f8d969a62f1fc0a9095": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0165782094234120b80a0e48379be61d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "f166f234e60e4bfd916fcbe7ac0a1ed9": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["1", "3", "5", "7", "10", "13", "15", "18", "20"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_66885bb7f9634f8d969a62f1fc0a9095", "style": "IPY_MODEL_0165782094234120b80a0e48379be61d"}}, "886c23a3739d4fecb643157316120bc8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f1ff75f0eb094f32b427ed54db9616c3": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_70116463a356414ba22b8281384a0300", "IPY_MODEL_f166f234e60e4bfd916fcbe7ac0a1ed9", "IPY_MODEL_f9fdd4bd14804123831d3510819c5f55"], "layout": "IPY_MODEL_886c23a3739d4fecb643157316120bc8"}}, "ac3e166c568f4d588ef13abde776d02f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f9fdd4bd14804123831d3510819c5f55": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_ac3e166c568f4d588ef13abde776d02f", "msg_id": "", "outputs": []}}, "0933391c32104e8988c0b610a3c96d22": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "bf4113f14e4a4055ab67430f8d12614a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "2ea6873c3c9346d9b9ac8b2d69defec4": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_0933391c32104e8988c0b610a3c96d22", "style": "IPY_MODEL_bf4113f14e4a4055ab67430f8d12614a"}}, "029de5751df74910a49be1a8de6ddd5f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0fc7f554a42b4d4bb9929c910ac19eca": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b579039d68df41649bb16f20cd4e827e": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["16", "18", "20", "22", "24", "26", "28", "30"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_029de5751df74910a49be1a8de6ddd5f", "style": "IPY_MODEL_0fc7f554a42b4d4bb9929c910ac19eca"}}, "ff1de74be8c540b4896a46d3d4c58bac": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0013a6ce0b2e4c78a8f96b4d31190655": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_b579039d68df41649bb16f20cd4e827e", "IPY_MODEL_2ea6873c3c9346d9b9ac8b2d69defec4", "IPY_MODEL_b66c6c4075c54ee3adce4ea2e3dea582"], "layout": "IPY_MODEL_ff1de74be8c540b4896a46d3d4c58bac"}}, "23e44a29ac494f22aa4fbf50bace4af2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b66c6c4075c54ee3adce4ea2e3dea582": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_23e44a29ac494f22aa4fbf50bace4af2", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter2.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">PageRank B</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter4.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Multiplexing B</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

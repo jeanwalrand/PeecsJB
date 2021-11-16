@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Networks A &#8212; Probability in EECS</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Networks B" href="Chapter6.html" />
+    <link rel="prev" title="Multiplexing B" href="Chapter4.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book3_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability in EECS</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter0.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter1.html">
+   PageRank A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter2.html">
+   PageRank B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter3.html">
+   Multiplexing A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter4.html">
+   Multiplexing B
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Networks A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter6.html">
+   Networks B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter7.html">
+   Digital Link A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter8.html">
+   Digital Link B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter9.html">
+   Tracking A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter10.html">
+   Tracking B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter11.html">
+   Speech Recognition A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter12.html">
+   Speech Recognition B
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Chapter13.html">
+   Route Planning A
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Chapter5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/PeecsJB.git/main?urlpath=tree/Chapter5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#epidemics">
+   Epidemics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#controlling-the-epidemics">
+     Controlling the Epidemics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#queueing-models">
+   Queueing Models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#packet-length-distribution">
+     Packet Length Distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="networks-a">
+<h1>Networks A<a class="headerlink" href="#networks-a" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">notebook.nbextensions</span> <span class="kn">import</span> <span class="n">enable_nbextension</span> 
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<p>This chapter introduces models of social networks and of queuing systems.</p>
+<div class="section" id="epidemics">
+<h2>Epidemics<a class="headerlink" href="#epidemics" title="Permalink to this headline">¶</a></h2>
+<p>The basic epidemiology model is that one infected person infects a random number of susceptible persons after one unit of time, and that number is distributed like some random variable <span class="math notranslate nohighlight">\(Y\)</span>.  The model assumes also that the infected people recover after one unit of time. Section 5.1 explains that if <span class="math notranslate nohighlight">\(R := E(Y) &gt; 1\)</span>, then the expected number of infected people increases without bound and there is a positive probability that the number of infected people also grows without bound.  On the other hand, if <span class="math notranslate nohighlight">\(R &lt; 1\)</span>, then the epidemy eventually fizzles out.</p>
+<p>In the stochastic model, if <span class="math notranslate nohighlight">\(X(n)\)</span> is the number of infected people after <span class="math notranslate nohighlight">\(n\)</span> units of time,</p>
+<div class="math notranslate nohighlight">
+\[
+E[X(n+1) \mid X(n)] = R X(n).
+\]</div>
+<p>A deterministic continous-time model of this epidemy is</p>
+<div class="math notranslate nohighlight">
+\[
+x(t+1) = R x(t), t \geq 0.
+\]</div>
+<p>This section compares the deterministic and stochastic models. At first glance, it seems that both models should behave similarly.  It is indeed common to use a deterministic model in epidemiology.  However, a closer look reveals important differences.  We simulate the stochastic model for a few distributions of <span class="math notranslate nohighlight">\(Y\)</span>. In case (a), <span class="math notranslate nohighlight">\(Y = R\)</span>; in case (b), <span class="math notranslate nohighlight">\(Y = R/0.3\)</span> with probability <span class="math notranslate nohighlight">\(0.3\)</span> and <span class="math notranslate nohighlight">\(Y = 0\)</span> otherwise; in case (c), <span class="math notranslate nohighlight">\(Y = 10R\)</span> with probability <span class="math notranslate nohighlight">\(0.1\)</span> and <span class="math notranslate nohighlight">\(Y = 0\)</span> otherwise.  Note that <span class="math notranslate nohighlight">\(E[Y] = R\)</span> in the three cases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Rd</span><span class="p">,</span> <span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">R</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">R</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">Rd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">Rd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.8&#39;</span><span class="p">,</span> <span class="s1">&#39;0.9&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">,</span><span class="s1">&#39;1.2&#39;</span><span class="p">,</span><span class="s1">&#39;1.3&#39;</span><span class="p">,</span><span class="s1">&#39;1.4&#39;</span><span class="p">,</span><span class="s1">&#39;1.5&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;1.1&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span><span class="s1">&#39;(c)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Rd</span> <span class="o">=</span> <span class="n">Rd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">,</span><span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4d6de7e6796140e9bda464cee8a7478c"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">discreteRV</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">):</span> <span class="c1"># here x = [x[0],...,x[K-1]], p = [p[0], ..., p[K-1]]</span>
+    <span class="c1"># returns a random value equal to x[k] with probability p[k]</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span> <span class="c1"># P[0] = p[0], p[1] = p[1], P[2] = p[0] + p[1], ..., P[K-1] = p[0] + ... + p[K-1] = 1</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># here is our uniform RV</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">K</span><span class="p">):</span>
+        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">U</span> <span class="o">&lt;</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">K</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">z</span>
+
+<span class="k">def</span> <span class="nf">epidemiology1</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(b)&#39;</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">R</span><span class="o">/</span><span class="mf">0.3</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.70</span><span class="p">,</span><span class="mf">0.30</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="n">R</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">EX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">EX</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])):</span>
+                    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">discreteRV</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+ 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EX</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;E[X[n]]&quot;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;X[n]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Simple Epidemiology Model&quot;</span><span class="p">)</span>
+    
+<span class="n">epidemiology1</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter5_4_0.png" src="_images/Chapter5_4_0.png" />
+</div>
+</div>
+<p>Not surprisingly, the stochastic model shows that <span class="math notranslate nohighlight">\(X[n]\)</span> has a large variability that the deterministic model overlooks.  To explore this variability, we choose <span class="math notranslate nohighlight">\(R = 1.1\)</span>.  We simulate the process <span class="math notranslate nohighlight">\(100\)</span> times and we plot the histogram of <span class="math notranslate nohighlight">\(X[15]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">case</span>
+    <span class="n">case</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span><span class="s1">&#39;(c)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "4f76b19c35ad464081459bd6177ca8a4"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">epidemiology2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">R</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(b)&#39;</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">R</span><span class="o">/</span><span class="mf">0.3</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.70</span><span class="p">,</span><span class="mf">0.30</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="o">*</span><span class="n">R</span><span class="p">]</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">EX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">EX</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])):</span>
+                    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">discreteRV</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">epidemiology3</span><span class="p">(</span><span class="n">case</span><span class="p">):</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">epidemiology2</span><span class="p">(</span><span class="n">case</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The mean value E[X[15]] = &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="mf">1.1</span><span class="p">)</span><span class="o">**</span><span class="mi">15</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z</span><span class="p">);</span>
+
+<span class="n">epidemiology3</span><span class="p">(</span><span class="n">case</span><span class="p">)</span>            
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean value E[X[15]] =  418
+</pre></div>
+</div>
+<img alt="_images/Chapter5_7_1.png" src="_images/Chapter5_7_1.png" />
+</div>
+</div>
+<div class="section" id="controlling-the-epidemics">
+<h3>Controlling the Epidemics<a class="headerlink" href="#controlling-the-epidemics" title="Permalink to this headline">¶</a></h3>
+<p>Assume that one tries to control the epidemics by imposing social distancing measures.  These measures reduce the value of <span class="math notranslate nohighlight">\(R\)</span>.  In our model, we introduce social distancing measures that reduce <span class="math notranslate nohighlight">\(R\)</span> by a factor <span class="math notranslate nohighlight">\(2\)</span> if we notice that <span class="math notranslate nohighlight">\(X[n]\)</span> exceeds <span class="math notranslate nohighlight">\(1000\)</span>.  However, it takes four units of time for the measures to be implemented.  Consider the following stochastic model of this situation.  If <span class="math notranslate nohighlight">\(X[n-4] &gt; 1000\)</span>, then each of the <span class="math notranslate nohighlight">\(X[n]\)</span> infected people infect a random number of people equal to <span class="math notranslate nohighlight">\(4R\)</span> with probability <span class="math notranslate nohighlight">\(0.125\)</span> and to zero with probability <span class="math notranslate nohighlight">\(0.875\)</span>; if <span class="math notranslate nohighlight">\(X[n-4] &lt; 1000\)</span>, then each of the <span class="math notranslate nohighlight">\(X[n]\)</span> infected people infect a random number of people equal to <span class="math notranslate nohighlight">\(8R\)</span> with probability <span class="math notranslate nohighlight">\(0.125\)</span> and to zero with probability <span class="math notranslate nohighlight">\(0.875\)</span>.  We simulate <span class="math notranslate nohighlight">\(X[n]\)</span> and we compare that evolution to the predictions of a deterministic model. Run the model a few times by changing the value of <span class="math notranslate nohighlight">\(N\)</span> and observe the variability of the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">N</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;150&#39;</span><span class="p">,</span> <span class="s1">&#39;200&#39;</span><span class="p">,</span> <span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="s1">&#39;350&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "79cae78818734c5fa43d0d973dac9a35"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">epidemiology5</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">1.1</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">EX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">R</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span><span class="n">EX</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">R</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])):</span>
+                    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">discreteRV</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="o">*</span><span class="n">R</span><span class="p">],[</span><span class="mf">0.875</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">])</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])):</span>
+                    <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">discreteRV</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="o">*</span><span class="n">R</span><span class="p">],[</span><span class="mf">0.875</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">])</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EX</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;E[X[n]]&quot;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;X[n]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$n$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Simple Controlled Epidemy Model&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">epidemiology5</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Chapter5_10_0.png" src="_images/Chapter5_10_0.png" />
+</div>
+</div>
+<p>This example shows that predictions based on a determistic model can be very misleading.  More importantly, choosing control policies based on such predictions seems a bit dicey.  Thus, although feedback control makes systems more robust, the combination of randomness and delays can have lasting effects.</p>
+</div>
+</div>
+<div class="section" id="queueing-models">
+<h2>Queueing Models<a class="headerlink" href="#queueing-models" title="Permalink to this headline">¶</a></h2>
+<p>Here we explore a simple queuing network. We examine the suitability of such models for sudying communication networks. The key question is whether it is reasonable to assume that the service times of the same packet are independent in successive nodes and that the packet lengths are exponentially distributed.</p>
+<p>The model is shown in the figure below.
+<img alt="title" src="_images/network.pdf" /></p>
+<p>There are two sources of packets: source 0 and source 1.  Packets of source 0 go through queues 0 and 1 whereas packets of source 1 go only through queue 1.  The queues are first-come, first-served and each has a single server. The packets arrive as independent Poisson processes with rates <span class="math notranslate nohighlight">\(\lambda_0\)</span> and <span class="math notranslate nohighlight">\(\lambda_1\)</span>, respectively.  In <strong>case (a)</strong>, the packets have i.i.d. lengths that are <strong>exponentially distributed with mean one</strong>.  The transmission rates are equal to one in both queues.  Thus, a packet of length <span class="math notranslate nohighlight">\(L\)</span> takes <span class="math notranslate nohighlight">\(L\)</span> time units to be transmitted. We call this transmission time the <em>service time</em> of the packet in the queue. In a queuing model, one assumes that the service times are all independent.  In a communication model, a packet of stream A has the same service time in both queues, since its length does not change.  How different are these models?</p>
+<div class="section" id="packet-length-distribution">
+<h3>Packet Length Distribution<a class="headerlink" href="#packet-length-distribution" title="Permalink to this headline">¶</a></h3>
+<p>In the Internet, the lengths of packets are not exponentially distributed.  Typically, there maximum-length packets of <span class="math notranslate nohighlight">\(1500\)</span> Bytes that carry bits from large files or audio/video streams, and minimum-length packets of about <span class="math notranslate nohighlight">\(100\)</span> Bytes that carry acknowledgments of the large packets.  In <strong>case (b)</strong> we assume that the packet lengths are <strong>equal to <span class="math notranslate nohighlight">\(0.1\)</span> with probability <span class="math notranslate nohighlight">\(0.5\)</span> and to <span class="math notranslate nohighlight">\(1.9\)</span> with probability <span class="math notranslate nohighlight">\(0.5\)</span></strong>.  The average length is equal to <span class="math notranslate nohighlight">\(1\)</span>, as before.</p>
+<p>Quite remarkably, the independence and exponential apporximations yield very good approximations. This was conjectured in the 1960s by Leonard Kleinrock.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">L0d</span><span class="p">,</span> <span class="n">L1d</span><span class="p">,</span><span class="n">cased</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">L0</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">case</span>
+    <span class="n">L0</span><span class="p">,</span> <span class="n">L1</span><span class="p">,</span> <span class="n">case</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">L0d</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">L1d</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">cased</span><span class="p">)</span>
+
+<span class="n">L0d</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.05&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.15&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="s1">&#39;0.25&#39;</span><span class="p">,</span><span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.35&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$\lambda_0$&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">L1d</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.05&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;0.15&#39;</span><span class="p">,</span> <span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="s1">&#39;0.25&#39;</span><span class="p">,</span><span class="s1">&#39;0.3&#39;</span><span class="p">,</span><span class="s1">&#39;0.35&#39;</span><span class="p">,</span><span class="s1">&#39;0.4&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.2&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;$\lambda_1$&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cased</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">],</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Case:&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">,</span><span class="n">tooltip</span><span class="o">=</span><span class="s1">&#39;Description&#39;</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">L0d</span> <span class="o">=</span> <span class="n">L0d</span><span class="p">,</span> <span class="n">L1d</span> <span class="o">=</span> <span class="n">L1d</span><span class="p">,</span><span class="n">cased</span><span class="o">=</span><span class="n">cased</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "3d99064966764787bcdf8fbfd094d583"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We write an event-driven simulation.  </span>
+<span class="c1"># The code is object-oriented.  There are three types of ojects: network, sources, and queues.</span>
+<span class="c1"># It is easy to modify this code to accommodate an arbitrary topology </span>
+<span class="c1">#  and different distributions or even multiple priorities.</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">L0</span><span class="p">,</span><span class="n">L1</span><span class="p">,</span><span class="n">case</span><span class="p">):</span> <span class="c1"># Li is the rate of arrivals of source i</span>
+    <span class="k">global</span> <span class="n">source_list</span><span class="p">,</span> <span class="n">queue_list</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">50000</span> <span class="c1"># N is the number of events</span>
+    <span class="n">source_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">queue_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># First build the network -  One could generalize by giving a topology</span>
+    <span class="n">Csource</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">L0</span><span class="p">,</span><span class="n">case</span><span class="p">)</span> <span class="c1"># generate source 0 attached to queue 0 with rate L</span>
+    <span class="n">Csource</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">L1</span><span class="p">,</span><span class="n">case</span><span class="p">)</span> <span class="c1"># generate source 1 attached to queue 1 with rate L</span>
+    <span class="n">Cqueue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># generate queue 0 attached to queue 1</span>
+    <span class="n">Cqueue</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># generate queue 1 attached to exit from network</span>
+    <span class="n">Network</span> <span class="o">=</span> <span class="n">Cnetwork</span><span class="p">()</span> <span class="c1"># define the network</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">Network</span><span class="o">.</span><span class="n">find_next_event</span><span class="p">()</span>
+        <span class="n">Network</span><span class="o">.</span><span class="n">process_event</span><span class="p">(</span><span class="n">Network</span><span class="o">.</span><span class="n">nextEvent</span><span class="p">)</span>        
+    <span class="n">depTimes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">delays</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">queue_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">exits</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">depTimes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">delays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Delay&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Departure Time&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Delays of packets of source 0&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">depTimes</span><span class="p">,</span><span class="n">delays</span><span class="p">)</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average delay for source 0 is &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">delays</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">delays</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span>    
+    <span class="n">D</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">D</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">source_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span> <span class="c1"># delay in first queue</span>
+    <span class="n">D</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">source_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">rate</span> <span class="o">-</span> <span class="n">source_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span> <span class="c1"># delay in second queue    </span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average delay when the service times are independent and exponentially distributed is &#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    
+    
+<span class="k">class</span> <span class="nc">Csource</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ID</span><span class="p">,</span> <span class="n">nextQueue</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span><span class="n">case</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextGenerationTime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">packet</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextQueue</span> <span class="o">=</span> <span class="n">nextQueue</span>
+        <span class="n">source_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">case</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;(a)&#39;</span><span class="p">:</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">discreteRV</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.9</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">packet</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">length</span><span class="p">]</span> <span class="c1"># [source.ID, generation time, length]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextGenerationTime</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="p">)</span>
+        <span class="n">queue_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nextQueue</span><span class="p">]</span><span class="o">.</span><span class="n">arrival</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">packet</span><span class="p">)</span>
+        
+<span class="k">class</span> <span class="nc">Cqueue</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ID</span><span class="p">,</span> <span class="n">nextQueue</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">ID</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># list of packets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">exits</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># list of [source.ID, departure time, delay]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextQueue</span> <span class="o">=</span> <span class="n">nextQueue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextDepartureTime</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">queue_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">arrival</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">packet</span><span class="p">):</span> <span class="c1"># packet = [source.ID, generation time, length]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># packet just arrived in empty queue</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nextDepartureTime</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># length of new packet</span>
+    <span class="k">def</span> <span class="nf">departure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>
+        <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="p">[]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nextDepartureTime</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nextQueue</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># -1 is a generic name for &#39;leaving the network&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">exits</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">packet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">time</span><span class="p">,</span><span class="n">time</span> <span class="o">-</span> <span class="n">packet</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">queue_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">nextQueue</span><span class="p">]</span><span class="o">.</span><span class="n">arrival</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">packet</span><span class="p">)</span>
+            
+<span class="k">class</span> <span class="nc">Cnetwork</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sources</span> <span class="o">=</span> <span class="n">source_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">queues</span> <span class="o">=</span> <span class="n">queue_list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numberSources</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numberQueues</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue_list</span><span class="p">)</span>
+        <span class="n">Network</span> <span class="o">=</span> <span class="bp">self</span>
+        
+    <span class="k">def</span> <span class="nf">find_next_event</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># event = [&#39;Generation&#39; or &#39;Departure&#39;, s or q, when]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Generation&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">source_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">nextGenerationTime</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">numberSources</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">source_list</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">nextGenerationTime</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Generation&#39;</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">source_list</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">nextGenerationTime</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numberQueues</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">queue_list</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="k">if</span> <span class="n">queue_list</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">nextDepartureTime</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nextEvent</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Departure&#39;</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">queue_list</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">nextDepartureTime</span><span class="p">]</span>
+                
+    <span class="k">def</span> <span class="nf">process_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">event</span><span class="p">):</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">event</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Generation&#39;</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">source_list</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">case</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># departure</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">queue_list</span><span class="p">[</span><span class="n">q</span><span class="p">]</span><span class="o">.</span><span class="n">departure</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+            
+<span class="n">main</span><span class="p">(</span><span class="n">L0</span><span class="p">,</span><span class="n">L1</span><span class="p">,</span><span class="n">case</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average delay for source 0 is  3.068
+The average delay when the service times are independent and exponentially distributed is  2.917
+</pre></div>
+</div>
+<img alt="_images/Chapter5_14_1.png" src="_images/Chapter5_14_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"6e9071163712440db552b3740be6a044": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "dcf06ea3f50141518622999f033879da": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3b1ee0180ad5475590d1f4521af6b977": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.8", "0.9", "1", "1.1", "1.2", "1.3", "1.4", "1.5"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_6e9071163712440db552b3740be6a044", "style": "IPY_MODEL_dcf06ea3f50141518622999f033879da"}}, "5d15d64f2072469b959dc00eaf885b93": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ca02109283e44e959c330020db67de98": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "491d9a543f444f5a91f665163956bb88": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "30", "50", "70", "100", "150", "200", "250"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 4, "layout": "IPY_MODEL_5d15d64f2072469b959dc00eaf885b93", "style": "IPY_MODEL_ca02109283e44e959c330020db67de98"}}, "78ec6ad62daf42b9979fb1831c25fbef": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0ba4cb9bf98c4f43a2e04672a68f1482": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "6c7ca3f366ed4fb9881f28af5cba1696": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)", "(c)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_78ec6ad62daf42b9979fb1831c25fbef", "style": "IPY_MODEL_0ba4cb9bf98c4f43a2e04672a68f1482", "tooltips": []}}, "8979f3c85d5a437ca768225d6958d4ca": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4d6de7e6796140e9bda464cee8a7478c": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_3b1ee0180ad5475590d1f4521af6b977", "IPY_MODEL_491d9a543f444f5a91f665163956bb88", "IPY_MODEL_6c7ca3f366ed4fb9881f28af5cba1696", "IPY_MODEL_07682be0fc2249e5968be53d1f0a17ee"], "layout": "IPY_MODEL_8979f3c85d5a437ca768225d6958d4ca"}}, "a63b4dcc09c54463908c9a8c20ebc4b8": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "07682be0fc2249e5968be53d1f0a17ee": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_a63b4dcc09c54463908c9a8c20ebc4b8", "msg_id": "", "outputs": []}}, "152928593ceb424089cdd01bb166954a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "93c9936f636041519d3465dff659f94b": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "6f5cd9e2668d412bb15b63d9d48fb81a": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)", "(c)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_152928593ceb424089cdd01bb166954a", "style": "IPY_MODEL_93c9936f636041519d3465dff659f94b", "tooltips": []}}, "b6eeaf8d1a9841de98394d1b5e17743c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4f76b19c35ad464081459bd6177ca8a4": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_6f5cd9e2668d412bb15b63d9d48fb81a", "IPY_MODEL_ad4d4d11fb8d4f74969fcd64faf829a7"], "layout": "IPY_MODEL_b6eeaf8d1a9841de98394d1b5e17743c"}}, "03f1eb2d24f643f3a1afcddcd2b1c108": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ad4d4d11fb8d4f74969fcd64faf829a7": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_03f1eb2d24f643f3a1afcddcd2b1c108", "msg_id": "", "outputs": []}}, "e2b637d849924874ba900550348b6f53": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5a3d88c6ad2942499e61d4f116a0e15a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "429eb7ba6b864a23bbf35e4e3baf1a9f": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["100", "150", "200", "250", "300", "350"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N", "description_tooltip": null, "disabled": false, "index": 2, "layout": "IPY_MODEL_e2b637d849924874ba900550348b6f53", "style": "IPY_MODEL_5a3d88c6ad2942499e61d4f116a0e15a"}}, "1bd2f42ef747466b82a721fd3126778b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "79cae78818734c5fa43d0d973dac9a35": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_429eb7ba6b864a23bbf35e4e3baf1a9f", "IPY_MODEL_c87c8584e7104feda3ef06129b360338"], "layout": "IPY_MODEL_1bd2f42ef747466b82a721fd3126778b"}}, "7ae92bcb0c6a458c8678675d94a5b24b": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "c87c8584e7104feda3ef06129b360338": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_7ae92bcb0c6a458c8678675d94a5b24b", "msg_id": "", "outputs": []}}, "23d4915930944a18a5a4184495f102bf": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9f10cb0b9cbd46e7a2ecac65518f033c": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "da7277d6d06640cfb3a7f55c711b9a29": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.05", "0.1", "0.15", "0.2", "0.25", "0.3", "0.35", "0.4"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "$\\lambda_0$", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_23d4915930944a18a5a4184495f102bf", "style": "IPY_MODEL_9f10cb0b9cbd46e7a2ecac65518f033c"}}, "24cb2c17ad604a0bacd3f4d0c0f2541e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7009e0156c164cd68b0e0deec931fc70": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "52dae2f8bfed421bae62e93a41f2731c": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.05", "0.1", "0.15", "0.2", "0.25", "0.3", "0.35", "0.4"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "$\\lambda_1$", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_24cb2c17ad604a0bacd3f4d0c0f2541e", "style": "IPY_MODEL_7009e0156c164cd68b0e0deec931fc70"}}, "fd4d1330b72e4e05a638551e1a09c715": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "303ca2a3943e4fbe94cbfcd6d5d671aa": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "76bea4832f014825af2d9dadab8be60a": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["(a)", "(b)"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ToggleButtonsView", "button_style": "info", "description": "Case:", "description_tooltip": null, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_fd4d1330b72e4e05a638551e1a09c715", "style": "IPY_MODEL_303ca2a3943e4fbe94cbfcd6d5d671aa", "tooltips": []}}, "8b8fe39ac1b745cd8e8da0e21a8b93e4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3d99064966764787bcdf8fbfd094d583": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_da7277d6d06640cfb3a7f55c711b9a29", "IPY_MODEL_52dae2f8bfed421bae62e93a41f2731c", "IPY_MODEL_76bea4832f014825af2d9dadab8be60a", "IPY_MODEL_e2990abe13a74e01884ed7ea126c4c4d"], "layout": "IPY_MODEL_8b8fe39ac1b745cd8e8da0e21a8b93e4"}}, "9a5a292c44ec473096e28a29b4cfab65": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e2990abe13a74e01884ed7ea126c4c4d": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_9a5a292c44ec473096e28a29b4cfab65", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/PeecsJB.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Chapter4.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Multiplexing B</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Chapter6.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Networks B</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
