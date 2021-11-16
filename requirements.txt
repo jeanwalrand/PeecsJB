@@ -1,0 +1,11 @@
+scipy
+jupyter-book
+matplotlib
+numpy
+pandas
+ipywidgets
+sklearn
+openpyxl
+ipyleaflet
+widgetsnbextension
+opencv-python-headless
